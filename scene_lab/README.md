@@ -1,17 +1,49 @@
 # Scene Lab Converted Asset Pack
 
-This branch is a cleaned result branch for converted RoboTwin and YCB assets.
-It keeps the portable DexJoCo task definitions, the asset review GUI, and a
-small README. The converted asset directory is distributed as a separate
-artifact because the processed meshes, textures, collision parts, and previews
-are about 3.2 GB.
+This directory documents the public, cleaned result branch for converted
+RoboTwin and YCB assets. The branch keeps the portable DexJoCo task definitions,
+the asset review GUI, and this README. The converted asset payload is published
+as a separate GitHub Release artifact because the processed meshes, textures,
+collision parts, manifests, and previews are about 3.2 GB after extraction.
 
-It intentionally does not keep the one-off download/import/generation scripts.
+The one-off download, import, and generation scripts are intentionally not part
+of this cleaned branch.
+
+Release:
+
+```text
+https://github.com/yks23/dexjoco/releases/tag/assets-trans-20260622
+```
+
+## Public Layout
+
+Keep large generated files outside git. The expected public structure is:
+
+```text
+dexjoco/                               # git checkout
+  scene_lab/
+    README.md
+    tools/asset_review_gui.py
+    assets/
+      processed/                       # restored from the release artifact
+
+GitHub Release assets-trans-20260622/  # large public artifact, not git
+  scene_lab_processed_assets_robotwin_ycb_20260622.tar.zst.part-00
+  scene_lab_processed_assets_robotwin_ycb_20260622.tar.zst.part-01
+  scene_lab_processed_assets_robotwin_ycb_20260622.tar.zst.part-02
+  scene_lab_processed_assets_robotwin_ycb_20260622.tar.zst.part-03
+  scene_lab_processed_assets_robotwin_ycb_20260622.tar.zst.part-04
+  SHA256SUMS.txt
+```
+
+After extraction, all runtime paths are repository-relative. Do not place the
+archive parts inside `scene_lab/assets/processed`; that directory should contain
+the extracted `robotwin/` and `ycb/` folders only.
 
 ## Contents
 
 ```text
-scene_lab/assets/processed/        # restored from the asset artifact
+scene_lab/assets/processed/            # restored from the release artifact
   robotwin/<asset_id>/
     asset_manifest.json
     asset_scene.xml
@@ -42,7 +74,18 @@ RoboTwin promoted DexJoCo tasks: 247
 
 ## Restore Artifact
 
-The processed assets are published as split release files:
+Recommended download with the GitHub CLI:
+
+```bash
+gh release download assets-trans-20260622 \
+  --repo yks23/dexjoco \
+  --dir /tmp/dexjoco-assets-trans
+```
+
+Manual download also works: download all five `part-*` files and
+`SHA256SUMS.txt` from the release page into the same temporary directory.
+
+The release files are:
 
 ```text
 scene_lab_processed_assets_robotwin_ycb_20260622.tar.zst.part-00
@@ -53,15 +96,15 @@ scene_lab_processed_assets_robotwin_ycb_20260622.tar.zst.part-04
 SHA256SUMS.txt
 ```
 
-Place the parts in one directory, then reconstruct and extract from the
-repository root:
+From the repository root, reconstruct the archive, check it, and extract it:
 
 ```bash
-cat scene_lab_processed_assets_robotwin_ycb_20260622.tar.zst.part-* \
-  > scene_lab_processed_assets_robotwin_ycb_20260622.tar.zst
-shasum -a 256 scene_lab_processed_assets_robotwin_ycb_20260622.tar.zst
+cat /tmp/dexjoco-assets-trans/scene_lab_processed_assets_robotwin_ycb_20260622.tar.zst.part-* \
+  > /tmp/dexjoco-assets-trans/scene_lab_processed_assets_robotwin_ycb_20260622.tar.zst
+
+shasum -a 256 /tmp/dexjoco-assets-trans/scene_lab_processed_assets_robotwin_ycb_20260622.tar.zst
 tar --use-compress-program=unzstd \
-  -xf scene_lab_processed_assets_robotwin_ycb_20260622.tar.zst
+  -xf /tmp/dexjoco-assets-trans/scene_lab_processed_assets_robotwin_ycb_20260622.tar.zst
 ```
 
 Expected archive checksum:
@@ -70,12 +113,26 @@ Expected archive checksum:
 c2c39b27dd591bac511ec5e54595b70ef90df12690b03f301b4fd5e12835967b
 ```
 
-## Review Assets
+If `unzstd` is missing, install Zstandard first, for example:
 
-First restore the processed asset artifact so this directory exists:
+```bash
+brew install zstd
+```
+
+After extraction, this path must exist:
 
 ```text
-scene_lab/assets/processed/
+scene_lab/assets/processed/robotwin/
+scene_lab/assets/processed/ycb/
+```
+
+## Review Assets
+
+First restore the processed asset artifact so these directories exist:
+
+```text
+scene_lab/assets/processed/robotwin/
+scene_lab/assets/processed/ycb/
 ```
 
 ```bash
@@ -91,7 +148,8 @@ http://127.0.0.1:8768/?source=ycb
 ```
 
 The GUI reads `scene_lab/assets/processed` directly. It does not run any
-conversion pipeline.
+conversion pipeline and it does not require the original RoboTwin or YCB raw
+downloads.
 
 ## Use RoboTwin Tasks
 
@@ -111,6 +169,15 @@ The task XML files reference `scene_lab/assets/processed/robotwin` with
 repository-relative paths, so they are portable after the asset artifact is
 restored into this checkout.
 
+Quick task registration check:
+
+```bash
+python - <<'PY'
+from dexjoco.tasks import CONFIG_MAPPING
+print("robotwin_adjust_bottle_001_bottle" in CONFIG_MAPPING)
+PY
+```
+
 ## Notes
 
 - YCB is included as an asset library only. No YCB task logic is generated.
@@ -118,3 +185,5 @@ restored into this checkout.
   promoted to DexJoCo. Unsupported articulated or complex specs are preserved
   in `dexjoco/dexjoco/tasks/robotwin_transfer/catalog.json`.
 - Raw benchmark downloads are not included in this cleaned branch.
+- Keep `scene_lab/assets/processed/` out of git. It is ignored intentionally and
+  should be restored from the public release artifact when reproducing.

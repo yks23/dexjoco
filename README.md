@@ -77,6 +77,7 @@ training/evaluation support.
 ## Table of Contents
 
 - [Installation](#-installation)
+- [Converted RoboTwin/YCB Assets](#-converted-robotwinycb-assets)
 - [Policy Evaluation](#-policy-evaluation)
 - [Custom Policy Integration](#-custom-policy-integration)
 - [Data Collection](#-data-collection)
@@ -104,6 +105,46 @@ cd openpi
 bash install.bash
 conda activate openpi
 ```
+
+## 📦 Converted RoboTwin/YCB Assets
+
+This branch includes a cleaned converted-asset pack for public review and
+reproduction:
+
+- RoboTwin processed assets: 600
+- YCB processed assets: 77
+- RoboTwin tasks promoted into DexJoCo's normal task registry: 247
+
+The large processed assets are not stored directly in git. They are published as
+split files in the GitHub Release:
+[assets-trans-20260622](https://github.com/yks23/dexjoco/releases/tag/assets-trans-20260622).
+Download the release files and extract them from the repository root so the
+final relative directory is:
+
+```text
+scene_lab/assets/processed/
+```
+
+Minimal restore and review flow:
+
+```bash
+gh release download assets-trans-20260622 \
+  --repo yks23/dexjoco \
+  --dir /tmp/dexjoco-assets-trans
+
+cat /tmp/dexjoco-assets-trans/scene_lab_processed_assets_robotwin_ycb_20260622.tar.zst.part-* \
+  > /tmp/dexjoco-assets-trans/scene_lab_processed_assets_robotwin_ycb_20260622.tar.zst
+
+shasum -a 256 /tmp/dexjoco-assets-trans/scene_lab_processed_assets_robotwin_ycb_20260622.tar.zst
+tar --use-compress-program=unzstd \
+  -xf /tmp/dexjoco-assets-trans/scene_lab_processed_assets_robotwin_ycb_20260622.tar.zst
+
+python scene_lab/tools/asset_review_gui.py --port 8768
+```
+
+Open `http://127.0.0.1:8768/?source=all` to review the converted assets.
+See [`scene_lab/README.md`](scene_lab/README.md) for checksums, directory
+layout, and DexJoCo task usage.
 
 ## 🤖 Policy Evaluation
 
