@@ -204,6 +204,7 @@ def _export_textured_scene_obj(scene_or_mesh: Any, dest: Path) -> bool:
     try:
         import numpy as np
         import trimesh
+        from trimesh.exchange.obj import export_obj
 
         if isinstance(scene_or_mesh, trimesh.Scene):
             geometries = list(scene_or_mesh.geometry.values())
@@ -218,15 +219,37 @@ def _export_textured_scene_obj(scene_or_mesh: Any, dest: Path) -> bool:
         image = getattr(material, "baseColorTexture", None) or getattr(material, "image", None)
         if uv is None or image is None:
             return False
+
+        exported = export_obj(
+            mesh,
+            include_normals=True,
+            include_texture=True,
+            return_texture=True,
+            write_texture=False,
+            mtl_name="material.mtl",
+        )
+        if isinstance(exported, tuple) and len(exported) == 2:
+            obj_text, texture_files = exported
+            dest.write_text(obj_text, encoding="utf-8")
+            for name, content in texture_files.items():
+                out = dest.with_name(name)
+                if name.lower().endswith((".png", ".jpg", ".jpeg")):
+                    out.write_bytes(_flatten_texture_image(content))
+                else:
+                    out.write_bytes(content if isinstance(content, bytes) else bytes(content))
+            return True
+
         texture_path = dest.with_name("texture.png")
         material_path = dest.with_name("material.mtl")
-        image.save(texture_path)
+        texture_path.write_bytes(_flatten_texture_image(image))
         material_path.write_text(
             "newmtl textured_material\n"
             "Ka 1 1 1\n"
             "Kd 1 1 1\n"
             "Ks 0.1 0.1 0.1\n"
             "Ns 16\n"
+            "d 1.0\n"
+            "illum 2\n"
             f"map_Kd {texture_path.name}\n",
             encoding="utf-8",
         )
@@ -246,6 +269,31 @@ def _export_textured_scene_obj(scene_or_mesh: Any, dest: Path) -> bool:
         return True
     except Exception:
         return False
+
+
+def _flatten_texture_image(image_or_bytes: Any) -> bytes:
+    from io import BytesIO
+
+    from PIL import Image
+
+    if isinstance(image_or_bytes, bytes):
+        image = Image.open(BytesIO(image_or_bytes))
+    elif isinstance(image_or_bytes, Image.Image):
+        image = image_or_bytes
+    else:
+        image = Image.open(BytesIO(bytes(image_or_bytes)))
+
+    if image.mode in ("RGBA", "LA") or "transparency" in image.info:
+        rgba = image.convert("RGBA")
+        base = Image.new("RGBA", rgba.size, (255, 255, 255, 255))
+        base.alpha_composite(rgba)
+        image = base.convert("RGB")
+    else:
+        image = image.convert("RGB")
+
+    output = BytesIO()
+    image.save(output, format="PNG")
+    return output.getvalue()
 
 
 def load_asset_manifest(asset_id: str) -> tuple[Path, dict[str, Any]]:

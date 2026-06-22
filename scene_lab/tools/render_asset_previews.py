@@ -27,10 +27,38 @@ def _fmt(values) -> str:
 
 
 def _mesh_texture_file(mesh_path: Path) -> Path | None:
+    material_libs: list[Path] = []
+    if mesh_path.suffix.lower() == ".obj":
+        try:
+            for line in mesh_path.read_text(encoding="utf-8", errors="ignore").splitlines():
+                parts = line.strip().split(maxsplit=1)
+                if len(parts) == 2 and parts[0] == "mtllib":
+                    material_libs.append(mesh_path.parent / parts[1])
+        except OSError:
+            pass
+    for material_lib in material_libs:
+        if not material_lib.exists():
+            continue
+        try:
+            for line in material_lib.read_text(encoding="utf-8", errors="ignore").splitlines():
+                parts = line.strip().split(maxsplit=1)
+                if len(parts) == 2 and parts[0].lower() == "map_kd":
+                    candidate = material_lib.parent / parts[1]
+                    if candidate.exists():
+                        return candidate
+        except OSError:
+            pass
     for name in ("texture.png", "place_holder.png", "material.png"):
         candidate = mesh_path.parent / name
         if candidate.exists():
             return candidate
+    images = sorted(
+        path
+        for path in mesh_path.parent.iterdir()
+        if path.is_file() and path.suffix.lower() in (".png", ".jpg", ".jpeg")
+    )
+    if len(images) == 1:
+        return images[0]
     return None
 
 
