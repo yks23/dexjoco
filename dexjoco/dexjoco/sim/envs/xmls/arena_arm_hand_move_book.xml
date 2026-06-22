@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco model="Arena_Allegro_Move_Book">
+  <include file="panda_allegro_copy.xml"/>
+
+  <option timestep=".002" noslip_iterations="5" noslip_tolerance="0"/>
+  <statistic center="0.1 0 0.8" extent="1.0"/>
+
+  <visual>
+    <headlight diffuse=".45 .45 .45" ambient=".45 .45 .45"/>
+    <global azimuth="150" elevation="-25" offheight="1024" offwidth="1024"/>
+    <quality offsamples="4"/>
+  </visual>
+
+  <asset>
+    <texture name="book_floor_tex" type="2d" builtin="checker" width="512" height="512"
+             rgb1=".72 .75 .78" rgb2=".55 .58 .62"/>
+    <texture name="book_table_tex" type="2d" builtin="checker" width="512" height="512"
+             rgb1=".56 .38 .22" rgb2=".64 .46 .28"/>
+    <material name="move_book_floor" texture="book_floor_tex" texrepeat="4 4" reflectance="0"/>
+    <material name="move_book_table" texture="book_table_tex" texrepeat="3 2" reflectance=".05"/>
+    <material name="book_cover" rgba=".08 .18 .55 1" specular=".2" shininess=".25"/>
+    <material name="book_pages" rgba=".94 .90 .78 1" specular=".05" shininess=".05"/>
+    <material name="book_spine" rgba=".03 .10 .35 1" specular=".2" shininess=".25"/>
+    <material name="goal_green" rgba=".1 .75 .35 .35"/>
+  </asset>
+
+  <worldbody>
+    <geom name="floor" type="plane" size="3 3 .01" material="move_book_floor"/>
+
+    <body name="table" pos="-0.15 0 0">
+      <geom name="table_collision" type="box" size=".45 .85 .03" pos="0 0 .89"
+            friction="1.2 .01 .0001" group="3"/>
+      <geom name="table_visual" type="box" size=".45 .85 .03" pos="0 0 .89"
+            contype="0" conaffinity="0" group="1" material="move_book_table"/>
+      <site name="table_top" pos="0 0 .92" size=".003 .003 .003" rgba="0 0 0 0"/>
+      <geom name="table_leg_1" pos=".35 .75 .43" type="cylinder" size=".035 .43"
+            contype="0" conaffinity="0" group="1" rgba=".35 .35 .36 1"/>
+      <geom name="table_leg_2" pos=".35 -.75 .43" type="cylinder" size=".035 .43"
+            contype="0" conaffinity="0" group="1" rgba=".35 .35 .36 1"/>
+      <geom name="table_leg_3" pos="-.35 .75 .43" type="cylinder" size=".035 .43"
+            contype="0" conaffinity="0" group="1" rgba=".35 .35 .36 1"/>
+      <geom name="table_leg_4" pos="-.35 -.75 .43" type="cylinder" size=".035 .43"
+            contype="0" conaffinity="0" group="1" rgba=".35 .35 .36 1"/>
+    </body>
+
+    <body name="book" pos="-0.33 -0.18 .945" quat="1 0 0 0">
+      <freejoint name="book_root"/>
+      <geom name="book_collision" type="box" size=".105 .075 .018" mass=".28"
+            friction="1.0 .03 .0005" group="3"/>
+      <geom name="book_cover_top" type="box" size=".108 .078 .004" pos="0 0 .019"
+            contype="0" conaffinity="0" group="1" material="book_cover"/>
+      <geom name="book_cover_bottom" type="box" size=".108 .078 .004" pos="0 0 -.019"
+            contype="0" conaffinity="0" group="1" material="book_cover"/>
+      <geom name="book_pages" type="box" size=".10 .069 .013" pos=".006 0 0"
+            contype="0" conaffinity="0" group="1" material="book_pages"/>
+      <geom name="book_spine" type="box" size=".012 .079 .021" pos="-.105 0 0"
+            contype="0" conaffinity="0" group="1" material="book_spine"/>
+    </body>
+
+    <body name="book_goal" pos=".12 .22 .925">
+      <geom name="goal_zone" type="box" size=".13 .10 .004" contype="0" conaffinity="0"
+            group="1" material="goal_green"/>
+      <site name="goal_center" pos="0 0 .01" size=".01" rgba=".1 .9 .35 1"/>
+    </body>
+
+    <camera name="front" pos="1.15 -.65 1.55" quat=".677 .430 .307 .512" fovy="48"/>
+    <camera name="side" pos=".15 -1.35 1.35" quat=".678 .678 .201 .201" fovy="48"/>
+    <camera name="top" pos="-.15 0 2.25" quat=".707 0 0 -.707" fovy="45"/>
+    <light name="key_light" pos=".4 -.8 2.8" dir="-.2 .25 -1" diffuse=".9 .9 .85" specular=".2 .2 .2"/>
+
+    <body name="target" pos=".15 0 .55" quat="0 1 0 0" mocap="true">
+      <geom name="target" type="box" size=".03 .03 .03" contype="0" conaffinity="0" rgba=".6 .3 .3 0"/>
+    </body>
+  </worldbody>
+</mujoco>

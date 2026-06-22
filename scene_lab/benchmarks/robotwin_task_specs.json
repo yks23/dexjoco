@@ -1,0 +1,3600 @@
+{
+  "generated_at": "2026-06-21T06:57:50.324923+00:00",
+  "source_root": "third_party/assets/robotwin/envs",
+  "task_count": 50,
+  "tasks": [
+    {
+      "source_task": "adjust_bottle",
+      "source_file": "third_party/assets/robotwin/envs/adjust_bottle.py",
+      "skill_family": "unclassified",
+      "skill_description": "needs manual taxonomy review",
+      "instruction_hint": "adjust bottle",
+      "assets": [
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "rand_create_actor",
+          "modelname": "001_bottle",
+          "model_ids": [
+            13,
+            16
+          ],
+          "asset_ids": [
+            "robotwin_001_bottle_base13",
+            "robotwin_001_bottle_base16"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        }
+      ],
+      "object_mentions": [
+        "001_bottle"
+      ],
+      "sampling": {
+        "model_id": [
+          13,
+          16
+        ]
+      },
+      "skill_sequence": [
+        "grasp_actor",
+        "move_by_displacement",
+        "place_actor"
+      ],
+      "success_predicate": {
+        "type": "object_in_region",
+        "params": {
+          "xy_radius": 0.08,
+          "min_z": 0.9
+        }
+      },
+      "transfer_status": "executable",
+      "unsupported_features": []
+    },
+    {
+      "source_task": "beat_block_hammer",
+      "source_file": "third_party/assets/robotwin/envs/beat_block_hammer.py",
+      "skill_family": "tool_use_strike",
+      "skill_description": "tool use / striking",
+      "instruction_hint": "beat block hammer",
+      "assets": [
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "020_hammer",
+          "model_ids": [
+            0
+          ],
+          "asset_ids": [
+            "robotwin_020_hammer_base0"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "procedural_box",
+          "role_hint": "box",
+          "source_call": "create_box",
+          "half_size": [
+            0.025,
+            0.025,
+            0.025
+          ],
+          "color": [
+            1,
+            0,
+            0
+          ]
+        }
+      ],
+      "object_mentions": [
+        "020_hammer"
+      ],
+      "sampling": {},
+      "skill_sequence": [
+        "grasp_actor",
+        "move_by_displacement",
+        "place_actor",
+        "check_actors_contact"
+      ],
+      "success_predicate": {
+        "type": "tool_contact_target",
+        "params": {
+          "radius": 0.06
+        }
+      },
+      "transfer_status": "executable",
+      "unsupported_features": []
+    },
+    {
+      "source_task": "blocks_ranking_rgb",
+      "source_file": "third_party/assets/robotwin/envs/blocks_ranking_rgb.py",
+      "skill_family": "sort_or_rank_objects",
+      "skill_description": "ordering and sorting",
+      "instruction_hint": "blocks ranking rgb",
+      "assets": [
+        {
+          "kind": "procedural_box",
+          "role_hint": "box",
+          "source_call": "create_box",
+          "half_size": null,
+          "color": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "kind": "procedural_box",
+          "role_hint": "box",
+          "source_call": "create_box",
+          "half_size": null,
+          "color": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "kind": "procedural_box",
+          "role_hint": "box",
+          "source_call": "create_box",
+          "half_size": null,
+          "color": [
+            0,
+            0,
+            1
+          ]
+        }
+      ],
+      "object_mentions": [],
+      "sampling": {},
+      "skill_sequence": [
+        "grasp_actor",
+        "move_by_displacement",
+        "place_actor",
+        "pick_and_place",
+        "pick_and_place_block"
+      ],
+      "success_predicate": {
+        "type": "object_in_region",
+        "params": {
+          "xy_radius": 0.08,
+          "min_z": 0.9
+        }
+      },
+      "transfer_status": "executable",
+      "unsupported_features": []
+    },
+    {
+      "source_task": "blocks_ranking_size",
+      "source_file": "third_party/assets/robotwin/envs/blocks_ranking_size.py",
+      "skill_family": "sort_or_rank_objects",
+      "skill_description": "ordering and sorting",
+      "instruction_hint": "blocks ranking size",
+      "assets": [
+        {
+          "kind": "procedural_box",
+          "role_hint": "box",
+          "source_call": "create_box",
+          "half_size": null,
+          "color": null
+        }
+      ],
+      "object_mentions": [],
+      "sampling": {},
+      "skill_sequence": [
+        "grasp_actor",
+        "move_by_displacement",
+        "place_actor",
+        "pick_and_place",
+        "pick_and_place_block"
+      ],
+      "success_predicate": {
+        "type": "object_in_region",
+        "params": {
+          "xy_radius": 0.08,
+          "min_z": 0.9
+        }
+      },
+      "transfer_status": "executable",
+      "unsupported_features": []
+    },
+    {
+      "source_task": "click_alarmclock",
+      "source_file": "third_party/assets/robotwin/envs/click_alarmclock.py",
+      "skill_family": "press_button_or_tool",
+      "skill_description": "short contact / tool actuation",
+      "instruction_hint": "click alarmclock",
+      "assets": [
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "046_alarm-clock",
+          "model_ids": [
+            1
+          ],
+          "asset_ids": [
+            "robotwin_046_alarm_clock_base1"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        }
+      ],
+      "object_mentions": [
+        "046_alarm-clock"
+      ],
+      "sampling": {
+        "alarmclock_id": 1
+      },
+      "skill_sequence": [
+        "grasp_actor",
+        "move_by_displacement"
+      ],
+      "success_predicate": {
+        "type": "tool_contact_target",
+        "params": {
+          "radius": 0.045
+        }
+      },
+      "transfer_status": "executable",
+      "unsupported_features": []
+    },
+    {
+      "source_task": "click_bell",
+      "source_file": "third_party/assets/robotwin/envs/click_bell.py",
+      "skill_family": "press_button_or_tool",
+      "skill_description": "short contact / tool actuation",
+      "instruction_hint": "click bell",
+      "assets": [
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "050_bell",
+          "model_ids": [
+            0
+          ],
+          "asset_ids": [
+            "robotwin_050_bell_base0"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        }
+      ],
+      "object_mentions": [
+        "050_bell"
+      ],
+      "sampling": {
+        "bell_id": 0
+      },
+      "skill_sequence": [
+        "grasp_actor",
+        "move_by_displacement"
+      ],
+      "success_predicate": {
+        "type": "tool_contact_target",
+        "params": {
+          "radius": 0.045
+        }
+      },
+      "transfer_status": "executable",
+      "unsupported_features": []
+    },
+    {
+      "source_task": "dump_bin_bigbin",
+      "source_file": "third_party/assets/robotwin/envs/dump_bin_bigbin.py",
+      "skill_family": "pour_or_shake_container",
+      "skill_description": "container dynamics",
+      "instruction_hint": "dump bin bigbin",
+      "assets": [
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "011_dustbin",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_011_dustbin"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "063_tabletrashbin",
+          "model_ids": [
+            0
+          ],
+          "asset_ids": [
+            "robotwin_063_tabletrashbin_base0"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        }
+      ],
+      "object_mentions": [
+        "011_dustbin",
+        "063_tabletrashbin"
+      ],
+      "sampling": {
+        "deskbin_id": 0
+      },
+      "skill_sequence": [
+        "grasp_actor",
+        "move_by_displacement",
+        "place_actor"
+      ],
+      "success_predicate": {
+        "type": "object_in_region",
+        "params": {
+          "xy_radius": 0.08,
+          "min_z": 0.9
+        }
+      },
+      "transfer_status": "executable",
+      "unsupported_features": []
+    },
+    {
+      "source_task": "grab_roller",
+      "source_file": "third_party/assets/robotwin/envs/grab_roller.py",
+      "skill_family": "unclassified",
+      "skill_description": "needs manual taxonomy review",
+      "instruction_hint": "grab roller",
+      "assets": [
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "102_roller",
+          "model_ids": [
+            0
+          ],
+          "asset_ids": [
+            "robotwin_102_roller_base0"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        }
+      ],
+      "object_mentions": [
+        "102_roller"
+      ],
+      "sampling": {
+        "model_id": 0
+      },
+      "skill_sequence": [
+        "grasp_actor",
+        "move_by_displacement"
+      ],
+      "success_predicate": {
+        "type": "object_in_region",
+        "params": {
+          "xy_radius": 0.08,
+          "min_z": 0.9
+        }
+      },
+      "transfer_status": "executable",
+      "unsupported_features": []
+    },
+    {
+      "source_task": "handover_block",
+      "source_file": "third_party/assets/robotwin/envs/handover_block.py",
+      "skill_family": "handover_object",
+      "skill_description": "bimanual transfer",
+      "instruction_hint": "handover block",
+      "assets": [
+        {
+          "kind": "procedural_box",
+          "role_hint": "box",
+          "source_call": "create_box",
+          "half_size": [
+            0.03,
+            0.03,
+            0.1
+          ],
+          "color": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "kind": "procedural_box",
+          "role_hint": "box",
+          "source_call": "create_box",
+          "half_size": [
+            0.05,
+            0.05,
+            0.005
+          ],
+          "color": [
+            0,
+            0,
+            1
+          ]
+        }
+      ],
+      "object_mentions": [],
+      "sampling": {},
+      "skill_sequence": [
+        "grasp_actor",
+        "move_by_displacement",
+        "place_actor",
+        "open_gripper"
+      ],
+      "success_predicate": {
+        "type": "object_in_region",
+        "params": {
+          "xy_radius": 0.08,
+          "min_z": 0.9
+        }
+      },
+      "transfer_status": "registered_spec",
+      "unsupported_features": [
+        "bimanual_runtime"
+      ]
+    },
+    {
+      "source_task": "handover_mic",
+      "source_file": "third_party/assets/robotwin/envs/handover_mic.py",
+      "skill_family": "handover_object",
+      "skill_description": "bimanual transfer",
+      "instruction_hint": "handover mic",
+      "assets": [
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "018_microphone",
+          "model_ids": [
+            0
+          ],
+          "asset_ids": [
+            "robotwin_018_microphone_base0"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        }
+      ],
+      "object_mentions": [
+        "018_microphone"
+      ],
+      "sampling": {
+        "microphone_id": 0
+      },
+      "skill_sequence": [
+        "grasp_actor",
+        "move_by_displacement",
+        "place_actor",
+        "open_gripper",
+        "close_gripper"
+      ],
+      "success_predicate": {
+        "type": "object_in_region",
+        "params": {
+          "xy_radius": 0.08,
+          "min_z": 0.9
+        }
+      },
+      "transfer_status": "registered_spec",
+      "unsupported_features": [
+        "bimanual_runtime"
+      ]
+    },
+    {
+      "source_task": "hanging_mug",
+      "source_file": "third_party/assets/robotwin/envs/hanging_mug.py",
+      "skill_family": "unclassified",
+      "skill_description": "needs manual taxonomy review",
+      "instruction_hint": "hanging mug",
+      "assets": [
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "rand_create_actor",
+          "modelname": "039_mug",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_039_mug"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "040_rack",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_040_rack"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        }
+      ],
+      "object_mentions": [
+        "039_mug",
+        "040_rack"
+      ],
+      "sampling": {},
+      "skill_sequence": [
+        "grasp_actor",
+        "move_by_displacement",
+        "place_actor"
+      ],
+      "success_predicate": {
+        "type": "object_in_region",
+        "params": {
+          "xy_radius": 0.08,
+          "min_z": 0.9
+        }
+      },
+      "transfer_status": "executable",
+      "unsupported_features": []
+    },
+    {
+      "source_task": "lift_pot",
+      "source_file": "third_party/assets/robotwin/envs/lift_pot.py",
+      "skill_family": "lift_object",
+      "skill_description": "grasp and lift",
+      "instruction_hint": "lift pot",
+      "assets": [
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "rand_create_sapien_urdf_obj",
+          "modelname": "060_kitchenpot",
+          "model_ids": [
+            0,
+            1
+          ],
+          "asset_ids": [
+            "robotwin_060_kitchenpot_base0",
+            "robotwin_060_kitchenpot_base1"
+          ],
+          "dynamic": false,
+          "articulated_source": true
+        }
+      ],
+      "object_mentions": [
+        "060_kitchenpot"
+      ],
+      "sampling": {
+        "model_name": "060_kitchenpot",
+        "model_id": [
+          0,
+          1
+        ]
+      },
+      "skill_sequence": [
+        "grasp_actor",
+        "move_by_displacement",
+        "close_gripper"
+      ],
+      "success_predicate": {
+        "type": "object_lifted",
+        "params": {
+          "min_z": 0.82
+        }
+      },
+      "transfer_status": "executable",
+      "unsupported_features": [
+        "sapien_urdf_source"
+      ]
+    },
+    {
+      "source_task": "move_can_pot",
+      "source_file": "third_party/assets/robotwin/envs/move_can_pot.py",
+      "skill_family": "pick_place_object",
+      "skill_description": "pick and place",
+      "instruction_hint": "move can pot",
+      "assets": [
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "rand_create_sapien_urdf_obj",
+          "modelname": "060_kitchenpot",
+          "model_ids": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "asset_ids": [
+            "robotwin_060_kitchenpot_base0",
+            "robotwin_060_kitchenpot_base1",
+            "robotwin_060_kitchenpot_base2",
+            "robotwin_060_kitchenpot_base3",
+            "robotwin_060_kitchenpot_base4",
+            "robotwin_060_kitchenpot_base5",
+            "robotwin_060_kitchenpot_base6"
+          ],
+          "dynamic": false,
+          "articulated_source": true
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "105_sauce-can",
+          "model_ids": [
+            0,
+            2,
+            4,
+            5,
+            6
+          ],
+          "asset_ids": [
+            "robotwin_105_sauce_can_base0",
+            "robotwin_105_sauce_can_base2",
+            "robotwin_105_sauce_can_base4",
+            "robotwin_105_sauce_can_base5",
+            "robotwin_105_sauce_can_base6"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        }
+      ],
+      "object_mentions": [
+        "060_kitchenpot",
+        "105_sauce-can"
+      ],
+      "sampling": {
+        "pot_id": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "can_id": [
+          0,
+          2,
+          4,
+          5,
+          6
+        ]
+      },
+      "skill_sequence": [
+        "grasp_actor",
+        "move_by_displacement",
+        "place_actor"
+      ],
+      "success_predicate": {
+        "type": "object_in_region",
+        "params": {
+          "xy_radius": 0.08,
+          "min_z": 0.9
+        }
+      },
+      "transfer_status": "executable",
+      "unsupported_features": [
+        "sapien_urdf_source"
+      ]
+    },
+    {
+      "source_task": "move_pillbottle_pad",
+      "source_file": "third_party/assets/robotwin/envs/move_pillbottle_pad.py",
+      "skill_family": "pick_place_object",
+      "skill_description": "pick and place",
+      "instruction_hint": "move pillbottle pad",
+      "assets": [
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "080_pillbottle",
+          "model_ids": [
+            1
+          ],
+          "asset_ids": [
+            "robotwin_080_pillbottle_base1"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "procedural_box",
+          "role_hint": "box",
+          "source_call": "create_box",
+          "half_size": [
+            0.04,
+            0.04,
+            0.0005
+          ],
+          "color": [
+            0,
+            0,
+            1
+          ]
+        }
+      ],
+      "object_mentions": [
+        "080_pillbottle"
+      ],
+      "sampling": {
+        "pillbottle_id": 1
+      },
+      "skill_sequence": [
+        "grasp_actor",
+        "move_by_displacement",
+        "place_actor"
+      ],
+      "success_predicate": {
+        "type": "object_in_region",
+        "params": {
+          "xy_radius": 0.08,
+          "min_z": 0.9
+        }
+      },
+      "transfer_status": "executable",
+      "unsupported_features": []
+    },
+    {
+      "source_task": "move_playingcard_away",
+      "source_file": "third_party/assets/robotwin/envs/move_playingcard_away.py",
+      "skill_family": "pick_place_object",
+      "skill_description": "pick and place",
+      "instruction_hint": "move playingcard away",
+      "assets": [
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "081_playingcards",
+          "model_ids": [
+            0
+          ],
+          "asset_ids": [
+            "robotwin_081_playingcards_base0"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        }
+      ],
+      "object_mentions": [
+        "081_playingcards"
+      ],
+      "sampling": {
+        "playingcards_id": 0
+      },
+      "skill_sequence": [
+        "grasp_actor",
+        "move_by_displacement",
+        "open_gripper"
+      ],
+      "success_predicate": {
+        "type": "object_in_region",
+        "params": {
+          "xy_radius": 0.08,
+          "min_z": 0.9
+        }
+      },
+      "transfer_status": "executable",
+      "unsupported_features": []
+    },
+    {
+      "source_task": "move_stapler_pad",
+      "source_file": "third_party/assets/robotwin/envs/move_stapler_pad.py",
+      "skill_family": "pick_place_object",
+      "skill_description": "pick and place",
+      "instruction_hint": "move stapler pad",
+      "assets": [
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "048_stapler",
+          "model_ids": [
+            0
+          ],
+          "asset_ids": [
+            "robotwin_048_stapler_base0"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "procedural_box",
+          "role_hint": "box",
+          "source_call": "create_box",
+          "half_size": [
+            0.055,
+            0.03,
+            0.0005
+          ],
+          "color": null
+        }
+      ],
+      "object_mentions": [
+        "048_stapler"
+      ],
+      "sampling": {
+        "stapler_id": 0
+      },
+      "skill_sequence": [
+        "grasp_actor",
+        "move_by_displacement",
+        "place_actor"
+      ],
+      "success_predicate": {
+        "type": "object_in_region",
+        "params": {
+          "xy_radius": 0.08,
+          "min_z": 0.9
+        }
+      },
+      "transfer_status": "executable",
+      "unsupported_features": []
+    },
+    {
+      "source_task": "open_laptop",
+      "source_file": "third_party/assets/robotwin/envs/open_laptop.py",
+      "skill_family": "open_articulated_object",
+      "skill_description": "articulated opening",
+      "instruction_hint": "open laptop",
+      "assets": [
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "rand_create_sapien_urdf_obj",
+          "modelname": "015_laptop",
+          "model_ids": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "asset_ids": [
+            "robotwin_015_laptop_base0",
+            "robotwin_015_laptop_base1",
+            "robotwin_015_laptop_base2",
+            "robotwin_015_laptop_base3",
+            "robotwin_015_laptop_base4",
+            "robotwin_015_laptop_base5",
+            "robotwin_015_laptop_base6",
+            "robotwin_015_laptop_base7",
+            "robotwin_015_laptop_base8",
+            "robotwin_015_laptop_base9",
+            "robotwin_015_laptop_base10"
+          ],
+          "dynamic": false,
+          "articulated_source": true
+        }
+      ],
+      "object_mentions": [
+        "015_laptop"
+      ],
+      "sampling": {
+        "model_name": "015_laptop",
+        "model_id": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ]
+      },
+      "skill_sequence": [
+        "grasp_actor"
+      ],
+      "success_predicate": {
+        "type": "articulation_joint_threshold",
+        "params": {
+          "threshold": "source_check_success"
+        }
+      },
+      "transfer_status": "registered_spec",
+      "unsupported_features": [
+        "articulated_runtime",
+        "sapien_urdf_source"
+      ]
+    },
+    {
+      "source_task": "open_microwave",
+      "source_file": "third_party/assets/robotwin/envs/open_microwave.py",
+      "skill_family": "open_articulated_object",
+      "skill_description": "articulated opening",
+      "instruction_hint": "open microwave",
+      "assets": [
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "rand_create_sapien_urdf_obj",
+          "modelname": "044_microwave",
+          "model_ids": [
+            0,
+            1
+          ],
+          "asset_ids": [
+            "robotwin_044_microwave_base0",
+            "robotwin_044_microwave_base1"
+          ],
+          "dynamic": false,
+          "articulated_source": true
+        }
+      ],
+      "object_mentions": [
+        "044_microwave"
+      ],
+      "sampling": {
+        "model_name": "044_microwave",
+        "model_id": [
+          0,
+          1
+        ]
+      },
+      "skill_sequence": [
+        "grasp_actor",
+        "move_by_displacement",
+        "open_gripper"
+      ],
+      "success_predicate": {
+        "type": "articulation_joint_threshold",
+        "params": {
+          "threshold": "source_check_success"
+        }
+      },
+      "transfer_status": "registered_spec",
+      "unsupported_features": [
+        "articulated_runtime",
+        "sapien_urdf_source"
+      ]
+    },
+    {
+      "source_task": "pick_diverse_bottles",
+      "source_file": "third_party/assets/robotwin/envs/pick_diverse_bottles.py",
+      "skill_family": "pick_object",
+      "skill_description": "targeted picking",
+      "instruction_hint": "pick diverse bottles",
+      "assets": [
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "rand_create_actor",
+          "modelname": "001_bottle",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_001_bottle"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "rand_create_actor",
+          "modelname": "001_bottle",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_001_bottle"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        }
+      ],
+      "object_mentions": [
+        "001_bottle"
+      ],
+      "sampling": {},
+      "skill_sequence": [
+        "grasp_actor",
+        "move_by_displacement",
+        "place_actor"
+      ],
+      "success_predicate": {
+        "type": "object_lifted",
+        "params": {
+          "min_z": 0.82
+        }
+      },
+      "transfer_status": "executable",
+      "unsupported_features": []
+    },
+    {
+      "source_task": "pick_dual_bottles",
+      "source_file": "third_party/assets/robotwin/envs/pick_dual_bottles.py",
+      "skill_family": "pick_object",
+      "skill_description": "targeted picking",
+      "instruction_hint": "pick dual bottles",
+      "assets": [
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "rand_create_actor",
+          "modelname": "001_bottle",
+          "model_ids": [
+            13
+          ],
+          "asset_ids": [
+            "robotwin_001_bottle_base13"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "rand_create_actor",
+          "modelname": "001_bottle",
+          "model_ids": [
+            16
+          ],
+          "asset_ids": [
+            "robotwin_001_bottle_base16"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        }
+      ],
+      "object_mentions": [
+        "001_bottle"
+      ],
+      "sampling": {},
+      "skill_sequence": [
+        "grasp_actor",
+        "move_by_displacement",
+        "place_actor",
+        "open_gripper"
+      ],
+      "success_predicate": {
+        "type": "object_lifted",
+        "params": {
+          "min_z": 0.82
+        }
+      },
+      "transfer_status": "executable",
+      "unsupported_features": []
+    },
+    {
+      "source_task": "place_a2b_left",
+      "source_file": "third_party/assets/robotwin/envs/place_a2b_left.py",
+      "skill_family": "pick_place_object",
+      "skill_description": "pick and place",
+      "instruction_hint": "place a2b left",
+      "assets": [
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "047_mouse",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_047_mouse"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "048_stapler",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_048_stapler"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "050_bell",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_050_bell"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "057_toycar",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_057_toycar"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "073_rubikscube",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_073_rubikscube"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "075_bread",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_075_bread"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "077_phone",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_077_phone"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "081_playingcards",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_081_playingcards"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "086_woodenblock",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_086_woodenblock"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "112_tea-box",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_112_tea_box"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "113_coffee-box",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_113_coffee_box"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "107_soap",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_107_soap"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "047_mouse",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_047_mouse"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "048_stapler",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_048_stapler"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "050_bell",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_050_bell"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "057_toycar",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_057_toycar"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "073_rubikscube",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_073_rubikscube"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "075_bread",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_075_bread"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "077_phone",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_077_phone"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "081_playingcards",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_081_playingcards"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "086_woodenblock",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_086_woodenblock"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "112_tea-box",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_112_tea_box"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "113_coffee-box",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_113_coffee_box"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "107_soap",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_107_soap"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        }
+      ],
+      "object_mentions": [
+        "047_mouse",
+        "048_stapler",
+        "050_bell",
+        "057_toycar",
+        "073_rubikscube",
+        "075_bread",
+        "077_phone",
+        "081_playingcards",
+        "086_woodenblock",
+        "107_soap",
+        "112_tea-box",
+        "113_coffee-box"
+      ],
+      "sampling": {},
+      "skill_sequence": [
+        "grasp_actor",
+        "move_by_displacement",
+        "place_actor"
+      ],
+      "success_predicate": {
+        "type": "object_in_region",
+        "params": {
+          "xy_radius": 0.08,
+          "min_z": 0.9
+        }
+      },
+      "transfer_status": "executable",
+      "unsupported_features": []
+    },
+    {
+      "source_task": "place_a2b_right",
+      "source_file": "third_party/assets/robotwin/envs/place_a2b_right.py",
+      "skill_family": "pick_place_object",
+      "skill_description": "pick and place",
+      "instruction_hint": "place a2b right",
+      "assets": [
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "047_mouse",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_047_mouse"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "048_stapler",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_048_stapler"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "050_bell",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_050_bell"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "057_toycar",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_057_toycar"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "073_rubikscube",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_073_rubikscube"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "075_bread",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_075_bread"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "077_phone",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_077_phone"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "081_playingcards",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_081_playingcards"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "086_woodenblock",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_086_woodenblock"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "112_tea-box",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_112_tea_box"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "113_coffee-box",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_113_coffee_box"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "107_soap",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_107_soap"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "047_mouse",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_047_mouse"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "048_stapler",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_048_stapler"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "050_bell",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_050_bell"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "057_toycar",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_057_toycar"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "073_rubikscube",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_073_rubikscube"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "075_bread",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_075_bread"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "077_phone",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_077_phone"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "081_playingcards",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_081_playingcards"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "086_woodenblock",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_086_woodenblock"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "112_tea-box",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_112_tea_box"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "113_coffee-box",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_113_coffee_box"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "107_soap",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_107_soap"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        }
+      ],
+      "object_mentions": [
+        "047_mouse",
+        "048_stapler",
+        "050_bell",
+        "057_toycar",
+        "073_rubikscube",
+        "075_bread",
+        "077_phone",
+        "081_playingcards",
+        "086_woodenblock",
+        "107_soap",
+        "112_tea-box",
+        "113_coffee-box"
+      ],
+      "sampling": {},
+      "skill_sequence": [
+        "grasp_actor",
+        "move_by_displacement",
+        "place_actor"
+      ],
+      "success_predicate": {
+        "type": "object_in_region",
+        "params": {
+          "xy_radius": 0.08,
+          "min_z": 0.9
+        }
+      },
+      "transfer_status": "executable",
+      "unsupported_features": []
+    },
+    {
+      "source_task": "place_bread_basket",
+      "source_file": "third_party/assets/robotwin/envs/place_bread_basket.py",
+      "skill_family": "pick_place_object",
+      "skill_description": "pick and place",
+      "instruction_hint": "place bread basket",
+      "assets": [
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "076_breadbasket",
+          "model_ids": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "asset_ids": [
+            "robotwin_076_breadbasket_base0",
+            "robotwin_076_breadbasket_base1",
+            "robotwin_076_breadbasket_base2",
+            "robotwin_076_breadbasket_base3",
+            "robotwin_076_breadbasket_base4"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "075_bread",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_075_bread"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        }
+      ],
+      "object_mentions": [
+        "075_bread",
+        "076_breadbasket"
+      ],
+      "sampling": {
+        "basket_id": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "bread_id": []
+      },
+      "skill_sequence": [
+        "grasp_actor",
+        "move_by_displacement",
+        "place_actor",
+        "open_gripper"
+      ],
+      "success_predicate": {
+        "type": "object_in_region",
+        "params": {
+          "xy_radius": 0.08,
+          "min_z": 0.9
+        }
+      },
+      "transfer_status": "executable",
+      "unsupported_features": []
+    },
+    {
+      "source_task": "place_bread_skillet",
+      "source_file": "third_party/assets/robotwin/envs/place_bread_skillet.py",
+      "skill_family": "pick_place_object",
+      "skill_description": "pick and place",
+      "instruction_hint": "place bread skillet",
+      "assets": [
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "075_bread",
+          "model_ids": [
+            0,
+            1,
+            3,
+            5,
+            6
+          ],
+          "asset_ids": [
+            "robotwin_075_bread_base0",
+            "robotwin_075_bread_base1",
+            "robotwin_075_bread_base3",
+            "robotwin_075_bread_base5",
+            "robotwin_075_bread_base6"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "106_skillet",
+          "model_ids": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "asset_ids": [
+            "robotwin_106_skillet_base0",
+            "robotwin_106_skillet_base1",
+            "robotwin_106_skillet_base2",
+            "robotwin_106_skillet_base3"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        }
+      ],
+      "object_mentions": [
+        "075_bread",
+        "106_skillet"
+      ],
+      "sampling": {
+        "bread_id": [
+          0,
+          1,
+          3,
+          5,
+          6
+        ],
+        "skillet_id": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "skill_sequence": [
+        "grasp_actor",
+        "move_by_displacement",
+        "place_actor",
+        "move_to_pose"
+      ],
+      "success_predicate": {
+        "type": "object_in_region",
+        "params": {
+          "xy_radius": 0.08,
+          "min_z": 0.9
+        }
+      },
+      "transfer_status": "executable",
+      "unsupported_features": []
+    },
+    {
+      "source_task": "place_burger_fries",
+      "source_file": "third_party/assets/robotwin/envs/place_burger_fries.py",
+      "skill_family": "pick_place_object",
+      "skill_description": "pick and place",
+      "instruction_hint": "place burger fries",
+      "assets": [
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "008_tray",
+          "model_ids": [
+            0
+          ],
+          "asset_ids": [
+            "robotwin_008_tray_base0"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "006_hamburg",
+          "model_ids": [
+            0
+          ],
+          "asset_ids": [
+            "robotwin_006_hamburg_base0"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "005_french-fries",
+          "model_ids": [
+            0
+          ],
+          "asset_ids": [
+            "robotwin_005_french_fries_base0"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        }
+      ],
+      "object_mentions": [
+        "005_french-fries",
+        "006_hamburg",
+        "008_tray"
+      ],
+      "sampling": {
+        "tray_id": 0,
+        "object1_id": 0,
+        "object2_id": 0
+      },
+      "skill_sequence": [
+        "grasp_actor",
+        "move_by_displacement",
+        "place_actor"
+      ],
+      "success_predicate": {
+        "type": "object_in_region",
+        "params": {
+          "xy_radius": 0.08,
+          "min_z": 0.9
+        }
+      },
+      "transfer_status": "executable",
+      "unsupported_features": []
+    },
+    {
+      "source_task": "place_can_basket",
+      "source_file": "third_party/assets/robotwin/envs/place_can_basket.py",
+      "skill_family": "pick_place_object",
+      "skill_description": "pick and place",
+      "instruction_hint": "place can basket",
+      "assets": [
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "rand_create_actor",
+          "modelname": "110_basket",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_110_basket"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "rand_create_actor",
+          "modelname": "071_can",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_071_can"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "rand_create_actor",
+          "modelname": "110_basket",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_110_basket"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "rand_create_actor",
+          "modelname": "071_can",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_071_can"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        }
+      ],
+      "object_mentions": [
+        "071_can",
+        "110_basket"
+      ],
+      "sampling": {
+        "basket_name": "110_basket",
+        "can_name": "071_can"
+      },
+      "skill_sequence": [
+        "grasp_actor",
+        "move_by_displacement",
+        "place_actor",
+        "open_gripper",
+        "close_gripper",
+        "move_to_pose",
+        "check_actors_contact"
+      ],
+      "success_predicate": {
+        "type": "object_contact_object",
+        "params": {
+          "radius": 0.08
+        }
+      },
+      "transfer_status": "executable",
+      "unsupported_features": []
+    },
+    {
+      "source_task": "place_cans_plasticbox",
+      "source_file": "third_party/assets/robotwin/envs/place_cans_plasticbox.py",
+      "skill_family": "pick_place_object",
+      "skill_description": "pick and place",
+      "instruction_hint": "place cans plasticbox",
+      "assets": [
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "062_plasticbox",
+          "model_ids": [
+            3
+          ],
+          "asset_ids": [
+            "robotwin_062_plasticbox_base3"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "071_can",
+          "model_ids": [
+            0
+          ],
+          "asset_ids": [
+            "robotwin_071_can_base0"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "071_can",
+          "model_ids": [
+            0
+          ],
+          "asset_ids": [
+            "robotwin_071_can_base0"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        }
+      ],
+      "object_mentions": [
+        "062_plasticbox",
+        "071_can"
+      ],
+      "sampling": {
+        "plasticbox_id": 3,
+        "object1_id": 0,
+        "object2_id": 0
+      },
+      "skill_sequence": [
+        "grasp_actor",
+        "move_by_displacement",
+        "place_actor"
+      ],
+      "success_predicate": {
+        "type": "object_in_region",
+        "params": {
+          "xy_radius": 0.08,
+          "min_z": 0.9
+        }
+      },
+      "transfer_status": "executable",
+      "unsupported_features": []
+    },
+    {
+      "source_task": "place_container_plate",
+      "source_file": "third_party/assets/robotwin/envs/place_container_plate.py",
+      "skill_family": "pick_place_object",
+      "skill_description": "pick and place",
+      "instruction_hint": "place container plate",
+      "assets": [
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "002_bowl",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_002_bowl"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "021_cup",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_021_cup"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "003_plate",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_003_plate"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        }
+      ],
+      "object_mentions": [
+        "002_bowl",
+        "003_plate",
+        "021_cup"
+      ],
+      "sampling": {
+        "actor_name": [
+          "002_bowl",
+          "021_cup"
+        ],
+        "plate_id": 0
+      },
+      "skill_sequence": [
+        "grasp_actor",
+        "move_by_displacement",
+        "place_actor"
+      ],
+      "success_predicate": {
+        "type": "object_in_region",
+        "params": {
+          "xy_radius": 0.08,
+          "min_z": 0.9
+        }
+      },
+      "transfer_status": "executable",
+      "unsupported_features": []
+    },
+    {
+      "source_task": "place_dual_shoes",
+      "source_file": "third_party/assets/robotwin/envs/place_dual_shoes.py",
+      "skill_family": "pick_place_object",
+      "skill_description": "pick and place",
+      "instruction_hint": "place dual shoes",
+      "assets": [
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "007_shoe-box",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_007_shoe_box"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "041_shoe",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_041_shoe"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "041_shoe",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_041_shoe"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        }
+      ],
+      "object_mentions": [
+        "007_shoe-box",
+        "041_shoe"
+      ],
+      "sampling": {},
+      "skill_sequence": [
+        "grasp_actor",
+        "move_by_displacement",
+        "place_actor"
+      ],
+      "success_predicate": {
+        "type": "object_in_region",
+        "params": {
+          "xy_radius": 0.08,
+          "min_z": 0.9
+        }
+      },
+      "transfer_status": "executable",
+      "unsupported_features": []
+    },
+    {
+      "source_task": "place_empty_cup",
+      "source_file": "third_party/assets/robotwin/envs/place_empty_cup.py",
+      "skill_family": "pick_place_object",
+      "skill_description": "pick and place",
+      "instruction_hint": "place empty cup",
+      "assets": [
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "rand_create_actor",
+          "modelname": "021_cup",
+          "model_ids": [
+            0
+          ],
+          "asset_ids": [
+            "robotwin_021_cup_base0"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "019_coaster",
+          "model_ids": [
+            0
+          ],
+          "asset_ids": [
+            "robotwin_019_coaster_base0"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        }
+      ],
+      "object_mentions": [
+        "019_coaster",
+        "021_cup"
+      ],
+      "sampling": {},
+      "skill_sequence": [
+        "grasp_actor",
+        "move_by_displacement",
+        "place_actor",
+        "close_gripper"
+      ],
+      "success_predicate": {
+        "type": "object_in_region",
+        "params": {
+          "xy_radius": 0.08,
+          "min_z": 0.9
+        }
+      },
+      "transfer_status": "executable",
+      "unsupported_features": []
+    },
+    {
+      "source_task": "place_fan",
+      "source_file": "third_party/assets/robotwin/envs/place_fan.py",
+      "skill_family": "pick_place_object",
+      "skill_description": "pick and place",
+      "instruction_hint": "place fan",
+      "assets": [
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "099_fan",
+          "model_ids": [
+            4,
+            5
+          ],
+          "asset_ids": [
+            "robotwin_099_fan_base4",
+            "robotwin_099_fan_base5"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "procedural_box",
+          "role_hint": "box",
+          "source_call": "create_box",
+          "half_size": [
+            0.05,
+            0.05,
+            0.001
+          ],
+          "color": null
+        }
+      ],
+      "object_mentions": [
+        "099_fan"
+      ],
+      "sampling": {
+        "fan_id": [
+          4,
+          5
+        ]
+      },
+      "skill_sequence": [
+        "grasp_actor",
+        "move_by_displacement",
+        "place_actor"
+      ],
+      "success_predicate": {
+        "type": "object_in_region",
+        "params": {
+          "xy_radius": 0.08,
+          "min_z": 0.9
+        }
+      },
+      "transfer_status": "executable",
+      "unsupported_features": []
+    },
+    {
+      "source_task": "place_mouse_pad",
+      "source_file": "third_party/assets/robotwin/envs/place_mouse_pad.py",
+      "skill_family": "pick_place_object",
+      "skill_description": "pick and place",
+      "instruction_hint": "place mouse pad",
+      "assets": [
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "047_mouse",
+          "model_ids": [
+            0
+          ],
+          "asset_ids": [
+            "robotwin_047_mouse_base0"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "procedural_box",
+          "role_hint": "box",
+          "source_call": "create_box",
+          "half_size": [
+            0.035,
+            0.065,
+            0.0005
+          ],
+          "color": null
+        }
+      ],
+      "object_mentions": [
+        "047_mouse"
+      ],
+      "sampling": {
+        "mouse_id": 0
+      },
+      "skill_sequence": [
+        "grasp_actor",
+        "move_by_displacement",
+        "place_actor"
+      ],
+      "success_predicate": {
+        "type": "object_in_region",
+        "params": {
+          "xy_radius": 0.08,
+          "min_z": 0.9
+        }
+      },
+      "transfer_status": "executable",
+      "unsupported_features": []
+    },
+    {
+      "source_task": "place_object_basket",
+      "source_file": "third_party/assets/robotwin/envs/place_object_basket.py",
+      "skill_family": "pick_place_object",
+      "skill_description": "pick and place",
+      "instruction_hint": "place object basket",
+      "assets": [
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "rand_create_actor",
+          "modelname": "110_basket",
+          "model_ids": [
+            0,
+            1
+          ],
+          "asset_ids": [
+            "robotwin_110_basket_base0",
+            "robotwin_110_basket_base1"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "rand_create_actor",
+          "modelname": "dynamic",
+          "model_ids": [],
+          "asset_ids": [],
+          "dynamic": true
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "rand_create_actor",
+          "modelname": "110_basket",
+          "model_ids": [
+            0,
+            1
+          ],
+          "asset_ids": [
+            "robotwin_110_basket_base0",
+            "robotwin_110_basket_base1"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "rand_create_actor",
+          "modelname": "dynamic",
+          "model_ids": [],
+          "asset_ids": [],
+          "dynamic": true
+        }
+      ],
+      "object_mentions": [
+        "057_toycar",
+        "081_playingcards",
+        "110_basket"
+      ],
+      "sampling": {
+        "basket_name": "110_basket",
+        "basket_id": [
+          0,
+          1
+        ]
+      },
+      "skill_sequence": [
+        "grasp_actor",
+        "move_by_displacement",
+        "place_actor",
+        "open_gripper",
+        "move_to_pose",
+        "check_actors_contact"
+      ],
+      "success_predicate": {
+        "type": "object_contact_object",
+        "params": {
+          "radius": 0.08
+        }
+      },
+      "transfer_status": "executable",
+      "unsupported_features": [
+        "dynamic_asset_selection"
+      ]
+    },
+    {
+      "source_task": "place_object_scale",
+      "source_file": "third_party/assets/robotwin/envs/place_object_scale.py",
+      "skill_family": "pick_place_object",
+      "skill_description": "pick and place",
+      "instruction_hint": "place object scale",
+      "assets": [
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "047_mouse",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_047_mouse"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "048_stapler",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_048_stapler"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "050_bell",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_050_bell"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "072_electronicscale",
+          "model_ids": [
+            0
+          ],
+          "asset_ids": [
+            "robotwin_072_electronicscale_base0"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        }
+      ],
+      "object_mentions": [
+        "047_mouse",
+        "048_stapler",
+        "050_bell",
+        "072_electronicscale"
+      ],
+      "sampling": {
+        "scale_id": 0
+      },
+      "skill_sequence": [
+        "grasp_actor",
+        "move_by_displacement",
+        "place_actor"
+      ],
+      "success_predicate": {
+        "type": "object_in_region",
+        "params": {
+          "xy_radius": 0.08,
+          "min_z": 0.9
+        }
+      },
+      "transfer_status": "executable",
+      "unsupported_features": []
+    },
+    {
+      "source_task": "place_object_stand",
+      "source_file": "third_party/assets/robotwin/envs/place_object_stand.py",
+      "skill_family": "pick_place_object",
+      "skill_description": "pick and place",
+      "instruction_hint": "place object stand",
+      "assets": [
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "047_mouse",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_047_mouse"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "048_stapler",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_048_stapler"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "050_bell",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_050_bell"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "073_rubikscube",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_073_rubikscube"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "057_toycar",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_057_toycar"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "079_remotecontrol",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_079_remotecontrol"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "074_displaystand",
+          "model_ids": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "asset_ids": [
+            "robotwin_074_displaystand_base0",
+            "robotwin_074_displaystand_base1",
+            "robotwin_074_displaystand_base2",
+            "robotwin_074_displaystand_base3",
+            "robotwin_074_displaystand_base4"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        }
+      ],
+      "object_mentions": [
+        "047_mouse",
+        "048_stapler",
+        "050_bell",
+        "057_toycar",
+        "073_rubikscube",
+        "074_displaystand",
+        "079_remotecontrol"
+      ],
+      "sampling": {
+        "displaystand_id": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "skill_sequence": [
+        "grasp_actor",
+        "move_by_displacement",
+        "place_actor"
+      ],
+      "success_predicate": {
+        "type": "object_in_region",
+        "params": {
+          "xy_radius": 0.08,
+          "min_z": 0.9
+        }
+      },
+      "transfer_status": "executable",
+      "unsupported_features": []
+    },
+    {
+      "source_task": "place_phone_stand",
+      "source_file": "third_party/assets/robotwin/envs/place_phone_stand.py",
+      "skill_family": "pick_place_object",
+      "skill_description": "pick and place",
+      "instruction_hint": "place phone stand",
+      "assets": [
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "077_phone",
+          "model_ids": [
+            0
+          ],
+          "asset_ids": [
+            "robotwin_077_phone_base0"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "078_phonestand",
+          "model_ids": [
+            1
+          ],
+          "asset_ids": [
+            "robotwin_078_phonestand_base1"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        }
+      ],
+      "object_mentions": [
+        "077_phone",
+        "078_phonestand"
+      ],
+      "sampling": {
+        "phone_id": 0,
+        "stand_id": 1
+      },
+      "skill_sequence": [
+        "grasp_actor",
+        "place_actor"
+      ],
+      "success_predicate": {
+        "type": "object_in_region",
+        "params": {
+          "xy_radius": 0.08,
+          "min_z": 0.9
+        }
+      },
+      "transfer_status": "executable",
+      "unsupported_features": []
+    },
+    {
+      "source_task": "place_shoe",
+      "source_file": "third_party/assets/robotwin/envs/place_shoe.py",
+      "skill_family": "pick_place_object",
+      "skill_description": "pick and place",
+      "instruction_hint": "place shoe",
+      "assets": [
+        {
+          "kind": "procedural_box",
+          "role_hint": "box",
+          "source_call": "create_box",
+          "half_size": [
+            0.13,
+            0.05,
+            0.0005
+          ],
+          "color": [
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "041_shoe",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_041_shoe"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        }
+      ],
+      "object_mentions": [
+        "041_shoe"
+      ],
+      "sampling": {},
+      "skill_sequence": [
+        "grasp_actor",
+        "move_by_displacement",
+        "place_actor",
+        "open_gripper"
+      ],
+      "success_predicate": {
+        "type": "object_in_region",
+        "params": {
+          "xy_radius": 0.08,
+          "min_z": 0.9
+        }
+      },
+      "transfer_status": "executable",
+      "unsupported_features": []
+    },
+    {
+      "source_task": "press_stapler",
+      "source_file": "third_party/assets/robotwin/envs/press_stapler.py",
+      "skill_family": "press_button_or_tool",
+      "skill_description": "short contact / tool actuation",
+      "instruction_hint": "press stapler",
+      "assets": [
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "048_stapler",
+          "model_ids": [
+            0
+          ],
+          "asset_ids": [
+            "robotwin_048_stapler_base0"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        }
+      ],
+      "object_mentions": [
+        "048_stapler"
+      ],
+      "sampling": {
+        "stapler_id": 0
+      },
+      "skill_sequence": [
+        "grasp_actor",
+        "close_gripper"
+      ],
+      "success_predicate": {
+        "type": "tool_contact_target",
+        "params": {
+          "radius": 0.045
+        }
+      },
+      "transfer_status": "executable",
+      "unsupported_features": []
+    },
+    {
+      "source_task": "put_bottles_dustbin",
+      "source_file": "third_party/assets/robotwin/envs/put_bottles_dustbin.py",
+      "skill_family": "pick_place_object",
+      "skill_description": "pick and place",
+      "instruction_hint": "put bottles dustbin",
+      "assets": [
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "011_dustbin",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_011_dustbin"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "114_bottle",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_114_bottle"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        }
+      ],
+      "object_mentions": [
+        "011_dustbin",
+        "114_bottle"
+      ],
+      "sampling": {
+        "bottle_id": [
+          1,
+          2,
+          3
+        ]
+      },
+      "skill_sequence": [
+        "grasp_actor",
+        "move_by_displacement",
+        "place_actor",
+        "open_gripper"
+      ],
+      "success_predicate": {
+        "type": "object_in_region",
+        "params": {
+          "xy_radius": 0.08,
+          "min_z": 0.9
+        }
+      },
+      "transfer_status": "executable",
+      "unsupported_features": []
+    },
+    {
+      "source_task": "put_object_cabinet",
+      "source_file": "third_party/assets/robotwin/envs/put_object_cabinet.py",
+      "skill_family": "pick_place_object",
+      "skill_description": "pick and place",
+      "instruction_hint": "put object cabinet",
+      "assets": [
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "rand_create_sapien_urdf_obj",
+          "modelname": "036_cabinet",
+          "model_ids": [
+            46653
+          ],
+          "asset_ids": [
+            "robotwin_036_cabinet_base46653"
+          ],
+          "dynamic": false,
+          "articulated_source": true
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "047_mouse",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_047_mouse"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "048_stapler",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_048_stapler"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "057_toycar",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_057_toycar"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "073_rubikscube",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_073_rubikscube"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "075_bread",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_075_bread"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "077_phone",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_077_phone"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "081_playingcards",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_081_playingcards"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "112_tea-box",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_112_tea_box"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "113_coffee-box",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_113_coffee_box"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "107_soap",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_107_soap"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        }
+      ],
+      "object_mentions": [
+        "036_cabinet",
+        "047_mouse",
+        "048_stapler",
+        "057_toycar",
+        "073_rubikscube",
+        "075_bread",
+        "077_phone",
+        "081_playingcards",
+        "107_soap",
+        "112_tea-box",
+        "113_coffee-box"
+      ],
+      "sampling": {
+        "model_name": "036_cabinet",
+        "model_id": 46653
+      },
+      "skill_sequence": [
+        "grasp_actor",
+        "move_by_displacement",
+        "place_actor"
+      ],
+      "success_predicate": {
+        "type": "object_in_region",
+        "params": {
+          "xy_radius": 0.08,
+          "min_z": 0.9
+        }
+      },
+      "transfer_status": "executable",
+      "unsupported_features": [
+        "sapien_urdf_source"
+      ]
+    },
+    {
+      "source_task": "rotate_qrcode",
+      "source_file": "third_party/assets/robotwin/envs/rotate_qrcode.py",
+      "skill_family": "turn_knob_or_rotate_object",
+      "skill_description": "rotational manipulation",
+      "instruction_hint": "rotate qrcode",
+      "assets": [
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "070_paymentsign",
+          "model_ids": [
+            0
+          ],
+          "asset_ids": [
+            "robotwin_070_paymentsign_base0"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        }
+      ],
+      "object_mentions": [
+        "070_paymentsign"
+      ],
+      "sampling": {
+        "model_id": 0
+      },
+      "skill_sequence": [
+        "grasp_actor",
+        "move_by_displacement",
+        "place_actor"
+      ],
+      "success_predicate": {
+        "type": "object_in_region",
+        "params": {
+          "xy_radius": 0.08,
+          "min_z": 0.9
+        }
+      },
+      "transfer_status": "registered_spec",
+      "unsupported_features": [
+        "articulated_runtime"
+      ]
+    },
+    {
+      "source_task": "scan_object",
+      "source_file": "third_party/assets/robotwin/envs/scan_object.py",
+      "skill_family": "scan_or_present_object",
+      "skill_description": "pose/orientation presentation",
+      "instruction_hint": "scan object",
+      "assets": [
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "024_scanner",
+          "model_ids": [
+            0
+          ],
+          "asset_ids": [
+            "robotwin_024_scanner_base0"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        },
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "112_tea-box",
+          "model_ids": [
+            0
+          ],
+          "asset_ids": [
+            "robotwin_112_tea_box_base0"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        }
+      ],
+      "object_mentions": [
+        "024_scanner",
+        "112_tea-box"
+      ],
+      "sampling": {
+        "scanner_id": 0,
+        "object_id": 0
+      },
+      "skill_sequence": [
+        "grasp_actor",
+        "move_by_displacement",
+        "place_actor"
+      ],
+      "success_predicate": {
+        "type": "object_in_region",
+        "params": {
+          "xy_radius": 0.08,
+          "min_z": 0.9
+        }
+      },
+      "transfer_status": "executable",
+      "unsupported_features": []
+    },
+    {
+      "source_task": "shake_bottle",
+      "source_file": "third_party/assets/robotwin/envs/shake_bottle.py",
+      "skill_family": "pour_or_shake_container",
+      "skill_description": "container dynamics",
+      "instruction_hint": "shake bottle",
+      "assets": [
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "001_bottle",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_001_bottle"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        }
+      ],
+      "object_mentions": [
+        "001_bottle"
+      ],
+      "sampling": {},
+      "skill_sequence": [
+        "grasp_actor",
+        "move_by_displacement"
+      ],
+      "success_predicate": {
+        "type": "object_in_region",
+        "params": {
+          "xy_radius": 0.08,
+          "min_z": 0.9
+        }
+      },
+      "transfer_status": "executable",
+      "unsupported_features": []
+    },
+    {
+      "source_task": "shake_bottle_horizontally",
+      "source_file": "third_party/assets/robotwin/envs/shake_bottle_horizontally.py",
+      "skill_family": "pour_or_shake_container",
+      "skill_description": "container dynamics",
+      "instruction_hint": "shake bottle horizontally",
+      "assets": [
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "001_bottle",
+          "model_ids": [
+            null
+          ],
+          "asset_ids": [
+            "robotwin_001_bottle"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        }
+      ],
+      "object_mentions": [
+        "001_bottle"
+      ],
+      "sampling": {},
+      "skill_sequence": [
+        "grasp_actor",
+        "move_by_displacement"
+      ],
+      "success_predicate": {
+        "type": "object_in_region",
+        "params": {
+          "xy_radius": 0.08,
+          "min_z": 0.9
+        }
+      },
+      "transfer_status": "executable",
+      "unsupported_features": []
+    },
+    {
+      "source_task": "stack_blocks_three",
+      "source_file": "third_party/assets/robotwin/envs/stack_blocks_three.py",
+      "skill_family": "stack_objects",
+      "skill_description": "stacking and spatial ordering",
+      "instruction_hint": "stack blocks three",
+      "assets": [
+        {
+          "kind": "procedural_box",
+          "role_hint": "box",
+          "source_call": "create_box",
+          "half_size": null,
+          "color": null
+        }
+      ],
+      "object_mentions": [],
+      "sampling": {},
+      "skill_sequence": [
+        "grasp_actor",
+        "move_by_displacement",
+        "place_actor",
+        "pick_and_place",
+        "pick_and_place_block"
+      ],
+      "success_predicate": {
+        "type": "objects_stacked",
+        "params": {
+          "xy_radius": 0.04,
+          "z_offset": 0.05
+        }
+      },
+      "transfer_status": "executable",
+      "unsupported_features": []
+    },
+    {
+      "source_task": "stack_blocks_two",
+      "source_file": "third_party/assets/robotwin/envs/stack_blocks_two.py",
+      "skill_family": "stack_objects",
+      "skill_description": "stacking and spatial ordering",
+      "instruction_hint": "stack blocks two",
+      "assets": [
+        {
+          "kind": "procedural_box",
+          "role_hint": "box",
+          "source_call": "create_box",
+          "half_size": null,
+          "color": null
+        }
+      ],
+      "object_mentions": [],
+      "sampling": {},
+      "skill_sequence": [
+        "grasp_actor",
+        "move_by_displacement",
+        "place_actor",
+        "pick_and_place",
+        "pick_and_place_block"
+      ],
+      "success_predicate": {
+        "type": "objects_stacked",
+        "params": {
+          "xy_radius": 0.04,
+          "z_offset": 0.05
+        }
+      },
+      "transfer_status": "executable",
+      "unsupported_features": []
+    },
+    {
+      "source_task": "stack_bowls_three",
+      "source_file": "third_party/assets/robotwin/envs/stack_bowls_three.py",
+      "skill_family": "stack_objects",
+      "skill_description": "stacking and spatial ordering",
+      "instruction_hint": "stack bowls three",
+      "assets": [
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "002_bowl",
+          "model_ids": [
+            3
+          ],
+          "asset_ids": [
+            "robotwin_002_bowl_base3"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        }
+      ],
+      "object_mentions": [
+        "002_bowl"
+      ],
+      "sampling": {},
+      "skill_sequence": [
+        "grasp_actor",
+        "move_by_displacement",
+        "place_actor"
+      ],
+      "success_predicate": {
+        "type": "objects_stacked",
+        "params": {
+          "xy_radius": 0.04,
+          "z_offset": 0.05
+        }
+      },
+      "transfer_status": "executable",
+      "unsupported_features": []
+    },
+    {
+      "source_task": "stack_bowls_two",
+      "source_file": "third_party/assets/robotwin/envs/stack_bowls_two.py",
+      "skill_family": "stack_objects",
+      "skill_description": "stacking and spatial ordering",
+      "instruction_hint": "stack bowls two",
+      "assets": [
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "002_bowl",
+          "model_ids": [
+            3
+          ],
+          "asset_ids": [
+            "robotwin_002_bowl_base3"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        }
+      ],
+      "object_mentions": [
+        "002_bowl"
+      ],
+      "sampling": {},
+      "skill_sequence": [
+        "grasp_actor",
+        "move_by_displacement",
+        "place_actor"
+      ],
+      "success_predicate": {
+        "type": "objects_stacked",
+        "params": {
+          "xy_radius": 0.04,
+          "z_offset": 0.05
+        }
+      },
+      "transfer_status": "executable",
+      "unsupported_features": []
+    },
+    {
+      "source_task": "stamp_seal",
+      "source_file": "third_party/assets/robotwin/envs/stamp_seal.py",
+      "skill_family": "press_button_or_tool",
+      "skill_description": "short contact / tool actuation",
+      "instruction_hint": "stamp seal",
+      "assets": [
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "create_actor",
+          "modelname": "100_seal",
+          "model_ids": [
+            0
+          ],
+          "asset_ids": [
+            "robotwin_100_seal_base0"
+          ],
+          "dynamic": false,
+          "articulated_source": false
+        }
+      ],
+      "object_mentions": [
+        "100_seal"
+      ],
+      "sampling": {
+        "seal_id": 0
+      },
+      "skill_sequence": [
+        "grasp_actor",
+        "move_by_displacement",
+        "place_actor"
+      ],
+      "success_predicate": {
+        "type": "tool_contact_target",
+        "params": {
+          "radius": 0.045
+        }
+      },
+      "transfer_status": "executable",
+      "unsupported_features": []
+    },
+    {
+      "source_task": "turn_switch",
+      "source_file": "third_party/assets/robotwin/envs/turn_switch.py",
+      "skill_family": "turn_knob_or_rotate_object",
+      "skill_description": "rotational manipulation",
+      "instruction_hint": "turn switch",
+      "assets": [
+        {
+          "kind": "robotwin_mesh",
+          "source_call": "rand_create_sapien_urdf_obj",
+          "modelname": "056_switch",
+          "model_ids": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "asset_ids": [
+            "robotwin_056_switch_base0",
+            "robotwin_056_switch_base1",
+            "robotwin_056_switch_base2",
+            "robotwin_056_switch_base3",
+            "robotwin_056_switch_base4",
+            "robotwin_056_switch_base5",
+            "robotwin_056_switch_base6",
+            "robotwin_056_switch_base7"
+          ],
+          "dynamic": false,
+          "articulated_source": true
+        }
+      ],
+      "object_mentions": [
+        "056_switch"
+      ],
+      "sampling": {
+        "model_name": "056_switch",
+        "model_id": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      "skill_sequence": [
+        "grasp_actor",
+        "close_gripper"
+      ],
+      "success_predicate": {
+        "type": "object_in_region",
+        "params": {
+          "xy_radius": 0.08,
+          "min_z": 0.9
+        }
+      },
+      "transfer_status": "registered_spec",
+      "unsupported_features": [
+        "articulated_runtime",
+        "sapien_urdf_source"
+      ]
+    }
+  ],
+  "status_counts": {
+    "executable": 44,
+    "registered_spec": 6
+  }
+}

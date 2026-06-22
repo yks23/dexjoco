@@ -1,0 +1,355 @@
+{
+  "task_count": 50,
+  "tasks": [
+    {
+      "robotwin_task": "adjust_bottle",
+      "scene_lab_skill_family": "unclassified",
+      "skill_description": "needs manual taxonomy review",
+      "instruction_hint": "adjust bottle",
+      "source_file": "third_party/assets/robotwin/envs/adjust_bottle.py"
+    },
+    {
+      "robotwin_task": "beat_block_hammer",
+      "scene_lab_skill_family": "tool_use_strike",
+      "skill_description": "tool use / striking",
+      "instruction_hint": "beat block hammer",
+      "source_file": "third_party/assets/robotwin/envs/beat_block_hammer.py"
+    },
+    {
+      "robotwin_task": "blocks_ranking_rgb",
+      "scene_lab_skill_family": "sort_or_rank_objects",
+      "skill_description": "ordering and sorting",
+      "instruction_hint": "blocks ranking rgb",
+      "source_file": "third_party/assets/robotwin/envs/blocks_ranking_rgb.py"
+    },
+    {
+      "robotwin_task": "blocks_ranking_size",
+      "scene_lab_skill_family": "sort_or_rank_objects",
+      "skill_description": "ordering and sorting",
+      "instruction_hint": "blocks ranking size",
+      "source_file": "third_party/assets/robotwin/envs/blocks_ranking_size.py"
+    },
+    {
+      "robotwin_task": "click_alarmclock",
+      "scene_lab_skill_family": "press_button_or_tool",
+      "skill_description": "short contact / tool actuation",
+      "instruction_hint": "click alarmclock",
+      "source_file": "third_party/assets/robotwin/envs/click_alarmclock.py"
+    },
+    {
+      "robotwin_task": "click_bell",
+      "scene_lab_skill_family": "press_button_or_tool",
+      "skill_description": "short contact / tool actuation",
+      "instruction_hint": "click bell",
+      "source_file": "third_party/assets/robotwin/envs/click_bell.py"
+    },
+    {
+      "robotwin_task": "dump_bin_bigbin",
+      "scene_lab_skill_family": "pour_or_shake_container",
+      "skill_description": "container dynamics",
+      "instruction_hint": "dump bin bigbin",
+      "source_file": "third_party/assets/robotwin/envs/dump_bin_bigbin.py"
+    },
+    {
+      "robotwin_task": "grab_roller",
+      "scene_lab_skill_family": "unclassified",
+      "skill_description": "needs manual taxonomy review",
+      "instruction_hint": "grab roller",
+      "source_file": "third_party/assets/robotwin/envs/grab_roller.py"
+    },
+    {
+      "robotwin_task": "handover_block",
+      "scene_lab_skill_family": "handover_object",
+      "skill_description": "bimanual transfer",
+      "instruction_hint": "handover block",
+      "source_file": "third_party/assets/robotwin/envs/handover_block.py"
+    },
+    {
+      "robotwin_task": "handover_mic",
+      "scene_lab_skill_family": "handover_object",
+      "skill_description": "bimanual transfer",
+      "instruction_hint": "handover mic",
+      "source_file": "third_party/assets/robotwin/envs/handover_mic.py"
+    },
+    {
+      "robotwin_task": "hanging_mug",
+      "scene_lab_skill_family": "unclassified",
+      "skill_description": "needs manual taxonomy review",
+      "instruction_hint": "hanging mug",
+      "source_file": "third_party/assets/robotwin/envs/hanging_mug.py"
+    },
+    {
+      "robotwin_task": "lift_pot",
+      "scene_lab_skill_family": "lift_object",
+      "skill_description": "grasp and lift",
+      "instruction_hint": "lift pot",
+      "source_file": "third_party/assets/robotwin/envs/lift_pot.py"
+    },
+    {
+      "robotwin_task": "move_can_pot",
+      "scene_lab_skill_family": "pick_place_object",
+      "skill_description": "pick and place",
+      "instruction_hint": "move can pot",
+      "source_file": "third_party/assets/robotwin/envs/move_can_pot.py"
+    },
+    {
+      "robotwin_task": "move_pillbottle_pad",
+      "scene_lab_skill_family": "pick_place_object",
+      "skill_description": "pick and place",
+      "instruction_hint": "move pillbottle pad",
+      "source_file": "third_party/assets/robotwin/envs/move_pillbottle_pad.py"
+    },
+    {
+      "robotwin_task": "move_playingcard_away",
+      "scene_lab_skill_family": "pick_place_object",
+      "skill_description": "pick and place",
+      "instruction_hint": "move playingcard away",
+      "source_file": "third_party/assets/robotwin/envs/move_playingcard_away.py"
+    },
+    {
+      "robotwin_task": "move_stapler_pad",
+      "scene_lab_skill_family": "pick_place_object",
+      "skill_description": "pick and place",
+      "instruction_hint": "move stapler pad",
+      "source_file": "third_party/assets/robotwin/envs/move_stapler_pad.py"
+    },
+    {
+      "robotwin_task": "open_laptop",
+      "scene_lab_skill_family": "open_articulated_object",
+      "skill_description": "articulated opening",
+      "instruction_hint": "open laptop",
+      "source_file": "third_party/assets/robotwin/envs/open_laptop.py"
+    },
+    {
+      "robotwin_task": "open_microwave",
+      "scene_lab_skill_family": "open_articulated_object",
+      "skill_description": "articulated opening",
+      "instruction_hint": "open microwave",
+      "source_file": "third_party/assets/robotwin/envs/open_microwave.py"
+    },
+    {
+      "robotwin_task": "pick_diverse_bottles",
+      "scene_lab_skill_family": "pick_object",
+      "skill_description": "targeted picking",
+      "instruction_hint": "pick diverse bottles",
+      "source_file": "third_party/assets/robotwin/envs/pick_diverse_bottles.py"
+    },
+    {
+      "robotwin_task": "pick_dual_bottles",
+      "scene_lab_skill_family": "pick_object",
+      "skill_description": "targeted picking",
+      "instruction_hint": "pick dual bottles",
+      "source_file": "third_party/assets/robotwin/envs/pick_dual_bottles.py"
+    },
+    {
+      "robotwin_task": "place_a2b_left",
+      "scene_lab_skill_family": "pick_place_object",
+      "skill_description": "pick and place",
+      "instruction_hint": "place a2b left",
+      "source_file": "third_party/assets/robotwin/envs/place_a2b_left.py"
+    },
+    {
+      "robotwin_task": "place_a2b_right",
+      "scene_lab_skill_family": "pick_place_object",
+      "skill_description": "pick and place",
+      "instruction_hint": "place a2b right",
+      "source_file": "third_party/assets/robotwin/envs/place_a2b_right.py"
+    },
+    {
+      "robotwin_task": "place_bread_basket",
+      "scene_lab_skill_family": "pick_place_object",
+      "skill_description": "pick and place",
+      "instruction_hint": "place bread basket",
+      "source_file": "third_party/assets/robotwin/envs/place_bread_basket.py"
+    },
+    {
+      "robotwin_task": "place_bread_skillet",
+      "scene_lab_skill_family": "pick_place_object",
+      "skill_description": "pick and place",
+      "instruction_hint": "place bread skillet",
+      "source_file": "third_party/assets/robotwin/envs/place_bread_skillet.py"
+    },
+    {
+      "robotwin_task": "place_burger_fries",
+      "scene_lab_skill_family": "pick_place_object",
+      "skill_description": "pick and place",
+      "instruction_hint": "place burger fries",
+      "source_file": "third_party/assets/robotwin/envs/place_burger_fries.py"
+    },
+    {
+      "robotwin_task": "place_can_basket",
+      "scene_lab_skill_family": "pick_place_object",
+      "skill_description": "pick and place",
+      "instruction_hint": "place can basket",
+      "source_file": "third_party/assets/robotwin/envs/place_can_basket.py"
+    },
+    {
+      "robotwin_task": "place_cans_plasticbox",
+      "scene_lab_skill_family": "pick_place_object",
+      "skill_description": "pick and place",
+      "instruction_hint": "place cans plasticbox",
+      "source_file": "third_party/assets/robotwin/envs/place_cans_plasticbox.py"
+    },
+    {
+      "robotwin_task": "place_container_plate",
+      "scene_lab_skill_family": "pick_place_object",
+      "skill_description": "pick and place",
+      "instruction_hint": "place container plate",
+      "source_file": "third_party/assets/robotwin/envs/place_container_plate.py"
+    },
+    {
+      "robotwin_task": "place_dual_shoes",
+      "scene_lab_skill_family": "pick_place_object",
+      "skill_description": "pick and place",
+      "instruction_hint": "place dual shoes",
+      "source_file": "third_party/assets/robotwin/envs/place_dual_shoes.py"
+    },
+    {
+      "robotwin_task": "place_empty_cup",
+      "scene_lab_skill_family": "pick_place_object",
+      "skill_description": "pick and place",
+      "instruction_hint": "place empty cup",
+      "source_file": "third_party/assets/robotwin/envs/place_empty_cup.py"
+    },
+    {
+      "robotwin_task": "place_fan",
+      "scene_lab_skill_family": "pick_place_object",
+      "skill_description": "pick and place",
+      "instruction_hint": "place fan",
+      "source_file": "third_party/assets/robotwin/envs/place_fan.py"
+    },
+    {
+      "robotwin_task": "place_mouse_pad",
+      "scene_lab_skill_family": "pick_place_object",
+      "skill_description": "pick and place",
+      "instruction_hint": "place mouse pad",
+      "source_file": "third_party/assets/robotwin/envs/place_mouse_pad.py"
+    },
+    {
+      "robotwin_task": "place_object_basket",
+      "scene_lab_skill_family": "pick_place_object",
+      "skill_description": "pick and place",
+      "instruction_hint": "place object basket",
+      "source_file": "third_party/assets/robotwin/envs/place_object_basket.py"
+    },
+    {
+      "robotwin_task": "place_object_scale",
+      "scene_lab_skill_family": "pick_place_object",
+      "skill_description": "pick and place",
+      "instruction_hint": "place object scale",
+      "source_file": "third_party/assets/robotwin/envs/place_object_scale.py"
+    },
+    {
+      "robotwin_task": "place_object_stand",
+      "scene_lab_skill_family": "pick_place_object",
+      "skill_description": "pick and place",
+      "instruction_hint": "place object stand",
+      "source_file": "third_party/assets/robotwin/envs/place_object_stand.py"
+    },
+    {
+      "robotwin_task": "place_phone_stand",
+      "scene_lab_skill_family": "pick_place_object",
+      "skill_description": "pick and place",
+      "instruction_hint": "place phone stand",
+      "source_file": "third_party/assets/robotwin/envs/place_phone_stand.py"
+    },
+    {
+      "robotwin_task": "place_shoe",
+      "scene_lab_skill_family": "pick_place_object",
+      "skill_description": "pick and place",
+      "instruction_hint": "place shoe",
+      "source_file": "third_party/assets/robotwin/envs/place_shoe.py"
+    },
+    {
+      "robotwin_task": "press_stapler",
+      "scene_lab_skill_family": "press_button_or_tool",
+      "skill_description": "short contact / tool actuation",
+      "instruction_hint": "press stapler",
+      "source_file": "third_party/assets/robotwin/envs/press_stapler.py"
+    },
+    {
+      "robotwin_task": "put_bottles_dustbin",
+      "scene_lab_skill_family": "pick_place_object",
+      "skill_description": "pick and place",
+      "instruction_hint": "put bottles dustbin",
+      "source_file": "third_party/assets/robotwin/envs/put_bottles_dustbin.py"
+    },
+    {
+      "robotwin_task": "put_object_cabinet",
+      "scene_lab_skill_family": "pick_place_object",
+      "skill_description": "pick and place",
+      "instruction_hint": "put object cabinet",
+      "source_file": "third_party/assets/robotwin/envs/put_object_cabinet.py"
+    },
+    {
+      "robotwin_task": "rotate_qrcode",
+      "scene_lab_skill_family": "turn_knob_or_rotate_object",
+      "skill_description": "rotational manipulation",
+      "instruction_hint": "rotate qrcode",
+      "source_file": "third_party/assets/robotwin/envs/rotate_qrcode.py"
+    },
+    {
+      "robotwin_task": "scan_object",
+      "scene_lab_skill_family": "scan_or_present_object",
+      "skill_description": "pose/orientation presentation",
+      "instruction_hint": "scan object",
+      "source_file": "third_party/assets/robotwin/envs/scan_object.py"
+    },
+    {
+      "robotwin_task": "shake_bottle",
+      "scene_lab_skill_family": "pour_or_shake_container",
+      "skill_description": "container dynamics",
+      "instruction_hint": "shake bottle",
+      "source_file": "third_party/assets/robotwin/envs/shake_bottle.py"
+    },
+    {
+      "robotwin_task": "shake_bottle_horizontally",
+      "scene_lab_skill_family": "pour_or_shake_container",
+      "skill_description": "container dynamics",
+      "instruction_hint": "shake bottle horizontally",
+      "source_file": "third_party/assets/robotwin/envs/shake_bottle_horizontally.py"
+    },
+    {
+      "robotwin_task": "stack_blocks_three",
+      "scene_lab_skill_family": "stack_objects",
+      "skill_description": "stacking and spatial ordering",
+      "instruction_hint": "stack blocks three",
+      "source_file": "third_party/assets/robotwin/envs/stack_blocks_three.py"
+    },
+    {
+      "robotwin_task": "stack_blocks_two",
+      "scene_lab_skill_family": "stack_objects",
+      "skill_description": "stacking and spatial ordering",
+      "instruction_hint": "stack blocks two",
+      "source_file": "third_party/assets/robotwin/envs/stack_blocks_two.py"
+    },
+    {
+      "robotwin_task": "stack_bowls_three",
+      "scene_lab_skill_family": "stack_objects",
+      "skill_description": "stacking and spatial ordering",
+      "instruction_hint": "stack bowls three",
+      "source_file": "third_party/assets/robotwin/envs/stack_bowls_three.py"
+    },
+    {
+      "robotwin_task": "stack_bowls_two",
+      "scene_lab_skill_family": "stack_objects",
+      "skill_description": "stacking and spatial ordering",
+      "instruction_hint": "stack bowls two",
+      "source_file": "third_party/assets/robotwin/envs/stack_bowls_two.py"
+    },
+    {
+      "robotwin_task": "stamp_seal",
+      "scene_lab_skill_family": "press_button_or_tool",
+      "skill_description": "short contact / tool actuation",
+      "instruction_hint": "stamp seal",
+      "source_file": "third_party/assets/robotwin/envs/stamp_seal.py"
+    },
+    {
+      "robotwin_task": "turn_switch",
+      "scene_lab_skill_family": "turn_knob_or_rotate_object",
+      "skill_description": "rotational manipulation",
+      "instruction_hint": "turn switch",
+      "source_file": "third_party/assets/robotwin/envs/turn_switch.py"
+    }
+  ]
+}

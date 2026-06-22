@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SceneLabTask",
+  "type": "object",
+  "required": ["task_id", "instruction", "robot", "simulator", "objects", "success_condition"],
+  "properties": {
+    "task_id": {
+      "type": "string",
+      "pattern": "^[a-zA-Z0-9_.-]+$"
+    },
+    "task_name": {
+      "type": "string"
+    },
+    "instruction": {
+      "type": "string"
+    },
+    "robot": {
+      "type": "object",
+      "required": ["name", "arm", "hand"],
+      "properties": {
+        "name": {"type": "string"},
+        "arm": {"type": "string"},
+        "hand": {"type": "string"},
+        "dof": {"type": "integer"}
+      },
+      "additionalProperties": true
+    },
+    "simulator": {
+      "type": "object",
+      "required": ["backend", "entrypoint"],
+      "properties": {
+        "backend": {"type": "string"},
+        "entrypoint": {
+          "type": "object",
+          "properties": {
+            "config_mapping_key": {"type": "string"},
+            "xml_path": {"type": "string"},
+            "env_class": {"type": "string"}
+          },
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": true
+    },
+    "objects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "role"],
+        "properties": {
+          "name": {"type": "string"},
+          "role": {"type": "string"},
+          "type": {"type": "string"},
+          "pose": {"type": "array", "items": {"type": "number"}},
+          "size": {"type": "array", "items": {"type": "number"}},
+          "material": {"type": "string"},
+          "notes": {"type": "string"}
+        },
+        "additionalProperties": true
+      }
+    },
+    "success_condition": {
+      "type": "object",
+      "required": ["type"],
+      "properties": {
+        "type": {"type": "string"},
+        "object": {"type": "string"},
+        "target": {"type": "string"},
+        "radius": {"type": "number"},
+        "description": {"type": "string"}
+      },
+      "additionalProperties": true
+    },
+    "static_review": {
+      "type": "object",
+      "properties": {
+        "must_be_visible": {"type": "array", "items": {"type": "string"}},
+        "must_be_reachable": {"type": "array", "items": {"type": "string"}},
+        "common_failure_modes": {"type": "array", "items": {"type": "string"}}
+      },
+      "additionalProperties": true
+    },
+    "generator": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

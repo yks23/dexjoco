@@ -1,0 +1,1061 @@
+{
+  "generated_at": "2026-06-22T11:01:57.386509+00:00",
+  "spec": "scene_lab/benchmarks/robotwin_task_specs.json",
+  "assets": "scene_lab/assets/processed/robotwin",
+  "out": "scene_lab/registry/pending",
+  "max_candidates_per_task": 8,
+  "generated_count": 247,
+  "skipped_existing_count": 0,
+  "registered_spec_count": 6,
+  "failed_count": 0,
+  "generated": [
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_adjust_bottle_001_bottle_base13",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_adjust_bottle_001_bottle",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_adjust_bottle_001_bottle_base0",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_adjust_bottle_001_bottle_base10",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_adjust_bottle_001_bottle_base11",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_beat_block_hammer_020_hammer",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_blocks_ranking_rgb_box_demo",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_blocks_ranking_size_box_demo",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_click_alarmclock_046_alarm_clock_base1",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_click_alarmclock_046_alarm_clock_base2",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_click_alarmclock_046_alarm_clock_base3",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_click_alarmclock_046_alarm_clock_base4",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_click_bell_050_bell_base0",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_click_bell_050_bell_base1",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_dump_bin_bigbin_011_dustbin",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_dump_bin_bigbin_011_dustbin_base0",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_dump_bin_bigbin_063_tabletrashbin_base0",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_dump_bin_bigbin_063_tabletrashbin_base1",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_dump_bin_bigbin_063_tabletrashbin_base10",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_dump_bin_bigbin_063_tabletrashbin_base2",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_dump_bin_bigbin_063_tabletrashbin_base3",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_dump_bin_bigbin_063_tabletrashbin_base4",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_grab_roller_102_roller_base1",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_grab_roller_102_roller_base2",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_hanging_mug_039_mug_base0",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_hanging_mug_039_mug_base1",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_hanging_mug_039_mug_base10",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_hanging_mug_039_mug_base11",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_hanging_mug_039_mug_base12",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_hanging_mug_039_mug_base2",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_hanging_mug_039_mug_base3",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_hanging_mug_039_mug_base4",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_lift_pot_060_kitchenpot_base0",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_lift_pot_060_kitchenpot_base1",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_lift_pot_060_kitchenpot_base2",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_lift_pot_060_kitchenpot_base3",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_lift_pot_060_kitchenpot_base4",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_lift_pot_060_kitchenpot_base5",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_lift_pot_060_kitchenpot_base6",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_lift_pot_060_kitchenpot_base7",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_move_can_pot_060_kitchenpot_base0",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_move_can_pot_060_kitchenpot_base1",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_move_can_pot_060_kitchenpot_base2",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_move_can_pot_060_kitchenpot_base3",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_move_can_pot_060_kitchenpot_base4",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_move_can_pot_060_kitchenpot_base5",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_move_can_pot_060_kitchenpot_base6",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_move_can_pot_060_kitchenpot_base7",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_move_pillbottle_pad_080_pillbottle_base1",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_move_pillbottle_pad_080_pillbottle_base4",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_move_pillbottle_pad_080_pillbottle_base5",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_move_playingcard_away_081_playingcards_base0",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_move_playingcard_away_081_playingcards_base1",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_move_playingcard_away_081_playingcards_base2",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_move_stapler_pad_048_stapler_base0",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_move_stapler_pad_048_stapler_base1",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_move_stapler_pad_048_stapler_base2",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_move_stapler_pad_048_stapler_base3",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_move_stapler_pad_048_stapler_base4",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_move_stapler_pad_048_stapler_base5",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_move_stapler_pad_048_stapler_base6",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_pick_diverse_bottles_001_bottle",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_pick_diverse_bottles_001_bottle_base0",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_pick_diverse_bottles_001_bottle_base10",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_pick_diverse_bottles_001_bottle_base11",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_pick_diverse_bottles_001_bottle_base13",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_pick_dual_bottles_001_bottle_base13",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_pick_dual_bottles_001_bottle",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_pick_dual_bottles_001_bottle_base0",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_pick_dual_bottles_001_bottle_base10",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_pick_dual_bottles_001_bottle_base11",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_a2b_left_047_mouse_base0",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_a2b_left_047_mouse_base1",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_a2b_left_047_mouse_base2",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_a2b_left_048_stapler_base0",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_a2b_left_048_stapler_base1",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_a2b_left_048_stapler_base2",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_a2b_left_048_stapler_base3",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_a2b_left_048_stapler_base4",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_a2b_right_047_mouse_base0",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_a2b_right_047_mouse_base1",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_a2b_right_047_mouse_base2",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_a2b_right_048_stapler_base0",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_a2b_right_048_stapler_base1",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_a2b_right_048_stapler_base2",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_a2b_right_048_stapler_base3",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_a2b_right_048_stapler_base4",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_bread_basket_076_breadbasket_base0",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_bread_basket_076_breadbasket_base1",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_bread_basket_076_breadbasket_base2",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_bread_basket_076_breadbasket_base3",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_bread_basket_076_breadbasket_base4",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_bread_basket_075_bread_base0",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_bread_basket_075_bread_base1",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_bread_basket_075_bread_base2",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_bread_skillet_075_bread_base0",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_bread_skillet_075_bread_base1",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_bread_skillet_075_bread_base3",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_bread_skillet_075_bread_base5",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_bread_skillet_075_bread_base6",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_bread_skillet_075_bread_base2",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_bread_skillet_075_bread_base4",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_bread_skillet_106_skillet_base0",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_burger_fries_008_tray_base0",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_burger_fries_008_tray",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_burger_fries_008_tray_base1",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_burger_fries_008_tray_base2",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_burger_fries_008_tray_base3",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_burger_fries_006_hamburg_base0",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_burger_fries_006_hamburg",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_burger_fries_006_hamburg_base1",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_can_basket_110_basket_base0",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_can_basket_110_basket_base1",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_can_basket_110_basket_base2",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_can_basket_110_basket_base3",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_can_basket_071_can_base0",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_can_basket_071_can_base1",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_can_basket_071_can_base2",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_can_basket_071_can_base3",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_cans_plasticbox_062_plasticbox_base3",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_cans_plasticbox_062_plasticbox_base0",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_cans_plasticbox_062_plasticbox_base1",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_cans_plasticbox_062_plasticbox_base10",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_cans_plasticbox_062_plasticbox_base2",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_cans_plasticbox_062_plasticbox_base4",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_cans_plasticbox_062_plasticbox_base5",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_cans_plasticbox_062_plasticbox_base6",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_container_plate_002_bowl",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_container_plate_002_bowl_base1",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_container_plate_002_bowl_base2",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_container_plate_002_bowl_base3",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_container_plate_002_bowl_base4",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_container_plate_002_bowl_base5",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_container_plate_002_bowl_base6",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_container_plate_002_bowl_base7",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_dual_shoes_007_shoe_box",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_dual_shoes_007_shoe_box_base0",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_dual_shoes_041_shoe_base0",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_dual_shoes_041_shoe_base2",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_dual_shoes_041_shoe_base4",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_empty_cup_021_cup_base0",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_empty_cup_021_cup",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_empty_cup_021_cup_base1",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_empty_cup_021_cup_base10",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_empty_cup_021_cup_base11",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_empty_cup_021_cup_base12",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_empty_cup_021_cup_base2",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_empty_cup_021_cup_base3",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_fan_box_demo",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_mouse_pad_047_mouse_base0",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_mouse_pad_047_mouse_base1",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_mouse_pad_047_mouse_base2",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_object_basket_110_basket_base0",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_object_basket_110_basket_base1",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_object_basket_110_basket_base2",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_object_basket_110_basket_base3",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_object_basket_057_toycar_base0",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_object_basket_057_toycar_base1",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_object_basket_057_toycar_base2",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_object_basket_057_toycar_base3",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_object_scale_047_mouse_base0",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_object_scale_047_mouse_base1",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_object_scale_047_mouse_base2",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_object_scale_048_stapler_base0",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_object_scale_048_stapler_base1",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_object_scale_048_stapler_base2",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_object_scale_048_stapler_base3",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_object_scale_048_stapler_base4",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_object_stand_047_mouse_base0",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_object_stand_047_mouse_base1",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_object_stand_047_mouse_base2",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_object_stand_048_stapler_base0",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_object_stand_048_stapler_base1",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_object_stand_048_stapler_base2",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_object_stand_048_stapler_base3",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_object_stand_048_stapler_base4",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_phone_stand_077_phone_base0",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_phone_stand_077_phone_base1",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_phone_stand_077_phone_base2",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_phone_stand_077_phone_base3",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_phone_stand_077_phone_base4",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_phone_stand_078_phonestand_base1",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_phone_stand_078_phonestand_base0",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_phone_stand_078_phonestand_base2",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_shoe_041_shoe_base0",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_shoe_041_shoe_base2",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_place_shoe_041_shoe_base4",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_press_stapler_048_stapler_base0",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_press_stapler_048_stapler_base1",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_press_stapler_048_stapler_base2",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_press_stapler_048_stapler_base3",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_press_stapler_048_stapler_base4",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_press_stapler_048_stapler_base5",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_press_stapler_048_stapler_base6",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_put_bottles_dustbin_011_dustbin",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_put_bottles_dustbin_011_dustbin_base0",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_put_bottles_dustbin_114_bottle_base1",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_put_bottles_dustbin_114_bottle_base2",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_put_bottles_dustbin_114_bottle_base3",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_put_bottles_dustbin_114_bottle_base4",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_put_object_cabinet_047_mouse_base0",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_put_object_cabinet_047_mouse_base1",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_put_object_cabinet_047_mouse_base2",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_put_object_cabinet_048_stapler_base0",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_put_object_cabinet_048_stapler_base1",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_put_object_cabinet_048_stapler_base2",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_put_object_cabinet_048_stapler_base3",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_put_object_cabinet_048_stapler_base4",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_scan_object_024_scanner",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_scan_object_024_scanner_base2",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_scan_object_112_tea_box_base0",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_scan_object_112_tea_box_base3",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_scan_object_112_tea_box_base4",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_scan_object_112_tea_box_base5",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_shake_bottle_001_bottle",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_shake_bottle_001_bottle_base0",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_shake_bottle_001_bottle_base10",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_shake_bottle_001_bottle_base11",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_shake_bottle_001_bottle_base13",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_shake_bottle_horizontally_001_bottle",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_shake_bottle_horizontally_001_bottle_base0",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_shake_bottle_horizontally_001_bottle_base10",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_shake_bottle_horizontally_001_bottle_base11",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_shake_bottle_horizontally_001_bottle_base13",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_stack_blocks_three_box_demo",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_stack_blocks_two_box_demo",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_stack_bowls_three_002_bowl_base3",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_stack_bowls_three_002_bowl",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_stack_bowls_three_002_bowl_base1",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_stack_bowls_three_002_bowl_base2",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_stack_bowls_three_002_bowl_base4",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_stack_bowls_three_002_bowl_base5",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_stack_bowls_three_002_bowl_base6",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_stack_bowls_three_002_bowl_base7",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_stack_bowls_two_002_bowl_base3",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_stack_bowls_two_002_bowl",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_stack_bowls_two_002_bowl_base1",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_stack_bowls_two_002_bowl_base2",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_stack_bowls_two_002_bowl_base4",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_stack_bowls_two_002_bowl_base5",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_stack_bowls_two_002_bowl_base6",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_stack_bowls_two_002_bowl_base7",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_stamp_seal_100_seal_base1",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_stamp_seal_100_seal_base2",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_stamp_seal_100_seal_base3",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_stamp_seal_100_seal_base4",
+      "status": "generated"
+    },
+    {
+      "candidate_dir": "scene_lab/registry/pending/robotwin_stamp_seal_100_seal_base6",
+      "status": "generated"
+    }
+  ],
+  "registered_specs": [
+    {
+      "source_task": "handover_block",
+      "status": "registered_spec",
+      "skill_family": "handover_object",
+      "unsupported_features": [
+        "bimanual_runtime"
+      ],
+      "reason": "Task spec parsed but not generated because current Scene Lab runtime cannot faithfully execute it."
+    },
+    {
+      "source_task": "handover_mic",
+      "status": "registered_spec",
+      "skill_family": "handover_object",
+      "unsupported_features": [
+        "bimanual_runtime"
+      ],
+      "reason": "Task spec parsed but not generated because current Scene Lab runtime cannot faithfully execute it."
+    },
+    {
+      "source_task": "open_laptop",
+      "status": "registered_spec",
+      "skill_family": "open_articulated_object",
+      "unsupported_features": [
+        "articulated_runtime",
+        "sapien_urdf_source"
+      ],
+      "reason": "Task spec parsed but not generated because current Scene Lab runtime cannot faithfully execute it."
+    },
+    {
+      "source_task": "open_microwave",
+      "status": "registered_spec",
+      "skill_family": "open_articulated_object",
+      "unsupported_features": [
+        "articulated_runtime",
+        "sapien_urdf_source"
+      ],
+      "reason": "Task spec parsed but not generated because current Scene Lab runtime cannot faithfully execute it."
+    },
+    {
+      "source_task": "rotate_qrcode",
+      "status": "registered_spec",
+      "skill_family": "turn_knob_or_rotate_object",
+      "unsupported_features": [
+        "articulated_runtime"
+      ],
+      "reason": "Task spec parsed but not generated because current Scene Lab runtime cannot faithfully execute it."
+    },
+    {
+      "source_task": "turn_switch",
+      "status": "registered_spec",
+      "skill_family": "turn_knob_or_rotate_object",
+      "unsupported_features": [
+        "articulated_runtime",
+        "sapien_urdf_source"
+      ],
+      "reason": "Task spec parsed but not generated because current Scene Lab runtime cannot faithfully execute it."
+    }
+  ],
+  "failed": []
+}
