@@ -40,6 +40,36 @@ YCB processed assets: 77
 RoboTwin promoted DexJoCo tasks: 247
 ```
 
+## Restore Artifact
+
+The processed assets are published as split release files:
+
+```text
+scene_lab_processed_assets_robotwin_ycb_20260622.tar.zst.part-00
+scene_lab_processed_assets_robotwin_ycb_20260622.tar.zst.part-01
+scene_lab_processed_assets_robotwin_ycb_20260622.tar.zst.part-02
+scene_lab_processed_assets_robotwin_ycb_20260622.tar.zst.part-03
+scene_lab_processed_assets_robotwin_ycb_20260622.tar.zst.part-04
+SHA256SUMS.txt
+```
+
+Place the parts in one directory, then reconstruct and extract from the
+repository root:
+
+```bash
+cat scene_lab_processed_assets_robotwin_ycb_20260622.tar.zst.part-* \
+  > scene_lab_processed_assets_robotwin_ycb_20260622.tar.zst
+shasum -a 256 scene_lab_processed_assets_robotwin_ycb_20260622.tar.zst
+tar --use-compress-program=unzstd \
+  -xf scene_lab_processed_assets_robotwin_ycb_20260622.tar.zst
+```
+
+Expected archive checksum:
+
+```text
+c2c39b27dd591bac511ec5e54595b70ef90df12690b03f301b4fd5e12835967b
+```
+
 ## Review Assets
 
 First restore the processed asset artifact so this directory exists:
