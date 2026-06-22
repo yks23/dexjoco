@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mujoco model="robotwin_place_bread_skillet_075_bread_base3">
-  <include file="/Users/txc/code/dexjoco/dexjoco/dexjoco/sim/envs/xmls/panda_allegro_copy.xml"/>
+  <compiler meshdir="../"/>
+  <include file="../panda_allegro_copy.xml"/>
   <option timestep=".002" noslip_iterations="5" noslip_tolerance="0"/>
   <visual>
     <headlight diffuse=".45 .45 .45" ambient=".45 .45 .45"/>
@@ -17,9 +18,9 @@
     <material name="generated_object" rgba=".08 .18 .55 1" specular=".2" shininess=".25"/>
     <material name="generated_object_pages" rgba=".94 .90 .78 1"/>
     <material name="generated_target" rgba=".1 .75 .35 .35"/>
-    <mesh name="object_visual_mesh" file="/Users/txc/code/dexjoco/scene_lab/assets/processed/robotwin/robotwin_075_bread_base3/visual/base3.obj" scale="1 1 1"/>
-    <mesh name="object_collision_mesh_0" file="/Users/txc/code/dexjoco/scene_lab/assets/processed/robotwin/robotwin_075_bread_base3/collision/base3_collision_000.obj" scale="1 1 1"/>
-    <texture name="object_texture" type="2d" file="/Users/txc/code/dexjoco/scene_lab/assets/processed/robotwin/robotwin_075_bread_base3/visual/CustomMaterial.png"/>
+    <mesh name="object_visual_mesh" file="../../../../../scene_lab/assets/processed/robotwin/robotwin_075_bread_base3/visual/base3.obj" scale="1 1 1"/>
+    <mesh name="object_collision_mesh_0" file="../../../../../scene_lab/assets/processed/robotwin/robotwin_075_bread_base3/collision/base3_collision_000.obj" scale="1 1 1"/>
+    <texture name="object_texture" type="2d" file="../../../../../../scene_lab/assets/processed/robotwin/robotwin_075_bread_base3/visual/CustomMaterial.png"/>
     <material name="object_textured" texture="object_texture" rgba="1 1 1 1"/>
   </asset>
   <worldbody>

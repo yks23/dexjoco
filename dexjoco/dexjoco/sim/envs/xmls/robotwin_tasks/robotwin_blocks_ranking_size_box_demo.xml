@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mujoco model="robotwin_blocks_ranking_size_box_demo">
-  <include file="/Users/txc/code/dexjoco/dexjoco/dexjoco/sim/envs/xmls/panda_allegro_copy.xml"/>
+  <compiler meshdir="../"/>
+  <include file="../panda_allegro_copy.xml"/>
   <option timestep=".002" noslip_iterations="5" noslip_tolerance="0"/>
   <visual>
     <headlight diffuse=".45 .45 .45" ambient=".45 .45 .45"/>

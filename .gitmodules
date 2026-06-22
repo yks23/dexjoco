@@ -4,15 +4,3 @@
 [submodule "dexjoco-data-converter/src/3rd/diffusion_policy"]
 	path = dexjoco-data-converter/src/3rd/diffusion_policy
 	url = https://github.com/real-stanford/diffusion_policy.git
-[submodule "third_party/assets/mujoco_menagerie"]
-	path = third_party/assets/mujoco_menagerie
-	url = https://github.com/google-deepmind/mujoco_menagerie.git
-[submodule "third_party/assets/robosuite"]
-	path = third_party/assets/robosuite
-	url = https://github.com/ARISE-Initiative/robosuite.git
-[submodule "third_party/assets/robocasa"]
-	path = third_party/assets/robocasa
-	url = https://github.com/robocasa/robocasa.git
-[submodule "third_party/assets/robotwin"]
-	path = third_party/assets/robotwin
-	url = https://github.com/RoboTwin-Platform/RoboTwin.git
