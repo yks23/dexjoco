@@ -18,6 +18,11 @@ from scene_lab.asset_pipeline import PROCESSED_ROOT, REGISTRY, load_asset_manife
 
 
 def _source_collision_mesh(manifest: dict) -> Path | None:
+    explicit = manifest.get("source_collision_mesh")
+    if explicit:
+        path = Path(str(explicit))
+        if path.exists():
+            return path
     if manifest.get("source_benchmark") != "robotwin":
         return None
     source_path = Path(str(manifest.get("source_path") or ""))

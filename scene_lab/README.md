@@ -133,6 +133,12 @@ pick/place candidates, build mesh collisions, and validate the batch:
 ```bash
 export YCB_ROOT=/path/to/ycb/object_models
 
+python scene_lab/tools/download_ycb_models.py \
+  --out scene_lab/assets/raw/ycb/habitat_ycb \
+  --repo ai-habitat/ycb
+
+export YCB_ROOT=scene_lab/assets/raw/ycb/habitat_ycb
+
 python scene_lab/tools/bulk_import_ycb_assets.py \
   --objects-root "$YCB_ROOT" \
   --replace \

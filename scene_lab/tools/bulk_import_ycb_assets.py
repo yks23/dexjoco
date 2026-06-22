@@ -52,6 +52,8 @@ def _asset_id(object_dir: Path) -> str:
 
 
 def _object_dirs(objects_root: Path) -> list[Path]:
+    if _is_habitat_ycb_root(objects_root):
+        return []
     child_mesh_dirs = [
         child
         for child in objects_root.iterdir()
@@ -62,6 +64,30 @@ def _object_dirs(objects_root: Path) -> list[Path]:
     if find_meshes(objects_root):
         return [objects_root]
     return sorted(child for child in objects_root.iterdir() if child.is_dir() and find_meshes(child))
+
+
+def _is_habitat_ycb_root(path: Path) -> bool:
+    return (path / "configs").is_dir() and (path / "meshes").is_dir()
+
+
+def _habitat_configs(path: Path) -> list[Path]:
+    return sorted((path / "configs").glob("*.object_config.json"))
+
+
+def _habitat_object_id(config_path: Path) -> str:
+    return config_path.name.removesuffix(".object_config.json")
+
+
+def _habitat_asset_path(config_path: Path, value: str) -> Path:
+    path = Path(value)
+    if path.is_absolute():
+        return path
+    return (config_path.parent / path).resolve()
+
+
+def _prefer_uncompressed_glb(path: Path) -> Path:
+    candidate = path.with_name(path.name + ".orig")
+    return candidate if candidate.exists() else path
 
 
 def _ycb_mesh(meshes: list[Path]) -> Path | None:
@@ -205,6 +231,90 @@ def import_object(
     }
 
 
+def import_habitat_config(
+    config_path: Path,
+    *,
+    replace: bool,
+    create_candidate: bool,
+    copy: bool,
+    unit_scale: float,
+) -> dict[str, Any]:
+    config = json.loads(config_path.read_text(encoding="utf-8"))
+    object_id = _habitat_object_id(config_path)
+    render_asset = _prefer_uncompressed_glb(_habitat_asset_path(config_path, config["render_asset"]))
+    collision_asset = _habitat_asset_path(config_path, config["collision_asset"])
+    if not render_asset.exists():
+        raise FileNotFoundError(render_asset)
+    asset_id = ensure_safe_id(f"ycb_{_slug(object_id)}", "asset_id")
+    processed_dir = PROCESSED_ROOT / "ycb" / asset_id
+    if processed_dir.exists() and replace:
+        shutil.rmtree(processed_dir)
+
+    processed_mesh, conversion_status = prepare_visual_mesh(render_asset, processed_dir, copy=copy)
+    _scale_mesh_in_place(processed_mesh, unit_scale)
+    extents = _mesh_extents(processed_mesh)
+    category = infer_category(Path(object_id))
+    collision = _collision_from_extents(extents)
+    mass = infer_mass(category)
+    calibration = {
+        "method": "ycb_habitat_metric_mesh_strict",
+        "source": "Habitat YCB render_asset mesh units",
+        "unit_scale_to_meters": unit_scale,
+        "extra_uniform_scale": 1.0,
+        "processed_extents_m": extents,
+        "calibrated_extents_m": extents,
+        "scale_policy": {
+            "mode": "ycb_metric_strict",
+            "source": "Habitat YCB mesh vertices",
+            "unit_scale_to_meters": unit_scale,
+            "extra_uniform_scale": 1.0,
+        },
+    }
+    manifest = build_manifest(
+        asset_id=asset_id,
+        source_benchmark="ycb",
+        source_path=config_path,
+        mesh_path=render_asset,
+        processed_mesh=processed_mesh,
+        category=category,
+        collision=collision,
+        mass=mass,
+        status="ready_for_pick_place",
+        source_url="https://huggingface.co/datasets/ai-habitat/ycb",
+        license_name="CC BY 4.0; original YCB Object and Model Set source",
+        extra={
+            "ycb_object_id": object_id,
+            "habitat_config": str(config_path.resolve()),
+            "habitat_render_asset": str(render_asset.resolve()),
+            "source_collision_mesh": str(collision_asset.resolve()) if collision_asset.exists() else None,
+            "friction_coefficient": config.get("friction_coefficient"),
+            "conversion_status": conversion_status,
+            "dexjoco_calibration": calibration,
+            "scale_policy": calibration["scale_policy"],
+        },
+    )
+    write_json(processed_dir / "asset_manifest.json", manifest)
+    write_json(processed_dir / "collision.json", collision)
+    task_id = f"pick_place_{asset_id}"
+    candidate_created = False
+    if create_candidate:
+        candidate_created = _write_candidate(task_id, manifest, replace)
+    return {
+        "asset_id": asset_id,
+        "task_id": task_id,
+        "object_id": object_id,
+        "category": category,
+        "status": manifest["status"],
+        "source_mesh": str(render_asset.resolve()),
+        "source_collision_mesh": str(collision_asset.resolve()) if collision_asset.exists() else None,
+        "visual_mesh": str(processed_mesh.resolve()),
+        "conversion_status": conversion_status,
+        "candidate_created": candidate_created,
+        "unit_scale_to_meters": unit_scale,
+        "calibrated_extents_m": extents,
+    }
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--objects-root", required=True, type=Path)
@@ -223,23 +333,37 @@ def main() -> None:
     objects_root = args.objects_root.expanduser().resolve()
     if not objects_root.exists():
         raise SystemExit(f"Missing YCB objects root: {objects_root}")
-    object_dirs = _object_dirs(objects_root)
-    if args.limit:
-        object_dirs = object_dirs[: args.limit]
-
-    results = [
-        import_object(
-            object_dir,
-            replace=args.replace,
-            create_candidate=not args.no_candidates,
-            copy=args.copy,
-            unit_scale=args.unit_scale,
-        )
-        for object_dir in object_dirs
-    ]
+    if _is_habitat_ycb_root(objects_root):
+        sources = _habitat_configs(objects_root)
+        if args.limit:
+            sources = sources[: args.limit]
+        results = [
+            import_habitat_config(
+                config_path,
+                replace=args.replace,
+                create_candidate=not args.no_candidates,
+                copy=args.copy,
+                unit_scale=args.unit_scale,
+            )
+            for config_path in sources
+        ]
+    else:
+        sources = _object_dirs(objects_root)
+        if args.limit:
+            sources = sources[: args.limit]
+        results = [
+            import_object(
+                object_dir,
+                replace=args.replace,
+                create_candidate=not args.no_candidates,
+                copy=args.copy,
+                unit_scale=args.unit_scale,
+            )
+            for object_dir in sources
+        ]
     summary = {
         "objects_root": str(objects_root),
-        "object_count": len(object_dirs),
+        "object_count": len(sources),
         "asset_count": len(results),
         "ready_for_pick_place": sum(r["status"] == "ready_for_pick_place" for r in results),
         "candidate_count": sum(bool(r["candidate_created"]) for r in results),

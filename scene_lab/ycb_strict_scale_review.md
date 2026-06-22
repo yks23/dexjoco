@@ -1,13 +1,14 @@
 # YCB Strict Scale Review
 
-This workflow mirrors the RoboTwin asset-review path for local YCB object
-models.  It imports YCB meshes into the Scene Lab processed asset format,
-generates pick/place candidates, validates MuJoCo loading, and serves them in
-the review GUI.
+This workflow mirrors the RoboTwin asset-review path for YCB object models.
+It can consume local official YCB object model folders or the Habitat-ready YCB
+mirror on Hugging Face, imports the meshes into the Scene Lab processed asset
+format, generates pick/place candidates, validates MuJoCo loading, and serves
+them in the review GUI.
 
 ## Scale Rule
 
-YCB does not provide per-variant `model_data*.json` files like RoboTwin.  The
+YCB does not provide per-variant `model_data*.json` files like RoboTwin. The
 strict importer therefore preserves YCB mesh coordinates as metric model
 coordinates:
 
@@ -25,6 +26,11 @@ Default:
 
 Use a different `--unit-scale` only when the local YCB export is known to be in
 non-meter units.  Do not use category-size normalization for exact alignment.
+
+For Habitat-ready YCB, the importer reads each
+`configs/*.object_config.json`, uses `render_asset` for the textured visual
+mesh, prefers the uncompressed `.glb.orig` asset for texture extraction, and
+uses `collision_asset` for convex mesh collision.
 
 ## Pull And Prepare
 
@@ -48,6 +54,16 @@ $YCB_ROOT/
   003_cracker_box/google_16k/textured.obj
   004_sugar_box/google_16k/textured.obj
   ...
+```
+
+Alternatively, download the Habitat-ready full YCB asset set:
+
+```bash
+$PY scene_lab/tools/download_ycb_models.py \
+  --out scene_lab/assets/raw/ycb/habitat_ycb \
+  --repo ai-habitat/ycb
+
+export YCB_ROOT=scene_lab/assets/raw/ycb/habitat_ycb
 ```
 
 ## Rebuild Strict Assets

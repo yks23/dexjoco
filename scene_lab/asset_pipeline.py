@@ -162,16 +162,18 @@ def prepare_visual_mesh(
     copy: bool = False,
     model_data: dict[str, Any] | None = None,
 ) -> tuple[Path, str]:
-    if mesh.suffix.lower() != ".glb":
+    is_glb = mesh.suffix.lower() == ".glb" or mesh.name.endswith(".glb.orig")
+    if not is_glb:
         return mirror_mesh(mesh, processed_dir, copy=copy), "linked_or_copied"
 
     visual_dir = processed_dir / "visual"
     visual_dir.mkdir(parents=True, exist_ok=True)
-    dest = visual_dir / f"{mesh.stem}.obj"
+    stem = mesh.name.removesuffix(".glb.orig") if mesh.name.endswith(".glb.orig") else mesh.stem
+    dest = visual_dir / f"{stem}.obj"
     try:
         import trimesh
 
-        loaded = trimesh.load(mesh, force="scene")
+        loaded = trimesh.load(mesh, file_type="glb" if mesh.name.endswith(".glb.orig") else None, force="scene")
         if hasattr(loaded, "dump"):
             dumped = loaded.dump(concatenate=True)
         else:
@@ -190,10 +192,60 @@ def prepare_visual_mesh(
                 bbox_center = (vertices.min(axis=0) + vertices.max(axis=0)) / 2.0
                 vertices -= bbox_center
                 dumped.vertices = vertices
+        elif _export_textured_scene_obj(loaded, dest):
+            return dest, "glb_converted_to_textured_obj"
         dumped.export(dest)
         return dest, "glb_converted_to_obj"
     except Exception:
         return mirror_mesh(mesh, processed_dir, copy=copy), "glb_linked_without_conversion"
+
+
+def _export_textured_scene_obj(scene_or_mesh: Any, dest: Path) -> bool:
+    try:
+        import numpy as np
+        import trimesh
+
+        if isinstance(scene_or_mesh, trimesh.Scene):
+            geometries = list(scene_or_mesh.geometry.values())
+            if len(geometries) != 1:
+                return False
+            mesh = geometries[0]
+        else:
+            mesh = scene_or_mesh
+        visual = getattr(mesh, "visual", None)
+        uv = getattr(visual, "uv", None)
+        material = getattr(visual, "material", None)
+        image = getattr(material, "baseColorTexture", None) or getattr(material, "image", None)
+        if uv is None or image is None:
+            return False
+        texture_path = dest.with_name("texture.png")
+        material_path = dest.with_name("material.mtl")
+        image.save(texture_path)
+        material_path.write_text(
+            "newmtl textured_material\n"
+            "Ka 1 1 1\n"
+            "Kd 1 1 1\n"
+            "Ks 0.1 0.1 0.1\n"
+            "Ns 16\n"
+            f"map_Kd {texture_path.name}\n",
+            encoding="utf-8",
+        )
+        vertices = np.asarray(mesh.vertices, dtype=float)
+        uvs = np.asarray(uv, dtype=float)
+        faces = np.asarray(mesh.faces, dtype=int)
+        with dest.open("w", encoding="utf-8") as handle:
+            handle.write(f"mtllib {material_path.name}\n")
+            handle.write("usemtl textured_material\n")
+            for vertex in vertices:
+                handle.write(f"v {vertex[0]:.9g} {vertex[1]:.9g} {vertex[2]:.9g}\n")
+            for texcoord in uvs:
+                handle.write(f"vt {texcoord[0]:.9g} {1.0 - texcoord[1]:.9g}\n")
+            for face in faces:
+                items = [f"{index + 1}/{index + 1}" for index in face]
+                handle.write("f " + " ".join(items) + "\n")
+        return True
+    except Exception:
+        return False
 
 
 def load_asset_manifest(asset_id: str) -> tuple[Path, dict[str, Any]]:
