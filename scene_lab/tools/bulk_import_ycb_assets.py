@@ -135,6 +135,29 @@ def _collision_from_extents(extents: list[float]) -> dict[str, Any]:
     }
 
 
+def _habitat_physical_material(config: dict[str, Any], asset_id: str, category: str) -> dict[str, Any]:
+    friction = float(config.get("friction_coefficient") or 1.0)
+    return {
+        "material_key": "ycb_habitat_measured_rigid",
+        "asset_id": asset_id,
+        "category": category,
+        "engine": "mujoco",
+        "model": "dexjoco_geom_contact",
+        "surface_type": "rigid_ycb_object",
+        "source": "Habitat YCB object_config friction_coefficient",
+        "contact": {
+            "condim": 4,
+            "contype": 1,
+            "conaffinity": 14,
+            "friction": [friction, 0.03, 0.0005],
+            "solref": [0.002, 1.0],
+            "solimp": [0.9, 0.95, 0.001],
+            "group": 3,
+            "rgba": [0.0, 0.0, 0.0, 0.0],
+        },
+    }
+
+
 def _write_candidate(task_id: str, manifest: dict[str, Any], replace: bool) -> bool:
     candidate_dir = REGISTRY / "pending" / task_id
     if candidate_dir.exists():
@@ -288,6 +311,7 @@ def import_habitat_config(
             "habitat_render_asset": str(render_asset.resolve()),
             "source_collision_mesh": str(collision_asset.resolve()) if collision_asset.exists() else None,
             "friction_coefficient": config.get("friction_coefficient"),
+            "physical_material": _habitat_physical_material(config, asset_id, category),
             "conversion_status": conversion_status,
             "dexjoco_calibration": calibration,
             "scale_policy": calibration["scale_policy"],
@@ -320,7 +344,16 @@ def main() -> None:
     parser.add_argument("--objects-root", required=True, type=Path)
     parser.add_argument("--replace", action="store_true")
     parser.add_argument("--copy", action="store_true")
-    parser.add_argument("--no-candidates", action="store_true")
+    parser.add_argument(
+        "--create-candidates",
+        action="store_true",
+        help="Also generate temporary pick/place candidates. Disabled by default because YCB only provides assets.",
+    )
+    parser.add_argument(
+        "--no-candidates",
+        action="store_true",
+        help="Deprecated compatibility flag; candidates are disabled by default.",
+    )
     parser.add_argument("--limit", type=int)
     parser.add_argument(
         "--unit-scale",
@@ -341,7 +374,7 @@ def main() -> None:
             import_habitat_config(
                 config_path,
                 replace=args.replace,
-                create_candidate=not args.no_candidates,
+                create_candidate=args.create_candidates and not args.no_candidates,
                 copy=args.copy,
                 unit_scale=args.unit_scale,
             )
@@ -355,7 +388,7 @@ def main() -> None:
             import_object(
                 object_dir,
                 replace=args.replace,
-                create_candidate=not args.no_candidates,
+                create_candidate=args.create_candidates and not args.no_candidates,
                 copy=args.copy,
                 unit_scale=args.unit_scale,
             )

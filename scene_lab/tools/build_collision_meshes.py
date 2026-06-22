@@ -109,7 +109,11 @@ def _collision_mesh_for_manifest(manifest_path: Path) -> dict:
         import trimesh
 
         if source_collision is not None:
-            source_kind = "robotwin_collision_mesh"
+            source_kind = (
+                "ycb_convex_decomposition_collision_mesh"
+                if manifest.get("source_benchmark") == "ycb"
+                else "robotwin_collision_mesh"
+            )
             source_mesh = source_collision
         elif source_mesh.suffix.lower() == ".glb":
             source_kind = "visual_scene_component_meshes"

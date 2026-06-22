@@ -128,7 +128,7 @@ python scene_lab/tools/materialize_robotwin_native_task_dirs.py \
 ```
 
 Import local YCB object models with strict metric mesh scale, generate
-pick/place candidates, build mesh collisions, and validate the batch:
+asset manifests, build mesh collisions, and render asset-only review previews:
 
 ```bash
 export YCB_ROOT=/path/to/ycb/object_models
@@ -148,12 +148,11 @@ python scene_lab/tools/build_collision_meshes.py \
   --all \
   --source ycb
 
-python scene_lab/tools/build_collision_meshes.py \
-  --pending-candidates \
+python scene_lab/tools/render_asset_previews.py \
+  --all \
   --source ycb
 
-/opt/homebrew/Caskroom/miniconda/base/envs/dexjoco/bin/python \
-  scene_lab/tools/validate_ycb_asset_transfer.py
+python scene_lab/tools/asset_review_gui.py --port 8768
 ```
 
 Launch the review GUI:
@@ -210,6 +209,8 @@ YCB strict scale preserves the local YCB mesh coordinates as metric object
 model coordinates and records `unit_scale_to_meters` in
 `dexjoco_calibration`. The default `--unit-scale 1.0` should be used for
 official YCB object models; override it only for a known non-meter export.
+YCB import does not generate task logic by default; use `--create-candidates`
+only for temporary debugging previews.
 
 ## Candidate Schema
 

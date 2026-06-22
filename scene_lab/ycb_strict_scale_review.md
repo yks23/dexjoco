@@ -3,8 +3,8 @@
 This workflow mirrors the RoboTwin asset-review path for YCB object models.
 It can consume local official YCB object model folders or the Habitat-ready YCB
 mirror on Hugging Face, imports the meshes into the Scene Lab processed asset
-format, generates pick/place candidates, validates MuJoCo loading, and serves
-them in the review GUI.
+format, builds MuJoCo collision/contact metadata, renders asset-only previews,
+and serves them in the asset review GUI.
 
 ## Scale Rule
 
@@ -30,7 +30,8 @@ non-meter units.  Do not use category-size normalization for exact alignment.
 For Habitat-ready YCB, the importer reads each
 `configs/*.object_config.json`, uses `render_asset` for the textured visual
 mesh, prefers the uncompressed `.glb.orig` asset for texture extraction, and
-uses `collision_asset` for convex mesh collision.
+uses `collision_asset` for convex mesh collision. `friction_coefficient` is
+mapped into the MuJoCo contact friction vector as the primary sliding friction.
 
 ## Pull And Prepare
 
@@ -77,30 +78,24 @@ $PY scene_lab/tools/bulk_import_ycb_assets.py \
 $PY scene_lab/tools/build_collision_meshes.py \
   --all \
   --source ycb
-```
 
-If collision meshes should also be copied into pending candidates after
-candidate generation:
-
-```bash
-$PY scene_lab/tools/build_collision_meshes.py \
-  --pending-candidates \
+$PY scene_lab/tools/render_asset_previews.py \
+  --all \
   --source ycb
-```
 
-## Validate And View
-
-```bash
-$PY scene_lab/tools/validate_ycb_asset_transfer.py
-$PY scene_lab/tools/review_gui.py --port 8768
+$PY scene_lab/tools/asset_review_gui.py --port 8768
 ```
 
 Open:
 
 ```text
-http://127.0.0.1:8768/?bucket=pending&source=ycb
+http://127.0.0.1:8768/?source=ycb
 ```
 
-Each candidate contains `task.json`, `scene.xml`, `asset_manifest.json`,
-`validation.json`, and `preview/front.png`, `preview/side.png`,
-`preview/wrist.png` after validation.
+Each processed asset contains `asset_manifest.json`, `collision.json`,
+`asset_scene.xml`, `asset_validation.json`, and `preview/front.png`,
+`preview/side.png`, `preview/top.png` after preview rendering.
+
+YCB has no task logic in this workflow. The importer does not create
+`pick_place_ycb_*` task candidates unless `--create-candidates` is passed
+explicitly for debugging.
