@@ -104,7 +104,42 @@ def mirror_mesh(mesh: Path, processed_dir: Path, copy: bool = False) -> Path:
         shutil.copy2(mesh, dest)
     else:
         dest.symlink_to(mesh.resolve())
+    for companion in _mesh_companions(mesh):
+        companion_dest = visual_dir / companion.name
+        if companion_dest == dest:
+            continue
+        if companion_dest.exists() or companion_dest.is_symlink():
+            companion_dest.unlink()
+        if copy:
+            shutil.copy2(companion, companion_dest)
+        else:
+            companion_dest.symlink_to(companion.resolve())
     return dest
+
+
+def _mesh_companions(mesh: Path) -> list[Path]:
+    companions: list[Path] = []
+    if mesh.suffix.lower() == ".obj":
+        try:
+            for line in mesh.read_text(encoding="utf-8", errors="ignore").splitlines():
+                parts = line.strip().split(maxsplit=1)
+                if len(parts) == 2 and parts[0] == "mtllib":
+                    candidate = mesh.parent / parts[1]
+                    if candidate.exists():
+                        companions.append(candidate)
+        except OSError:
+            pass
+    for path in mesh.parent.iterdir():
+        if path.is_file() and path.suffix.lower() in (".mtl", ".png", ".jpg", ".jpeg", ".bmp", ".tga"):
+            companions.append(path)
+    unique: list[Path] = []
+    seen = set()
+    for path in companions:
+        resolved = path.resolve()
+        if resolved not in seen:
+            seen.add(resolved)
+            unique.append(path)
+    return unique
 
 
 def robotwin_model_data_for_mesh(mesh: Path) -> dict[str, Any]:

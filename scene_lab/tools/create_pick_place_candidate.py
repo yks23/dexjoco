@@ -25,6 +25,8 @@ from scene_lab.tools.generate_mjcf_scene import generate_scene_xml  # noqa: E402
 def _object_height(collision: dict) -> float:
     geom_type = collision.get("type", "box")
     size = collision.get("size") or [0.06, 0.04, 0.05]
+    if geom_type == "mesh":
+        return _object_height(collision.get("fallback") or {})
     if geom_type == "box" and len(size) >= 3:
         return float(size[2])
     if geom_type in ("cylinder", "capsule") and len(size) >= 2:

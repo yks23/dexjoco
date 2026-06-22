@@ -7,6 +7,9 @@ import argparse
 import sys
 from pathlib import Path
 
+import numpy as np
+import trimesh
+
 ROOT = Path(__file__).resolve().parents[2]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
@@ -38,6 +41,12 @@ def main() -> None:
         help="Override primitive collision size. Box expects 3 values; cylinder/capsule 2; sphere 1.",
     )
     parser.add_argument("--copy", action="store_true", help="Copy mesh instead of symlinking it")
+    parser.add_argument(
+        "--unit-scale",
+        type=float,
+        default=1.0,
+        help="Multiplier from source mesh units to meters. Official YCB object models are treated as metric by default.",
+    )
     args = parser.parse_args()
 
     source = args.source.expanduser().resolve()
@@ -53,8 +62,33 @@ def main() -> None:
     category = infer_category(source, args.category)
     processed_dir = PROCESSED_ROOT / "ycb" / asset_id
     processed_mesh, conversion_status = prepare_visual_mesh(mesh, processed_dir, copy=args.copy)
-    collision = infer_collision(category, args.size)
+    if args.unit_scale != 1.0:
+        loaded = trimesh.load(processed_mesh, force="mesh")
+        loaded.vertices = np.asarray(loaded.vertices, dtype=float) * float(args.unit_scale)
+        if processed_mesh.exists() or processed_mesh.is_symlink():
+            processed_mesh.unlink()
+        loaded.export(processed_mesh)
+    extents = np.asarray(trimesh.load(processed_mesh, force="mesh").extents, dtype=float)
+    collision = infer_collision(category, args.size) if args.size else {
+        "type": "box",
+        "size": (np.maximum(extents, 0.002) / 2.0).tolist(),
+        "source": "visual_mesh_aabb",
+    }
     mass = infer_mass(category, args.mass)
+    calibration = {
+        "method": "ycb_metric_mesh_strict",
+        "source": "YCB object model mesh units",
+        "unit_scale_to_meters": args.unit_scale,
+        "extra_uniform_scale": 1.0,
+        "processed_extents_m": extents.tolist(),
+        "calibrated_extents_m": extents.tolist(),
+        "scale_policy": {
+            "mode": "ycb_metric_strict",
+            "source": "YCB object model mesh vertices",
+            "unit_scale_to_meters": args.unit_scale,
+            "extra_uniform_scale": 1.0,
+        },
+    }
 
     manifest = build_manifest(
         asset_id=asset_id,
@@ -72,6 +106,8 @@ def main() -> None:
             "ycb_object_id": source.name if source.is_dir() else source.parent.name,
             "mesh_candidates": [str(p.resolve()) for p in meshes],
             "conversion_status": conversion_status,
+            "dexjoco_calibration": calibration,
+            "scale_policy": calibration["scale_policy"],
         },
     )
     write_json(processed_dir / "asset_manifest.json", manifest)

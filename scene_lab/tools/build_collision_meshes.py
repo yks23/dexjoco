@@ -18,6 +18,8 @@ from scene_lab.asset_pipeline import PROCESSED_ROOT, REGISTRY, load_asset_manife
 
 
 def _source_collision_mesh(manifest: dict) -> Path | None:
+    if manifest.get("source_benchmark") != "robotwin":
+        return None
     source_path = Path(str(manifest.get("source_path") or ""))
     variant = str(manifest.get("robotwin_variant") or Path(str(manifest.get("source_mesh") or "")).stem)
     candidate = source_path / "collision" / f"{variant}.glb"
@@ -107,7 +109,9 @@ def _collision_mesh_for_manifest(manifest_path: Path) -> dict:
         elif source_mesh.suffix.lower() == ".glb":
             source_kind = "visual_scene_component_meshes"
         parts = _load_mesh_parts(source_mesh)
-        if source_collision is not None or source_mesh.suffix.lower() == ".glb":
+        if manifest.get("source_benchmark") == "robotwin" and (
+            source_collision is not None or source_mesh.suffix.lower() == ".glb"
+        ):
             _apply_robotwin_transforms(parts, manifest)
         for index, mesh in enumerate(parts):
             mesh, repair = _collision_safe_mesh(mesh)
@@ -162,15 +166,16 @@ def _collision_mesh_for_manifest(manifest_path: Path) -> dict:
     }
 
 
-def _candidate_manifest_paths() -> list[Path]:
-    summary_path = REGISTRY / "pending" / "robotwin_bulk_import_summary.json"
+def _candidate_manifest_paths(source: str) -> list[Path]:
+    summary_path = REGISTRY / "pending" / f"{source}_bulk_import_summary.json"
     if not summary_path.exists():
         return []
     summary = json.loads(summary_path.read_text(encoding="utf-8"))
     paths = []
     for item in summary.get("results", []):
         if item.get("candidate_created") and item.get("asset_id"):
-            path = REGISTRY / "pending" / f"pick_place_{item['asset_id']}" / "asset_manifest.json"
+            task_id = item.get("task_id") or f"pick_place_{item['asset_id']}"
+            path = REGISTRY / "pending" / task_id / "asset_manifest.json"
             if path.exists():
                 paths.append(path)
     return paths
@@ -187,7 +192,7 @@ def main() -> None:
     if args.asset_id:
         manifest_paths = [load_asset_manifest(args.asset_id)[0]]
     elif args.pending_candidates:
-        manifest_paths = _candidate_manifest_paths()
+        manifest_paths = _candidate_manifest_paths(args.source)
     elif args.all:
         manifest_paths = sorted((PROCESSED_ROOT / args.source).glob("*/asset_manifest.json"))
     else:

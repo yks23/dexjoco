@@ -127,6 +127,29 @@ python scene_lab/tools/materialize_robotwin_native_task_dirs.py \
   --out dexjoco/dexjoco/tasks/robotwin_transfer/structure_alignment_summary.json
 ```
 
+Import local YCB object models with strict metric mesh scale, generate
+pick/place candidates, build mesh collisions, and validate the batch:
+
+```bash
+export YCB_ROOT=/path/to/ycb/object_models
+
+python scene_lab/tools/bulk_import_ycb_assets.py \
+  --objects-root "$YCB_ROOT" \
+  --replace \
+  --unit-scale 1.0
+
+python scene_lab/tools/build_collision_meshes.py \
+  --all \
+  --source ycb
+
+python scene_lab/tools/build_collision_meshes.py \
+  --pending-candidates \
+  --source ycb
+
+/opt/homebrew/Caskroom/miniconda/base/envs/dexjoco/bin/python \
+  scene_lab/tools/validate_ycb_asset_transfer.py
+```
+
 Launch the review GUI:
 
 ```bash
@@ -176,6 +199,11 @@ RoboTwin Y-up to MuJoCo Z-up, and exported with no extra uniform scale. The
 older review-only category target scaling is still available as
 `--scale-mode category_target_max`, but should not be used for exact RoboTwin
 alignment.
+
+YCB strict scale preserves the local YCB mesh coordinates as metric object
+model coordinates and records `unit_scale_to_meters` in
+`dexjoco_calibration`. The default `--unit-scale 1.0` should be used for
+official YCB object models; override it only for a known non-meter export.
 
 ## Candidate Schema
 
