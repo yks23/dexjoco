@@ -227,29 +227,17 @@ http://127.0.0.1:8770/task_scene?task=hard_present_object_to_camera
 These are scene renders, not asset-only renders: the images include the robot,
 table, objects, and target regions.
 
+Each task-scene page includes an `Open native MuJoCo viewer` link. Clicking it
+launches the same task through DexJoCo's original `render_mode="human"` local
+viewer. The viewer opens as a native MuJoCo window, not inside the browser.
+
 ### Native MuJoCo viewer
 
-DexJoCo's original viewer path is still the normal task API with
-`render_mode="human"`:
+Short command:
 
 ```bash
-PYTHONPATH=dexjoco /opt/homebrew/Caskroom/miniconda/base/envs/dexjoco/bin/python - <<'PY'
-import time
-from dexjoco.tasks import CONFIG_MAPPING
-
-task_id = "hard_pack_items_into_box_and_close"
-env = CONFIG_MAPPING[task_id]().get_environment(
-    policy_mode=False,
-    render_mode="human",
-)
-obs, info = env.reset()
-print(task_id, info)
-
-action = env.action_space.sample() * 0
-while True:
-    env.step(action)
-    time.sleep(0.01)
-PY
+/opt/homebrew/Caskroom/miniconda/base/envs/dexjoco/bin/python \
+  scene_lab/tools/open_task_viewer.py hard_pack_items_into_box_and_close
 ```
 
 Swap `task_id` for any registered task, including:

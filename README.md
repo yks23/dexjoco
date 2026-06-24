@@ -161,26 +161,14 @@ Scene preview in the browser:
 http://127.0.0.1:8770/task_scene?task=hard_pack_items_into_box_and_close
 ```
 
-DexJoCo native MuJoCo viewer:
+Click `Open native MuJoCo viewer` on that page to launch DexJoCo's original
+`render_mode="human"` MuJoCo viewer from the local server.
+
+Short terminal command for the same native viewer:
 
 ```bash
-PYTHONPATH=dexjoco /opt/homebrew/Caskroom/miniconda/base/envs/dexjoco/bin/python - <<'PY'
-import time
-from dexjoco.tasks import CONFIG_MAPPING
-
-task_id = "hard_pack_items_into_box_and_close"
-env = CONFIG_MAPPING[task_id]().get_environment(
-    policy_mode=False,
-    render_mode="human",
-)
-obs, info = env.reset()
-print(task_id, info)
-
-action = env.action_space.sample() * 0
-while True:
-    env.step(action)
-    time.sleep(0.01)
-PY
+/opt/homebrew/Caskroom/miniconda/base/envs/dexjoco/bin/python \
+  scene_lab/tools/open_task_viewer.py hard_pack_items_into_box_and_close
 ```
 
 See [`scene_lab/README.md`](scene_lab/README.md) for checksums, directory

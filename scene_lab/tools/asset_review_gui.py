@@ -9,6 +9,7 @@ import json
 import shutil
 import math
 import subprocess
+import sys
 from datetime import datetime, timezone
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
@@ -22,6 +23,13 @@ ROOT = Path(__file__).resolve().parents[2]
 PROCESSED = ROOT / "scene_lab" / "assets" / "processed"
 VIEWER_CACHE = ROOT / "scene_lab" / "assets" / "viewer_cache"
 SOURCES = ("all", "ycb", "robotwin")
+HARD_TASKS = (
+    "hard_sort_objects_by_category",
+    "hard_pack_items_into_box_and_close",
+    "hard_stack_bowls_stably",
+    "hard_pour_granules_proxy",
+    "hard_present_object_to_camera",
+)
 
 
 def _read_json(path: Path) -> dict:
@@ -271,6 +279,10 @@ def _rubiks_page() -> str:
         f'<button type="button" data-src="{urls[state]}">{html.escape(state.upper())}</button>'
         for state in states
     )
+    task_links = "".join(
+        f'<a href="/task_scene?task={quote(task_id)}">{html.escape(task_id)}</a>'
+        for task_id in HARD_TASKS
+    )
     return f"""<!doctype html>
 <html>
 <head>
@@ -341,17 +353,12 @@ def _task_scene_page(task_id: str) -> str:
     preview_dir = _ensure_task_scene_previews(task_id)
     front_url = _file_url(preview_dir / "front.png")
     wrist_url = _file_url(preview_dir / "wrist.png")
-    task_links = [
-        "hard_sort_objects_by_category",
-        "hard_pack_items_into_box_and_close",
-        "hard_stack_bowls_stably",
-        "hard_pour_granules_proxy",
-        "hard_present_object_to_camera",
-    ]
+    task_links = list(HARD_TASKS)
     links = "".join(
         f'<a class="{ "active" if task_id == tid else "" }" href="/task_scene?task={quote(tid)}">{html.escape(tid)}</a>'
         for tid in task_links
     )
+    launch_url = f"/launch_task_viewer?task={quote(task_id)}"
     return f"""<!doctype html>
 <html>
 <head>
@@ -370,12 +377,56 @@ def _task_scene_page(task_id: str) -> str:
   </style>
 </head>
 <body>
-  <header><strong>DexJoCo Task Scene View</strong>{links}<a href="/showroom?source=all&limit=120">Asset showroom</a><a href="/rubiks">Rubik demo</a></header>
+  <header><strong>DexJoCo Task Scene View</strong>{links}<a class="launch" href="{launch_url}">Open native MuJoCo viewer</a><a href="/showroom?source=all&limit=120">Asset showroom</a><a href="/rubiks">Rubik demo</a></header>
   <main>
     <figure><img src="{front_url}"><figcaption>{html.escape(task_id)} / front camera</figcaption></figure>
     <figure><img src="{wrist_url}"><figcaption>{html.escape(task_id)} / wrist camera</figcaption></figure>
   </main>
   <div class="note">This page shows the actual MuJoCo task scene render: robot, table, objects, and target regions. Images are generated from the DexJoCo environment, not from the asset-only GLB showroom.</div>
+</body>
+</html>"""
+
+
+def _launch_task_viewer(task_id: str) -> tuple[bool, str]:
+    task_id = task_id if task_id in HARD_TASKS else "hard_pack_items_into_box_and_close"
+    script = ROOT / "scene_lab" / "tools" / "open_task_viewer.py"
+    log_dir = VIEWER_CACHE / "logs"
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_path = log_dir / f"{task_id}.log"
+    python = sys.executable
+    with log_path.open("ab") as log:
+        subprocess.Popen(
+            [python, str(script), task_id],
+            cwd=ROOT,
+            stdout=log,
+            stderr=subprocess.STDOUT,
+            start_new_session=True,
+        )
+    return True, f"Launched native MuJoCo viewer for {task_id}. Log: {log_path}"
+
+
+def _launch_result_page(task_id: str) -> str:
+    ok, message = _launch_task_viewer(task_id)
+    status = "Started" if ok else "Failed"
+    return f"""<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>{status} native viewer</title>
+  <style>
+    body {{ margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #f4f6f8; color: #1f2933; }}
+    main {{ max-width: 760px; margin: 60px auto; background: white; border: 1px solid #d8dee6; border-radius: 8px; padding: 24px; }}
+    a {{ color: #2563eb; }}
+    code {{ background: #eef2f6; padding: 2px 5px; border-radius: 4px; }}
+  </style>
+</head>
+<body>
+  <main>
+    <h1>{status}</h1>
+    <p>{html.escape(message)}</p>
+    <p>The viewer is DexJoCo's native <code>render_mode="human"</code> MuJoCo viewer. It opens as a local window, not inside this browser tab.</p>
+    <p><a href="/task_scene?task={quote(task_id)}">Back to task scene page</a></p>
+  </main>
 </body>
 </html>"""
 
@@ -514,6 +565,10 @@ def _page(source: str, asset_id: str | None) -> str:
         f'<a class="{ "active" if source == item else "" }" href="/?source={item}">{item}</a>'
         for item in SOURCES
     )
+    task_links = " ".join(
+        f'<a href="/task_scene?task={quote(task_id)}">{html.escape(task_id)}</a>'
+        for task_id in HARD_TASKS
+    )
     return f"""<!doctype html>
 <html>
 <head>
@@ -550,7 +605,7 @@ def _page(source: str, asset_id: str | None) -> str:
   </style>
 </head>
 <body>
-  <header><strong>Scene Lab Asset Review</strong><span>source</span>{source_links}</header>
+  <header><strong>Scene Lab Asset Review</strong><span>source</span>{source_links}<span>tasks</span>{task_links}<a href="/rubiks">rubiks</a></header>
   <main><aside><ul>{''.join(rows)}</ul></aside>{detail}</main>
 </body>
 </html>"""
@@ -601,6 +656,14 @@ class Handler(BaseHTTPRequestHandler):
         if parsed.path == "/task_scene":
             task_id = query.get("task", ["hard_pack_items_into_box_and_close"])[0]
             html_text = _task_scene_page(task_id)
+            self.send_response(200)
+            self.send_header("Content-Type", "text/html; charset=utf-8")
+            self.end_headers()
+            self.wfile.write(html_text.encode("utf-8"))
+            return
+        if parsed.path == "/launch_task_viewer":
+            task_id = query.get("task", ["hard_pack_items_into_box_and_close"])[0]
+            html_text = _launch_result_page(task_id)
             self.send_response(200)
             self.send_header("Content-Type", "text/html; charset=utf-8")
             self.end_headers()
