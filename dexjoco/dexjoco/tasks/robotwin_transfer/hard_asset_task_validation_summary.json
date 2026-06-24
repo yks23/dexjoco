@@ -1,0 +1,58 @@
+{
+  "validated_at": "2026-06-24T03:51:02.139613+00:00",
+  "task_count": 5,
+  "ok": 5,
+  "results": [
+    {
+      "task_id": "hard_sort_objects_by_category",
+      "reset_ok": true,
+      "initial_success": false,
+      "predicate_mode": "all",
+      "state_shape": [
+        33
+      ],
+      "constructed_terminal_success": true
+    },
+    {
+      "task_id": "hard_pack_items_into_box_and_close",
+      "reset_ok": true,
+      "initial_success": false,
+      "predicate_mode": "all",
+      "state_shape": [
+        33
+      ],
+      "constructed_terminal_success": true
+    },
+    {
+      "task_id": "hard_stack_bowls_stably",
+      "reset_ok": true,
+      "initial_success": false,
+      "predicate_mode": "all",
+      "state_shape": [
+        33
+      ],
+      "constructed_terminal_success": true
+    },
+    {
+      "task_id": "hard_pour_granules_proxy",
+      "reset_ok": true,
+      "initial_success": false,
+      "predicate_mode": "all",
+      "state_shape": [
+        33
+      ],
+      "constructed_terminal_success": true
+    },
+    {
+      "task_id": "hard_present_object_to_camera",
+      "reset_ok": true,
+      "initial_success": false,
+      "predicate_mode": "all",
+      "state_shape": [
+        33
+      ],
+      "constructed_terminal_success": true
+    }
+  ],
+  "constructed_terminal_predicate_ok": 5
+}

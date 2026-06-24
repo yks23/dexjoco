@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-06-22T11:06:15.949174+00:00",
   "format": "dexjoco.robotwin_transfer.catalog.v1",
-  "task_count": 247,
+  "task_count": 252,
   "tasks": [
     {
       "task_id": "robotwin_adjust_bottle_001_bottle",
@@ -28086,6 +28086,678 @@
         ],
         "errors": []
       }
+    },
+    {
+      "task_id": "hard_sort_objects_by_category",
+      "source_task": "composed_hard_asset_task",
+      "task_family": "dexjoco_hard_asset_composition",
+      "composition_level": "multi_object_or_proxy",
+      "instruction": "Sort the can, bottle, and toy car into their matching category zones.",
+      "xml_path": "dexjoco/dexjoco/sim/envs/xmls/robotwin_tasks/hard_sort_objects_by_category.xml",
+      "object_pose": [
+        -0.38,
+        -0.22,
+        0.97,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "objects": [
+        {
+          "name": "can_object",
+          "asset_ref": "robotwin_071_can_base0",
+          "asset_category": "can",
+          "source_benchmark": "robotwin",
+          "pose": [
+            -0.38,
+            -0.22,
+            0.97,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "role": "primary"
+        },
+        {
+          "name": "bottle_object",
+          "asset_ref": "robotwin_001_bottle_base0",
+          "asset_category": "bottle",
+          "source_benchmark": "robotwin",
+          "pose": [
+            -0.34,
+            0.08,
+            1.048,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "role": "secondary"
+        },
+        {
+          "name": "toy_object",
+          "asset_ref": "robotwin_057_toycar_base0",
+          "asset_category": "toycar",
+          "source_benchmark": "robotwin",
+          "pose": [
+            -0.22,
+            -0.04,
+            0.955,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "role": "secondary"
+        }
+      ],
+      "asset_ref": "robotwin_071_can_base0",
+      "asset_category": "can",
+      "success_condition": {
+        "type": "object_in_region",
+        "object": "can_object",
+        "target": "can_goal",
+        "params": {
+          "xy_radius": 0.085,
+          "min_z": 0.9
+        }
+      },
+      "success_conditions": [
+        {
+          "type": "object_in_region",
+          "object": "can_object",
+          "target": "can_goal",
+          "params": {
+            "xy_radius": 0.085,
+            "min_z": 0.9
+          }
+        },
+        {
+          "type": "object_in_region",
+          "object": "bottle_object",
+          "target": "bottle_goal",
+          "params": {
+            "xy_radius": 0.085,
+            "min_z": 0.9
+          }
+        },
+        {
+          "type": "object_in_region",
+          "object": "toy_object",
+          "target": "toy_goal",
+          "params": {
+            "xy_radius": 0.085,
+            "min_z": 0.9
+          }
+        }
+      ],
+      "task_source": {
+        "csv_related": [
+          "T90 assorted items into storage box",
+          "T01_one/T03/T16/T23/T27 pick-and-place variants"
+        ],
+        "robotwin_related": [
+          "blocks_ranking_rgb",
+          "blocks_ranking_size",
+          "place_object_basket"
+        ],
+        "asset_sources": [
+          "RoboTwin-OD can/bottle/toycar"
+        ]
+      },
+      "description": "Hard asset-composition task built from converted RoboTwin/YCB assets and CSV task-taxonomy motifs.",
+      "transfer_report": {
+        "transfer_status": "executable",
+        "unsupported_features": [],
+        "losses": [
+          "Some tasks use explicit proxy predicates instead of true fluid, granule, or lid articulation dynamics."
+        ]
+      },
+      "validation": {
+        "ok": true,
+        "native_reset": {
+          "task_id": "hard_sort_objects_by_category",
+          "reset_ok": true,
+          "initial_success": false,
+          "predicate_mode": "all",
+          "state_shape": [
+            33
+          ]
+        },
+        "errors": []
+      }
+    },
+    {
+      "task_id": "hard_pack_items_into_box_and_close",
+      "source_task": "composed_hard_asset_task",
+      "task_family": "dexjoco_hard_asset_composition",
+      "composition_level": "multi_object_or_proxy",
+      "instruction": "Pack the bread and can into the box, then place the lid proxy on top to close it.",
+      "xml_path": "dexjoco/dexjoco/sim/envs/xmls/robotwin_tasks/hard_pack_items_into_box_and_close.xml",
+      "object_pose": [
+        -0.38,
+        -0.22,
+        0.948,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "objects": [
+        {
+          "name": "bread_item",
+          "asset_ref": "robotwin_075_bread_base0",
+          "asset_category": "bread",
+          "source_benchmark": "robotwin",
+          "pose": [
+            -0.38,
+            -0.22,
+            0.948,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "role": "primary"
+        },
+        {
+          "name": "can_item",
+          "asset_ref": "robotwin_071_can_base0",
+          "asset_category": "can",
+          "source_benchmark": "robotwin",
+          "pose": [
+            -0.36,
+            0.02,
+            0.97,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "role": "secondary"
+        },
+        {
+          "name": "lid_proxy",
+          "asset_ref": "ycb_061_foam_brick",
+          "asset_category": "foam_brick",
+          "source_benchmark": "ycb",
+          "pose": [
+            -0.3,
+            0.25,
+            0.948,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "role": "secondary"
+        }
+      ],
+      "asset_ref": "robotwin_075_bread_base0",
+      "asset_category": "bread",
+      "success_condition": {
+        "type": "object_in_region",
+        "object": "bread_item",
+        "target": "box_center",
+        "params": {
+          "xy_radius": 0.12,
+          "min_z": 0.9
+        }
+      },
+      "success_conditions": [
+        {
+          "type": "object_in_region",
+          "object": "bread_item",
+          "target": "box_center",
+          "params": {
+            "xy_radius": 0.12,
+            "min_z": 0.9
+          }
+        },
+        {
+          "type": "object_in_region",
+          "object": "can_item",
+          "target": "box_center",
+          "params": {
+            "xy_radius": 0.12,
+            "min_z": 0.9
+          }
+        },
+        {
+          "type": "object_in_region",
+          "object": "lid_proxy",
+          "target": "lid_closed_goal",
+          "params": {
+            "xy_radius": 0.08,
+            "min_z": 0.94
+          }
+        }
+      ],
+      "task_source": {
+        "csv_related": [
+          "T50 put multiple items into bag and close",
+          "T90 assorted items into lidded storage box"
+        ],
+        "robotwin_related": [
+          "put_object_cabinet",
+          "place_cans_plasticbox",
+          "put_bottles_dustbin"
+        ],
+        "asset_sources": [
+          "RoboTwin-OD bread/can",
+          "YCB foam brick as lid proxy"
+        ]
+      },
+      "description": "Hard asset-composition task built from converted RoboTwin/YCB assets and CSV task-taxonomy motifs.",
+      "transfer_report": {
+        "transfer_status": "executable",
+        "unsupported_features": [],
+        "losses": [
+          "Some tasks use explicit proxy predicates instead of true fluid, granule, or lid articulation dynamics."
+        ]
+      },
+      "validation": {
+        "ok": true,
+        "native_reset": {
+          "task_id": "hard_pack_items_into_box_and_close",
+          "reset_ok": true,
+          "initial_success": false,
+          "predicate_mode": "all",
+          "state_shape": [
+            33
+          ]
+        },
+        "errors": []
+      }
+    },
+    {
+      "task_id": "hard_stack_bowls_stably",
+      "source_task": "composed_hard_asset_task",
+      "task_family": "dexjoco_hard_asset_composition",
+      "composition_level": "multi_object_or_proxy",
+      "instruction": "Stack three bowls into one stable vertical stack.",
+      "xml_path": "dexjoco/dexjoco/sim/envs/xmls/robotwin_tasks/hard_stack_bowls_stably.xml",
+      "object_pose": [
+        -0.36,
+        -0.14,
+        0.954,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "objects": [
+        {
+          "name": "bottom_bowl",
+          "asset_ref": "robotwin_002_bowl_base1",
+          "asset_category": "bowl",
+          "source_benchmark": "robotwin",
+          "pose": [
+            -0.36,
+            -0.14,
+            0.954,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "role": "primary"
+        },
+        {
+          "name": "middle_bowl",
+          "asset_ref": "robotwin_002_bowl_base2",
+          "asset_category": "bowl",
+          "source_benchmark": "robotwin",
+          "pose": [
+            -0.26,
+            0.08,
+            0.954,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "role": "secondary"
+        },
+        {
+          "name": "top_bowl",
+          "asset_ref": "robotwin_002_bowl_base3",
+          "asset_category": "bowl",
+          "source_benchmark": "robotwin",
+          "pose": [
+            -0.42,
+            0.18,
+            0.954,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "role": "secondary"
+        }
+      ],
+      "asset_ref": "robotwin_002_bowl_base1",
+      "asset_category": "bowl",
+      "success_condition": {
+        "type": "object_in_region",
+        "object": "bottom_bowl",
+        "target": "stack_base_goal",
+        "params": {
+          "xy_radius": 0.06,
+          "min_z": 0.9
+        }
+      },
+      "success_conditions": [
+        {
+          "type": "object_in_region",
+          "object": "bottom_bowl",
+          "target": "stack_base_goal",
+          "params": {
+            "xy_radius": 0.06,
+            "min_z": 0.9
+          }
+        },
+        {
+          "type": "object_above_object",
+          "object": "middle_bowl",
+          "target": "bottom_bowl",
+          "params": {
+            "xy_radius": 0.045,
+            "min_z_offset": 0.025,
+            "max_z_offset": 0.11
+          }
+        },
+        {
+          "type": "object_above_object",
+          "object": "top_bowl",
+          "target": "middle_bowl",
+          "params": {
+            "xy_radius": 0.045,
+            "min_z_offset": 0.025,
+            "max_z_offset": 0.11
+          }
+        }
+      ],
+      "task_source": {
+        "csv_related": [
+          "T03/T05 bowl/container placement variants; harder stable stacking composition"
+        ],
+        "robotwin_related": [
+          "stack_bowls_three",
+          "stack_bowls_two"
+        ],
+        "asset_sources": [
+          "RoboTwin-OD bowl variants"
+        ]
+      },
+      "description": "Hard asset-composition task built from converted RoboTwin/YCB assets and CSV task-taxonomy motifs.",
+      "transfer_report": {
+        "transfer_status": "executable",
+        "unsupported_features": [],
+        "losses": [
+          "Some tasks use explicit proxy predicates instead of true fluid, granule, or lid articulation dynamics."
+        ]
+      },
+      "validation": {
+        "ok": true,
+        "native_reset": {
+          "task_id": "hard_stack_bowls_stably",
+          "reset_ok": true,
+          "initial_success": false,
+          "predicate_mode": "all",
+          "state_shape": [
+            33
+          ]
+        },
+        "errors": []
+      }
+    },
+    {
+      "task_id": "hard_pour_granules_proxy",
+      "source_task": "composed_hard_asset_task",
+      "task_family": "dexjoco_hard_asset_composition",
+      "composition_level": "multi_object_or_proxy",
+      "instruction": "Tilt the bottle over the bowl long enough to proxy pouring granules or liquid.",
+      "xml_path": "dexjoco/dexjoco/sim/envs/xmls/robotwin_tasks/hard_pour_granules_proxy.xml",
+      "object_pose": [
+        -0.34,
+        -0.16,
+        1.048,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "objects": [
+        {
+          "name": "pour_bottle",
+          "asset_ref": "robotwin_001_bottle_base0",
+          "asset_category": "bottle",
+          "source_benchmark": "robotwin",
+          "pose": [
+            -0.34,
+            -0.16,
+            1.048,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "role": "primary"
+        },
+        {
+          "name": "receiving_bowl",
+          "asset_ref": "ycb_024_bowl",
+          "asset_category": "bowl",
+          "source_benchmark": "ycb",
+          "pose": [
+            0.16,
+            0.12,
+            0.948,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "role": "secondary"
+        }
+      ],
+      "asset_ref": "robotwin_001_bottle_base0",
+      "asset_category": "bottle",
+      "success_condition": {
+        "type": "object_in_region",
+        "object": "receiving_bowl",
+        "target": "bowl_center",
+        "params": {
+          "xy_radius": 0.04,
+          "min_z": 0.9
+        }
+      },
+      "success_conditions": [
+        {
+          "type": "object_in_region",
+          "object": "receiving_bowl",
+          "target": "bowl_center",
+          "params": {
+            "xy_radius": 0.04,
+            "min_z": 0.9
+          }
+        },
+        {
+          "type": "object_tilted_toward_site",
+          "object": "pour_bottle",
+          "target": "bowl_center",
+          "params": {
+            "xy_radius": 0.18,
+            "max_up_dot": 0.55
+          }
+        }
+      ],
+      "task_source": {
+        "csv_related": [
+          "T51 pour liquid into bowl",
+          "T55/T56 pour granules into bowl/box",
+          "T97/T99 pour liquid into basin/skillet"
+        ],
+        "robotwin_related": [
+          "shake_bottle",
+          "shake_bottle_horizontally",
+          "place_container_plate"
+        ],
+        "asset_sources": [
+          "RoboTwin-OD bottle",
+          "YCB bowl"
+        ]
+      },
+      "description": "Hard asset-composition task built from converted RoboTwin/YCB assets and CSV task-taxonomy motifs.",
+      "transfer_report": {
+        "transfer_status": "executable",
+        "unsupported_features": [],
+        "losses": [
+          "Some tasks use explicit proxy predicates instead of true fluid, granule, or lid articulation dynamics."
+        ]
+      },
+      "validation": {
+        "ok": true,
+        "native_reset": {
+          "task_id": "hard_pour_granules_proxy",
+          "reset_ok": true,
+          "initial_success": false,
+          "predicate_mode": "all",
+          "state_shape": [
+            33
+          ]
+        },
+        "errors": []
+      }
+    },
+    {
+      "task_id": "hard_present_object_to_camera",
+      "source_task": "composed_hard_asset_task",
+      "task_family": "dexjoco_hard_asset_composition",
+      "composition_level": "multi_object_or_proxy",
+      "instruction": "Pick up the playing cards and present their front side toward the camera focus point.",
+      "xml_path": "dexjoco/dexjoco/sim/envs/xmls/robotwin_tasks/hard_present_object_to_camera.xml",
+      "object_pose": [
+        -0.36,
+        -0.1,
+        0.935,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "objects": [
+        {
+          "name": "target_card",
+          "asset_ref": "robotwin_081_playingcards_base0",
+          "asset_category": "playingcards",
+          "source_benchmark": "robotwin",
+          "pose": [
+            -0.36,
+            -0.1,
+            0.935,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "role": "primary"
+        },
+        {
+          "name": "distractor_phone",
+          "asset_ref": "robotwin_077_phone_base0",
+          "asset_category": "phone",
+          "source_benchmark": "robotwin",
+          "pose": [
+            -0.28,
+            0.16,
+            0.94,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "role": "secondary"
+        }
+      ],
+      "asset_ref": "robotwin_081_playingcards_base0",
+      "asset_category": "playingcards",
+      "success_condition": {
+        "type": "object_lifted",
+        "object": "target_card",
+        "target": "presentation_spot",
+        "params": {
+          "min_z": 1.03
+        }
+      },
+      "success_conditions": [
+        {
+          "type": "object_lifted",
+          "object": "target_card",
+          "target": "presentation_spot",
+          "params": {
+            "min_z": 1.03
+          }
+        },
+        {
+          "type": "object_near_site",
+          "object": "target_card",
+          "target": "presentation_spot",
+          "params": {
+            "xy_radius": 0.16
+          }
+        },
+        {
+          "type": "object_facing_site",
+          "object": "target_card",
+          "target": "front_camera_focus",
+          "params": {
+            "min_dot": 0.45,
+            "local_axis": [
+              1.0,
+              0.0,
+              0.0
+            ]
+          }
+        }
+      ],
+      "task_source": {
+        "csv_related": [
+          "T84 rotate booklet to show cover",
+          "T85 pick up brochure and show it"
+        ],
+        "robotwin_related": [
+          "scan_object",
+          "move_playingcard_away"
+        ],
+        "asset_sources": [
+          "RoboTwin-OD playing cards and phone distractor"
+        ]
+      },
+      "description": "Hard asset-composition task built from converted RoboTwin/YCB assets and CSV task-taxonomy motifs.",
+      "transfer_report": {
+        "transfer_status": "executable",
+        "unsupported_features": [],
+        "losses": [
+          "Some tasks use explicit proxy predicates instead of true fluid, granule, or lid articulation dynamics."
+        ]
+      },
+      "validation": {
+        "ok": true,
+        "native_reset": {
+          "task_id": "hard_present_object_to_camera",
+          "reset_ok": true,
+          "initial_success": false,
+          "predicate_mode": "all",
+          "state_shape": [
+            33
+          ]
+        },
+        "errors": []
+      }
     }
   ],
   "registered_specs": [
@@ -28150,6 +28822,7 @@
   "registered_spec_count": 6,
   "notes": [
     "Executable tasks are native DexJoCo CONFIG_MAPPING entries.",
-    "registered_specs preserve RoboTwin source-task coverage for tasks that need future bimanual or articulated runtime support."
+    "registered_specs preserve RoboTwin source-task coverage for tasks that need future bimanual or articulated runtime support.",
+    "Includes 5 hard asset-composition tasks sourced from CSV task motifs and converted RoboTwin/YCB assets."
   ]
 }

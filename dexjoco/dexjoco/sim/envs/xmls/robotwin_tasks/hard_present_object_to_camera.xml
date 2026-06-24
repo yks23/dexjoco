@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco model="hard_present_object_to_camera">
+  <compiler meshdir="../"/>
+  <include file="../panda_allegro_copy.xml"/>
+  <option timestep=".002" noslip_iterations="5" noslip_tolerance="0"/>
+  <visual>
+    <headlight diffuse=".45 .45 .45" ambient=".45 .45 .45"/>
+    <global azimuth="150" elevation="-25" offheight="1024" offwidth="1024"/>
+    <quality offsamples="4"/>
+  </visual>
+  <asset>
+    <texture name="floor_tex" type="2d" builtin="checker" width="512" height="512" rgb1=".72 .75 .78" rgb2=".55 .58 .62"/>
+    <texture name="table_tex" type="2d" builtin="checker" width="512" height="512" rgb1=".56 .38 .22" rgb2=".64 .46 .28"/>
+    <material name="floor_mat" texture="floor_tex" texrepeat="4 4"/>
+    <material name="table_mat" texture="table_tex" texrepeat="3 2"/>
+    <mesh name="target_card_visual_mesh" file="../../../../../scene_lab/assets/processed/robotwin/robotwin_081_playingcards_base0/visual/base0.obj" scale="1 1 1"/>
+    <mesh name="target_card_collision_mesh_0" file="../../../../../scene_lab/assets/processed/robotwin/robotwin_081_playingcards_base0/collision/base0_collision_000.obj" scale="1 1 1"/>
+    <mesh name="target_card_collision_mesh_1" file="../../../../../scene_lab/assets/processed/robotwin/robotwin_081_playingcards_base0/collision/base0_collision_001.obj" scale="1 1 1"/>
+    <material name="target_card_mat" rgba=".95 .95 .95 1" specular=".2" shininess=".25"/>
+    <mesh name="distractor_phone_visual_mesh" file="../../../../../scene_lab/assets/processed/robotwin/robotwin_077_phone_base0/visual/base0.obj" scale="1 1 1"/>
+    <mesh name="distractor_phone_collision_mesh_0" file="../../../../../scene_lab/assets/processed/robotwin/robotwin_077_phone_base0/collision/base0_collision_000.obj" scale="1 1 1"/>
+    <mesh name="distractor_phone_collision_mesh_1" file="../../../../../scene_lab/assets/processed/robotwin/robotwin_077_phone_base0/collision/base0_collision_001.obj" scale="1 1 1"/>
+    <material name="distractor_phone_mat" rgba=".1 .1 .12 1" specular=".2" shininess=".25"/>
+  </asset>
+  <worldbody>
+    <geom name="floor" type="plane" size="3 3 .01" material="floor_mat"/>
+    <body name="table" pos="-0.15 0 0.89">
+      <geom name="table_collision" type="box" size="0.45 0.85 0.03" friction="1.2 0.01 0.0001" condim="3" group="3"/>
+      <geom name="table_visual" type="box" size="0.45 0.85 0.03" contype="0" conaffinity="0" group="1" material="table_mat"/>
+    </body>
+    <body name="target_card" pos="-0.36 -0.1 0.935" quat="1.0 0.0 0.0 0.0">
+      <freejoint name="target_card_root"/>
+      <geom name="target_card_collision_0" type="mesh" mesh="target_card_collision_mesh_0" mass="0.075" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="target_card_collision_1" type="mesh" mesh="target_card_collision_mesh_1" mass="0.075" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="target_card_visual" type="mesh" mesh="target_card_visual_mesh" contype="0" conaffinity="0" group="1" material="target_card_mat"/>
+    </body>
+    <body name="distractor_phone" pos="-0.28 0.16 0.94" quat="1.0 0.0 0.0 0.0">
+      <freejoint name="distractor_phone_root"/>
+      <geom name="distractor_phone_collision_0" type="mesh" mesh="distractor_phone_collision_mesh_0" mass="0.075" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="distractor_phone_collision_1" type="mesh" mesh="distractor_phone_collision_mesh_1" mass="0.075" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="distractor_phone_visual" type="mesh" mesh="distractor_phone_visual_mesh" contype="0" conaffinity="0" group="1" material="distractor_phone_mat"/>
+    </body>
+    <body name="presentation_spot_region" pos="0.05 0.0 1.16">
+      <geom name="presentation_spot_region_visual" type="box" size="0.08 0.08 0.004" contype="0" conaffinity="0" group="1" rgba=".95 .65 .1 .20"/>
+      <site name="presentation_spot" pos="0 0 .012" size=".012" rgba="1 1 1 1"/>
+    </body>
+    <site name="front_camera_focus" pos="1.15 -.65 1.20" size=".018" rgba="1 .6 .1 1"/>
+    <camera name="front" pos="1.15 -.65 1.55" quat=".677 .430 .307 .512" fovy="48"/>
+    <camera name="side" pos=".15 -1.35 1.35" quat=".678 .678 .201 .201" fovy="48"/>
+    <light name="key_light" pos=".4 -.8 2.8" dir="-.2 .25 -1" diffuse=".9 .9 .85" specular=".2 .2 .2"/>
+    <body name="target" pos=".15 0 .55" quat="0 1 0 0" mocap="true">
+      <geom name="target" type="box" size=".03 .03 .03" contype="0" conaffinity="0" rgba=".6 .3 .3 0"/>
+    </body>
+  </worldbody>
+</mujoco>

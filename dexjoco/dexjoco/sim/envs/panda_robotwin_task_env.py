@@ -83,6 +83,7 @@ def _predicate(
     object_pos: np.ndarray,
     target_pos: np.ndarray,
     params: dict[str, Any],
+    object_quat: np.ndarray | None = None,
 ) -> dict[str, Any]:
     if predicate_type in {"object_near_site", "object_near_object"}:
         radius = float(params.get("radius", params.get("xy_radius", 0.08)))
@@ -127,6 +128,55 @@ def _predicate(
             "z_error": z_error,
             "z_offset": z_offset,
             "z_tolerance": z_tolerance,
+        }
+    if predicate_type == "object_above_object":
+        xy_radius = float(params.get("xy_radius", params.get("radius", 0.05)))
+        min_z_offset = float(params.get("min_z_offset", 0.025))
+        max_z_offset = float(params.get("max_z_offset", 0.20))
+        xy_distance = float(np.linalg.norm(object_pos[:2] - target_pos[:2]))
+        z_offset = float(object_pos[2] - target_pos[2])
+        return {
+            "ok": xy_distance <= xy_radius and min_z_offset <= z_offset <= max_z_offset,
+            "xy_distance": xy_distance,
+            "xy_radius": xy_radius,
+            "z_offset": z_offset,
+            "min_z_offset": min_z_offset,
+            "max_z_offset": max_z_offset,
+        }
+    if predicate_type == "object_tilted_toward_site":
+        if object_quat is None:
+            return {"ok": False, "reason": "object_tilted_toward_site requires object_quat"}
+        max_up_dot = float(params.get("max_up_dot", 0.55))
+        xy_radius = float(params.get("xy_radius", 0.12))
+        quat_xyzw = np.asarray([object_quat[1], object_quat[2], object_quat[3], object_quat[0]])
+        local_z_world = R.from_quat(quat_xyzw).as_matrix()[:, 2]
+        up_dot = float(local_z_world @ np.asarray([0.0, 0.0, 1.0]))
+        xy_distance = float(np.linalg.norm(object_pos[:2] - target_pos[:2]))
+        return {
+            "ok": up_dot <= max_up_dot and xy_distance <= xy_radius,
+            "up_dot": up_dot,
+            "max_up_dot": max_up_dot,
+            "xy_distance": xy_distance,
+            "xy_radius": xy_radius,
+            "proxy_note": "Proxy for pouring: object is tilted near the target container.",
+        }
+    if predicate_type == "object_facing_site":
+        if object_quat is None:
+            return {"ok": False, "reason": "object_facing_site requires object_quat"}
+        min_dot = float(params.get("min_dot", 0.65))
+        local_axis = np.asarray(params.get("local_axis", [1.0, 0.0, 0.0]), dtype=np.float64)
+        quat_xyzw = np.asarray([object_quat[1], object_quat[2], object_quat[3], object_quat[0]])
+        axis_world = R.from_quat(quat_xyzw).as_matrix() @ local_axis
+        target_vec = target_pos - object_pos
+        norm = float(np.linalg.norm(target_vec))
+        if norm <= 1e-8:
+            return {"ok": False, "reason": "object and target are colocated"}
+        dot = float(axis_world @ (target_vec / norm))
+        return {
+            "ok": dot >= min_dot,
+            "dot": dot,
+            "min_dot": min_dot,
+            "proxy_note": "Proxy for presenting: a chosen object local axis faces the target site.",
         }
     return {
         "ok": False,
@@ -179,14 +229,34 @@ class PandaRoboTwinTaskGymEnv(MujocoGymEnv):
         )
 
         success = task_spec.get("success_condition", {})
-        self._object_name = success.get("object", "object")
+        self._object_specs = list(task_spec.get("objects", []))
+        if not self._object_specs:
+            self._object_specs = [
+                {
+                    "name": success.get("object", "object"),
+                    "pose": task_spec["object_pose"],
+                    "role": "primary",
+                }
+            ]
+        self._object_names = [obj.get("name", "object") for obj in self._object_specs]
+        self._object_name = success.get("object", self._object_names[0])
         self._target_name = success.get("target", "goal_center")
         self._predicate_type = success.get("type", "object_in_region")
         self._predicate_params = dict(success.get("params", {}))
+        self._success_conditions = list(task_spec.get("success_conditions", []))
+        if not self._success_conditions:
+            self._success_conditions = [success]
         self._object_body_id = int(self._model.body(self._object_name).id)
         self._target_site_id = int(self._model.site(self._target_name).id)
-        self._object_joint_qposadr = int(self._model.joint(f"{self._object_name}_root").qposadr)
-        self._initial_object_pose = np.asarray(task_spec["object_pose"], dtype=np.float64)
+        self._object_joint_qposadrs = {
+            name: int(self._model.joint(f"{name}_root").qposadr) for name in self._object_names
+        }
+        self._initial_object_poses = {
+            obj.get("name", "object"): np.asarray(obj["pose"], dtype=np.float64)
+            for obj in self._object_specs
+        }
+        self._object_joint_qposadr = self._object_joint_qposadrs[self._object_name]
+        self._initial_object_pose = self._initial_object_poses[self._object_name]
 
         self._mj_viewer = None
         if self.image_obs:
@@ -225,7 +295,9 @@ class PandaRoboTwinTaskGymEnv(MujocoGymEnv):
 
     def reset(self, seed=None, **kwargs):
         mujoco.mj_resetData(self._model, self._data)
-        self._data.qpos[self._object_joint_qposadr : self._object_joint_qposadr + 7] = self._initial_object_pose
+        for name, pose in self._initial_object_poses.items():
+            qposadr = self._object_joint_qposadrs[name]
+            self._data.qpos[qposadr : qposadr + 7] = pose
         self._data.qpos[self._panda_dof_ids] = _PANDA_HOME
         self._data.qpos[self._allegro_dof_ids] = _ALLEGRO_HOME
         self._data.ctrl[self._allegro_ctrl_ids] = _ALLEGRO_HOME
@@ -285,13 +357,35 @@ class PandaRoboTwinTaskGymEnv(MujocoGymEnv):
         return obs, 1.0 if success else 0.0, terminated, False, {"succeed": success, "predicate": predicate}
 
     def _compute_predicate(self) -> dict[str, Any]:
-        object_pos = self._data.body(self._object_name).xpos.copy()
-        target_pos = self._data.site_xpos[self._target_site_id].copy()
-        result = _predicate(self._predicate_type, object_pos, target_pos, self._predicate_params)
-        result["predicate_type"] = self._predicate_type
-        result["object_pos"] = object_pos.tolist()
-        result["target_pos"] = target_pos.tolist()
-        return result
+        results = []
+        for condition in self._success_conditions:
+            object_name = condition.get("object", self._object_name)
+            target_name = condition.get("target", self._target_name)
+            predicate_type = condition.get("type", self._predicate_type)
+            params = dict(condition.get("params", {}))
+            object_body = self._data.body(object_name)
+            object_pos = object_body.xpos.copy()
+            object_quat = object_body.xquat.copy()
+            target_pos = self._target_position(target_name)
+            result = _predicate(predicate_type, object_pos, target_pos, params, object_quat)
+            result["predicate_type"] = predicate_type
+            result["object"] = object_name
+            result["target"] = target_name
+            result["object_pos"] = object_pos.tolist()
+            result["target_pos"] = target_pos.tolist()
+            results.append(result)
+        ok = all(bool(result["ok"]) for result in results)
+        if len(results) == 1:
+            result = dict(results[0])
+            result["ok"] = ok
+            return result
+        return {"ok": ok, "mode": "all", "conditions": results}
+
+    def _target_position(self, name: str) -> np.ndarray:
+        try:
+            return self._data.site(name).xpos.copy()
+        except KeyError:
+            return self._data.body(name).xpos.copy()
 
     def _compute_success(self) -> bool:
         return bool(self._compute_predicate()["ok"])

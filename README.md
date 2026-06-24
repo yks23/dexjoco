@@ -125,7 +125,7 @@ final relative directory is:
 scene_lab/assets/processed/
 ```
 
-Minimal restore and review flow:
+Minimal restore flow:
 
 ```bash
 gh release download assets-trans-20260622 \
@@ -138,13 +138,53 @@ cat /tmp/dexjoco-assets-trans/scene_lab_processed_assets_robotwin_ycb_20260622.t
 shasum -a 256 /tmp/dexjoco-assets-trans/scene_lab_processed_assets_robotwin_ycb_20260622.tar.zst
 tar --use-compress-program=unzstd \
   -xf /tmp/dexjoco-assets-trans/scene_lab_processed_assets_robotwin_ycb_20260622.tar.zst
-
-python scene_lab/tools/asset_review_gui.py --port 8768
 ```
 
-Open `http://127.0.0.1:8768/?source=all` to review the converted assets.
+Quick asset browser:
+
+```bash
+/opt/homebrew/Caskroom/miniconda/base/envs/dexjoco/bin/python \
+  scene_lab/tools/asset_review_gui.py --port 8770
+```
+
+Open:
+
+```text
+http://127.0.0.1:8770/?source=all
+http://127.0.0.1:8770/showroom?source=robotwin&limit=120
+http://127.0.0.1:8770/showroom?source=ycb&limit=120
+```
+
+Scene preview in the browser:
+
+```text
+http://127.0.0.1:8770/task_scene?task=hard_pack_items_into_box_and_close
+```
+
+DexJoCo native MuJoCo viewer:
+
+```bash
+PYTHONPATH=dexjoco /opt/homebrew/Caskroom/miniconda/base/envs/dexjoco/bin/python - <<'PY'
+import time
+from dexjoco.tasks import CONFIG_MAPPING
+
+task_id = "hard_pack_items_into_box_and_close"
+env = CONFIG_MAPPING[task_id]().get_environment(
+    policy_mode=False,
+    render_mode="human",
+)
+obs, info = env.reset()
+print(task_id, info)
+
+action = env.action_space.sample() * 0
+while True:
+    env.step(action)
+    time.sleep(0.01)
+PY
+```
+
 See [`scene_lab/README.md`](scene_lab/README.md) for checksums, directory
-layout, and DexJoCo task usage.
+layout, asset browsing, scene viewing, and DexJoCo task usage.
 
 ## 🤖 Policy Evaluation
 

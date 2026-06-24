@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco model="hard_pack_items_into_box_and_close">
+  <compiler meshdir="../"/>
+  <include file="../panda_allegro_copy.xml"/>
+  <option timestep=".002" noslip_iterations="5" noslip_tolerance="0"/>
+  <visual>
+    <headlight diffuse=".45 .45 .45" ambient=".45 .45 .45"/>
+    <global azimuth="150" elevation="-25" offheight="1024" offwidth="1024"/>
+    <quality offsamples="4"/>
+  </visual>
+  <asset>
+    <texture name="floor_tex" type="2d" builtin="checker" width="512" height="512" rgb1=".72 .75 .78" rgb2=".55 .58 .62"/>
+    <texture name="table_tex" type="2d" builtin="checker" width="512" height="512" rgb1=".56 .38 .22" rgb2=".64 .46 .28"/>
+    <material name="floor_mat" texture="floor_tex" texrepeat="4 4"/>
+    <material name="table_mat" texture="table_tex" texrepeat="3 2"/>
+    <mesh name="bread_item_visual_mesh" file="../../../../../scene_lab/assets/processed/robotwin/robotwin_075_bread_base0/visual/base0.obj" scale="1 1 1"/>
+    <mesh name="bread_item_collision_mesh_0" file="../../../../../scene_lab/assets/processed/robotwin/robotwin_075_bread_base0/collision/base0_collision_000.obj" scale="1 1 1"/>
+    <mesh name="bread_item_collision_mesh_1" file="../../../../../scene_lab/assets/processed/robotwin/robotwin_075_bread_base0/collision/base0_collision_001.obj" scale="1 1 1"/>
+    <mesh name="bread_item_collision_mesh_2" file="../../../../../scene_lab/assets/processed/robotwin/robotwin_075_bread_base0/collision/base0_collision_002.obj" scale="1 1 1"/>
+    <mesh name="bread_item_collision_mesh_3" file="../../../../../scene_lab/assets/processed/robotwin/robotwin_075_bread_base0/collision/base0_collision_003.obj" scale="1 1 1"/>
+    <mesh name="bread_item_collision_mesh_4" file="../../../../../scene_lab/assets/processed/robotwin/robotwin_075_bread_base0/collision/base0_collision_004.obj" scale="1 1 1"/>
+    <mesh name="bread_item_collision_mesh_5" file="../../../../../scene_lab/assets/processed/robotwin/robotwin_075_bread_base0/collision/base0_collision_005.obj" scale="1 1 1"/>
+    <mesh name="bread_item_collision_mesh_6" file="../../../../../scene_lab/assets/processed/robotwin/robotwin_075_bread_base0/collision/base0_collision_006.obj" scale="1 1 1"/>
+    <mesh name="bread_item_collision_mesh_7" file="../../../../../scene_lab/assets/processed/robotwin/robotwin_075_bread_base0/collision/base0_collision_007.obj" scale="1 1 1"/>
+    <mesh name="bread_item_collision_mesh_8" file="../../../../../scene_lab/assets/processed/robotwin/robotwin_075_bread_base0/collision/base0_collision_008.obj" scale="1 1 1"/>
+    <material name="bread_item_mat" rgba=".78 .52 .28 1" specular=".2" shininess=".25"/>
+    <mesh name="can_item_visual_mesh" file="../../../../../scene_lab/assets/processed/robotwin/robotwin_071_can_base0/visual/base0.obj" scale="1 1 1"/>
+    <mesh name="can_item_collision_mesh_0" file="../../../../../scene_lab/assets/processed/robotwin/robotwin_071_can_base0/collision/base0_collision_000.obj" scale="1 1 1"/>
+    <mesh name="can_item_collision_mesh_1" file="../../../../../scene_lab/assets/processed/robotwin/robotwin_071_can_base0/collision/base0_collision_001.obj" scale="1 1 1"/>
+    <mesh name="can_item_collision_mesh_2" file="../../../../../scene_lab/assets/processed/robotwin/robotwin_071_can_base0/collision/base0_collision_002.obj" scale="1 1 1"/>
+    <mesh name="can_item_collision_mesh_3" file="../../../../../scene_lab/assets/processed/robotwin/robotwin_071_can_base0/collision/base0_collision_003.obj" scale="1 1 1"/>
+    <mesh name="can_item_collision_mesh_4" file="../../../../../scene_lab/assets/processed/robotwin/robotwin_071_can_base0/collision/base0_collision_004.obj" scale="1 1 1"/>
+    <mesh name="can_item_collision_mesh_5" file="../../../../../scene_lab/assets/processed/robotwin/robotwin_071_can_base0/collision/base0_collision_005.obj" scale="1 1 1"/>
+    <mesh name="can_item_collision_mesh_6" file="../../../../../scene_lab/assets/processed/robotwin/robotwin_071_can_base0/collision/base0_collision_006.obj" scale="1 1 1"/>
+    <mesh name="can_item_collision_mesh_7" file="../../../../../scene_lab/assets/processed/robotwin/robotwin_071_can_base0/collision/base0_collision_007.obj" scale="1 1 1"/>
+    <mesh name="can_item_collision_mesh_8" file="../../../../../scene_lab/assets/processed/robotwin/robotwin_071_can_base0/collision/base0_collision_008.obj" scale="1 1 1"/>
+    <mesh name="can_item_collision_mesh_9" file="../../../../../scene_lab/assets/processed/robotwin/robotwin_071_can_base0/collision/base0_collision_009.obj" scale="1 1 1"/>
+    <mesh name="can_item_collision_mesh_10" file="../../../../../scene_lab/assets/processed/robotwin/robotwin_071_can_base0/collision/base0_collision_010.obj" scale="1 1 1"/>
+    <mesh name="can_item_collision_mesh_11" file="../../../../../scene_lab/assets/processed/robotwin/robotwin_071_can_base0/collision/base0_collision_011.obj" scale="1 1 1"/>
+    <mesh name="can_item_collision_mesh_12" file="../../../../../scene_lab/assets/processed/robotwin/robotwin_071_can_base0/collision/base0_collision_012.obj" scale="1 1 1"/>
+    <mesh name="can_item_collision_mesh_13" file="../../../../../scene_lab/assets/processed/robotwin/robotwin_071_can_base0/collision/base0_collision_013.obj" scale="1 1 1"/>
+    <mesh name="can_item_collision_mesh_14" file="../../../../../scene_lab/assets/processed/robotwin/robotwin_071_can_base0/collision/base0_collision_014.obj" scale="1 1 1"/>
+    <mesh name="can_item_collision_mesh_15" file="../../../../../scene_lab/assets/processed/robotwin/robotwin_071_can_base0/collision/base0_collision_015.obj" scale="1 1 1"/>
+    <mesh name="can_item_collision_mesh_16" file="../../../../../scene_lab/assets/processed/robotwin/robotwin_071_can_base0/collision/base0_collision_016.obj" scale="1 1 1"/>
+    <mesh name="can_item_collision_mesh_17" file="../../../../../scene_lab/assets/processed/robotwin/robotwin_071_can_base0/collision/base0_collision_017.obj" scale="1 1 1"/>
+    <mesh name="can_item_collision_mesh_18" file="../../../../../scene_lab/assets/processed/robotwin/robotwin_071_can_base0/collision/base0_collision_018.obj" scale="1 1 1"/>
+    <mesh name="can_item_collision_mesh_19" file="../../../../../scene_lab/assets/processed/robotwin/robotwin_071_can_base0/collision/base0_collision_019.obj" scale="1 1 1"/>
+    <mesh name="can_item_collision_mesh_20" file="../../../../../scene_lab/assets/processed/robotwin/robotwin_071_can_base0/collision/base0_collision_020.obj" scale="1 1 1"/>
+    <mesh name="can_item_collision_mesh_21" file="../../../../../scene_lab/assets/processed/robotwin/robotwin_071_can_base0/collision/base0_collision_021.obj" scale="1 1 1"/>
+    <mesh name="can_item_collision_mesh_22" file="../../../../../scene_lab/assets/processed/robotwin/robotwin_071_can_base0/collision/base0_collision_022.obj" scale="1 1 1"/>
+    <mesh name="can_item_collision_mesh_23" file="../../../../../scene_lab/assets/processed/robotwin/robotwin_071_can_base0/collision/base0_collision_023.obj" scale="1 1 1"/>
+    <mesh name="can_item_collision_mesh_24" file="../../../../../scene_lab/assets/processed/robotwin/robotwin_071_can_base0/collision/base0_collision_024.obj" scale="1 1 1"/>
+    <mesh name="can_item_collision_mesh_25" file="../../../../../scene_lab/assets/processed/robotwin/robotwin_071_can_base0/collision/base0_collision_025.obj" scale="1 1 1"/>
+    <material name="can_item_mat" rgba=".9 .2 .15 1" specular=".2" shininess=".25"/>
+    <mesh name="lid_proxy_visual_mesh" file="../../../../../scene_lab/assets/processed/ycb/ycb_061_foam_brick/visual/textured.obj" scale="1 1 1"/>
+    <mesh name="lid_proxy_collision_mesh_0" file="../../../../../scene_lab/assets/processed/ycb/ycb_061_foam_brick/collision/textured_collision_000.obj" scale="1 1 1"/>
+    <material name="lid_proxy_mat" rgba=".35 .35 .38 1" specular=".2" shininess=".25"/>
+  </asset>
+  <worldbody>
+    <geom name="floor" type="plane" size="3 3 .01" material="floor_mat"/>
+    <body name="table" pos="-0.15 0 0.89">
+      <geom name="table_collision" type="box" size="0.45 0.85 0.03" friction="1.2 0.01 0.0001" condim="3" group="3"/>
+      <geom name="table_visual" type="box" size="0.45 0.85 0.03" contype="0" conaffinity="0" group="1" material="table_mat"/>
+    </body>
+    <body name="bread_item" pos="-0.38 -0.22 0.948" quat="1.0 0.0 0.0 0.0">
+      <freejoint name="bread_item_root"/>
+      <geom name="bread_item_collision_0" type="mesh" mesh="bread_item_collision_mesh_0" mass="0.016666667" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="bread_item_collision_1" type="mesh" mesh="bread_item_collision_mesh_1" mass="0.016666667" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="bread_item_collision_2" type="mesh" mesh="bread_item_collision_mesh_2" mass="0.016666667" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="bread_item_collision_3" type="mesh" mesh="bread_item_collision_mesh_3" mass="0.016666667" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="bread_item_collision_4" type="mesh" mesh="bread_item_collision_mesh_4" mass="0.016666667" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="bread_item_collision_5" type="mesh" mesh="bread_item_collision_mesh_5" mass="0.016666667" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="bread_item_collision_6" type="mesh" mesh="bread_item_collision_mesh_6" mass="0.016666667" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="bread_item_collision_7" type="mesh" mesh="bread_item_collision_mesh_7" mass="0.016666667" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="bread_item_collision_8" type="mesh" mesh="bread_item_collision_mesh_8" mass="0.016666667" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="bread_item_visual" type="mesh" mesh="bread_item_visual_mesh" contype="0" conaffinity="0" group="1" material="bread_item_mat"/>
+    </body>
+    <body name="can_item" pos="-0.36 0.02 0.97" quat="1.0 0.0 0.0 0.0">
+      <freejoint name="can_item_root"/>
+      <geom name="can_item_collision_0" type="mesh" mesh="can_item_collision_mesh_0" mass="0.0057692308" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="can_item_collision_1" type="mesh" mesh="can_item_collision_mesh_1" mass="0.0057692308" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="can_item_collision_2" type="mesh" mesh="can_item_collision_mesh_2" mass="0.0057692308" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="can_item_collision_3" type="mesh" mesh="can_item_collision_mesh_3" mass="0.0057692308" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="can_item_collision_4" type="mesh" mesh="can_item_collision_mesh_4" mass="0.0057692308" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="can_item_collision_5" type="mesh" mesh="can_item_collision_mesh_5" mass="0.0057692308" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="can_item_collision_6" type="mesh" mesh="can_item_collision_mesh_6" mass="0.0057692308" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="can_item_collision_7" type="mesh" mesh="can_item_collision_mesh_7" mass="0.0057692308" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="can_item_collision_8" type="mesh" mesh="can_item_collision_mesh_8" mass="0.0057692308" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="can_item_collision_9" type="mesh" mesh="can_item_collision_mesh_9" mass="0.0057692308" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="can_item_collision_10" type="mesh" mesh="can_item_collision_mesh_10" mass="0.0057692308" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="can_item_collision_11" type="mesh" mesh="can_item_collision_mesh_11" mass="0.0057692308" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="can_item_collision_12" type="mesh" mesh="can_item_collision_mesh_12" mass="0.0057692308" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="can_item_collision_13" type="mesh" mesh="can_item_collision_mesh_13" mass="0.0057692308" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="can_item_collision_14" type="mesh" mesh="can_item_collision_mesh_14" mass="0.0057692308" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="can_item_collision_15" type="mesh" mesh="can_item_collision_mesh_15" mass="0.0057692308" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="can_item_collision_16" type="mesh" mesh="can_item_collision_mesh_16" mass="0.0057692308" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="can_item_collision_17" type="mesh" mesh="can_item_collision_mesh_17" mass="0.0057692308" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="can_item_collision_18" type="mesh" mesh="can_item_collision_mesh_18" mass="0.0057692308" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="can_item_collision_19" type="mesh" mesh="can_item_collision_mesh_19" mass="0.0057692308" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="can_item_collision_20" type="mesh" mesh="can_item_collision_mesh_20" mass="0.0057692308" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="can_item_collision_21" type="mesh" mesh="can_item_collision_mesh_21" mass="0.0057692308" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="can_item_collision_22" type="mesh" mesh="can_item_collision_mesh_22" mass="0.0057692308" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="can_item_collision_23" type="mesh" mesh="can_item_collision_mesh_23" mass="0.0057692308" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="can_item_collision_24" type="mesh" mesh="can_item_collision_mesh_24" mass="0.0057692308" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="can_item_collision_25" type="mesh" mesh="can_item_collision_mesh_25" mass="0.0057692308" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="can_item_visual" type="mesh" mesh="can_item_visual_mesh" contype="0" conaffinity="0" group="1" material="can_item_mat"/>
+    </body>
+    <body name="lid_proxy" pos="-0.3 0.25 0.948" quat="1.0 0.0 0.0 0.0">
+      <freejoint name="lid_proxy_root"/>
+      <geom name="lid_proxy_collision_0" type="mesh" mesh="lid_proxy_collision_mesh_0" mass="0.15" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="lid_proxy_visual" type="mesh" mesh="lid_proxy_visual_mesh" contype="0" conaffinity="0" group="1" material="lid_proxy_mat"/>
+    </body>
+    <body name="box_center_region" pos="0.18 0.06 0.925">
+      <geom name="box_center_region_visual" type="box" size="0.15 0.16 0.004" contype="0" conaffinity="0" group="1" rgba=".1 .65 .9 .30"/>
+      <site name="box_center" pos="0 0 .012" size=".012" rgba="1 1 1 1"/>
+    </body>
+    <body name="lid_closed_goal_region" pos="0.18 0.06 0.982">
+      <geom name="lid_closed_goal_region_visual" type="box" size="0.13 0.11 0.004" contype="0" conaffinity="0" group="1" rgba=".35 .35 .38 .35"/>
+      <site name="lid_closed_goal" pos="0 0 .012" size=".012" rgba="1 1 1 1"/>
+    </body>
+    <body name="open_box_proxy" pos="0.18 0.06 0.94">
+      <geom name="open_box_floor" type="box" size=".15 .16 .012" rgba=".08 .45 .75 .25" contype="0" conaffinity="0" group="1"/>
+      <geom name="open_box_back" type="box" pos="0 .16 .045" size=".15 .01 .045" rgba=".08 .45 .75 .35" contype="0" conaffinity="0" group="1"/>
+      <geom name="open_box_left" type="box" pos="-.15 0 .045" size=".01 .16 .045" rgba=".08 .45 .75 .35" contype="0" conaffinity="0" group="1"/>
+      <geom name="open_box_right" type="box" pos=".15 0 .045" size=".01 .16 .045" rgba=".08 .45 .75 .35" contype="0" conaffinity="0" group="1"/>
+    </body>
+    <camera name="front" pos="1.15 -.65 1.55" quat=".677 .430 .307 .512" fovy="48"/>
+    <camera name="side" pos=".15 -1.35 1.35" quat=".678 .678 .201 .201" fovy="48"/>
+    <light name="key_light" pos=".4 -.8 2.8" dir="-.2 .25 -1" diffuse=".9 .9 .85" specular=".2 .2 .2"/>
+    <body name="target" pos=".15 0 .55" quat="0 1 0 0" mocap="true">
+      <geom name="target" type="box" size=".03 .03 .03" contype="0" conaffinity="0" rgba=".6 .3 .3 0"/>
+    </body>
+  </worldbody>
+</mujoco>

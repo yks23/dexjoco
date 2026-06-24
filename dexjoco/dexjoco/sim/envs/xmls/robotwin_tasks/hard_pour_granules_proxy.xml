@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco model="hard_pour_granules_proxy">
+  <compiler meshdir="../"/>
+  <include file="../panda_allegro_copy.xml"/>
+  <option timestep=".002" noslip_iterations="5" noslip_tolerance="0"/>
+  <visual>
+    <headlight diffuse=".45 .45 .45" ambient=".45 .45 .45"/>
+    <global azimuth="150" elevation="-25" offheight="1024" offwidth="1024"/>
+    <quality offsamples="4"/>
+  </visual>
+  <asset>
+    <texture name="floor_tex" type="2d" builtin="checker" width="512" height="512" rgb1=".72 .75 .78" rgb2=".55 .58 .62"/>
+    <texture name="table_tex" type="2d" builtin="checker" width="512" height="512" rgb1=".56 .38 .22" rgb2=".64 .46 .28"/>
+    <material name="floor_mat" texture="floor_tex" texrepeat="4 4"/>
+    <material name="table_mat" texture="table_tex" texrepeat="3 2"/>
+    <mesh name="pour_bottle_visual_mesh" file="../../../../../scene_lab/assets/processed/robotwin/robotwin_001_bottle_base0/visual/base0.obj" scale="1 1 1"/>
+    <mesh name="pour_bottle_collision_mesh_0" file="../../../../../scene_lab/assets/processed/robotwin/robotwin_001_bottle_base0/collision/base0_collision_000.obj" scale="1 1 1"/>
+    <mesh name="pour_bottle_collision_mesh_1" file="../../../../../scene_lab/assets/processed/robotwin/robotwin_001_bottle_base0/collision/base0_collision_001.obj" scale="1 1 1"/>
+    <mesh name="pour_bottle_collision_mesh_2" file="../../../../../scene_lab/assets/processed/robotwin/robotwin_001_bottle_base0/collision/base0_collision_002.obj" scale="1 1 1"/>
+    <material name="pour_bottle_mat" rgba=".1 .75 .35 1" specular=".2" shininess=".25"/>
+    <mesh name="receiving_bowl_visual_mesh" file="../../../../../scene_lab/assets/processed/ycb/ycb_024_bowl/visual/textured.obj" scale="1 1 1"/>
+    <mesh name="receiving_bowl_collision_mesh_0" file="../../../../../scene_lab/assets/processed/ycb/ycb_024_bowl/collision/textured_collision_000.obj" scale="1 1 1"/>
+    <mesh name="receiving_bowl_collision_mesh_1" file="../../../../../scene_lab/assets/processed/ycb/ycb_024_bowl/collision/textured_collision_001.obj" scale="1 1 1"/>
+    <mesh name="receiving_bowl_collision_mesh_2" file="../../../../../scene_lab/assets/processed/ycb/ycb_024_bowl/collision/textured_collision_002.obj" scale="1 1 1"/>
+    <mesh name="receiving_bowl_collision_mesh_3" file="../../../../../scene_lab/assets/processed/ycb/ycb_024_bowl/collision/textured_collision_003.obj" scale="1 1 1"/>
+    <mesh name="receiving_bowl_collision_mesh_4" file="../../../../../scene_lab/assets/processed/ycb/ycb_024_bowl/collision/textured_collision_004.obj" scale="1 1 1"/>
+    <mesh name="receiving_bowl_collision_mesh_5" file="../../../../../scene_lab/assets/processed/ycb/ycb_024_bowl/collision/textured_collision_005.obj" scale="1 1 1"/>
+    <mesh name="receiving_bowl_collision_mesh_6" file="../../../../../scene_lab/assets/processed/ycb/ycb_024_bowl/collision/textured_collision_006.obj" scale="1 1 1"/>
+    <mesh name="receiving_bowl_collision_mesh_7" file="../../../../../scene_lab/assets/processed/ycb/ycb_024_bowl/collision/textured_collision_007.obj" scale="1 1 1"/>
+    <mesh name="receiving_bowl_collision_mesh_8" file="../../../../../scene_lab/assets/processed/ycb/ycb_024_bowl/collision/textured_collision_008.obj" scale="1 1 1"/>
+    <mesh name="receiving_bowl_collision_mesh_9" file="../../../../../scene_lab/assets/processed/ycb/ycb_024_bowl/collision/textured_collision_009.obj" scale="1 1 1"/>
+    <mesh name="receiving_bowl_collision_mesh_10" file="../../../../../scene_lab/assets/processed/ycb/ycb_024_bowl/collision/textured_collision_010.obj" scale="1 1 1"/>
+    <mesh name="receiving_bowl_collision_mesh_11" file="../../../../../scene_lab/assets/processed/ycb/ycb_024_bowl/collision/textured_collision_011.obj" scale="1 1 1"/>
+    <mesh name="receiving_bowl_collision_mesh_12" file="../../../../../scene_lab/assets/processed/ycb/ycb_024_bowl/collision/textured_collision_012.obj" scale="1 1 1"/>
+    <mesh name="receiving_bowl_collision_mesh_13" file="../../../../../scene_lab/assets/processed/ycb/ycb_024_bowl/collision/textured_collision_013.obj" scale="1 1 1"/>
+    <mesh name="receiving_bowl_collision_mesh_14" file="../../../../../scene_lab/assets/processed/ycb/ycb_024_bowl/collision/textured_collision_014.obj" scale="1 1 1"/>
+    <mesh name="receiving_bowl_collision_mesh_15" file="../../../../../scene_lab/assets/processed/ycb/ycb_024_bowl/collision/textured_collision_015.obj" scale="1 1 1"/>
+    <mesh name="receiving_bowl_collision_mesh_16" file="../../../../../scene_lab/assets/processed/ycb/ycb_024_bowl/collision/textured_collision_016.obj" scale="1 1 1"/>
+    <mesh name="receiving_bowl_collision_mesh_17" file="../../../../../scene_lab/assets/processed/ycb/ycb_024_bowl/collision/textured_collision_017.obj" scale="1 1 1"/>
+    <mesh name="receiving_bowl_collision_mesh_18" file="../../../../../scene_lab/assets/processed/ycb/ycb_024_bowl/collision/textured_collision_018.obj" scale="1 1 1"/>
+    <mesh name="receiving_bowl_collision_mesh_19" file="../../../../../scene_lab/assets/processed/ycb/ycb_024_bowl/collision/textured_collision_019.obj" scale="1 1 1"/>
+    <mesh name="receiving_bowl_collision_mesh_20" file="../../../../../scene_lab/assets/processed/ycb/ycb_024_bowl/collision/textured_collision_020.obj" scale="1 1 1"/>
+    <mesh name="receiving_bowl_collision_mesh_21" file="../../../../../scene_lab/assets/processed/ycb/ycb_024_bowl/collision/textured_collision_021.obj" scale="1 1 1"/>
+    <mesh name="receiving_bowl_collision_mesh_22" file="../../../../../scene_lab/assets/processed/ycb/ycb_024_bowl/collision/textured_collision_022.obj" scale="1 1 1"/>
+    <mesh name="receiving_bowl_collision_mesh_23" file="../../../../../scene_lab/assets/processed/ycb/ycb_024_bowl/collision/textured_collision_023.obj" scale="1 1 1"/>
+    <mesh name="receiving_bowl_collision_mesh_24" file="../../../../../scene_lab/assets/processed/ycb/ycb_024_bowl/collision/textured_collision_024.obj" scale="1 1 1"/>
+    <mesh name="receiving_bowl_collision_mesh_25" file="../../../../../scene_lab/assets/processed/ycb/ycb_024_bowl/collision/textured_collision_025.obj" scale="1 1 1"/>
+    <mesh name="receiving_bowl_collision_mesh_26" file="../../../../../scene_lab/assets/processed/ycb/ycb_024_bowl/collision/textured_collision_026.obj" scale="1 1 1"/>
+    <mesh name="receiving_bowl_collision_mesh_27" file="../../../../../scene_lab/assets/processed/ycb/ycb_024_bowl/collision/textured_collision_027.obj" scale="1 1 1"/>
+    <mesh name="receiving_bowl_collision_mesh_28" file="../../../../../scene_lab/assets/processed/ycb/ycb_024_bowl/collision/textured_collision_028.obj" scale="1 1 1"/>
+    <mesh name="receiving_bowl_collision_mesh_29" file="../../../../../scene_lab/assets/processed/ycb/ycb_024_bowl/collision/textured_collision_029.obj" scale="1 1 1"/>
+    <mesh name="receiving_bowl_collision_mesh_30" file="../../../../../scene_lab/assets/processed/ycb/ycb_024_bowl/collision/textured_collision_030.obj" scale="1 1 1"/>
+    <mesh name="receiving_bowl_collision_mesh_31" file="../../../../../scene_lab/assets/processed/ycb/ycb_024_bowl/collision/textured_collision_031.obj" scale="1 1 1"/>
+    <mesh name="receiving_bowl_collision_mesh_32" file="../../../../../scene_lab/assets/processed/ycb/ycb_024_bowl/collision/textured_collision_032.obj" scale="1 1 1"/>
+    <mesh name="receiving_bowl_collision_mesh_33" file="../../../../../scene_lab/assets/processed/ycb/ycb_024_bowl/collision/textured_collision_033.obj" scale="1 1 1"/>
+    <mesh name="receiving_bowl_collision_mesh_34" file="../../../../../scene_lab/assets/processed/ycb/ycb_024_bowl/collision/textured_collision_034.obj" scale="1 1 1"/>
+    <mesh name="receiving_bowl_collision_mesh_35" file="../../../../../scene_lab/assets/processed/ycb/ycb_024_bowl/collision/textured_collision_035.obj" scale="1 1 1"/>
+    <mesh name="receiving_bowl_collision_mesh_36" file="../../../../../scene_lab/assets/processed/ycb/ycb_024_bowl/collision/textured_collision_036.obj" scale="1 1 1"/>
+    <mesh name="receiving_bowl_collision_mesh_37" file="../../../../../scene_lab/assets/processed/ycb/ycb_024_bowl/collision/textured_collision_037.obj" scale="1 1 1"/>
+    <mesh name="receiving_bowl_collision_mesh_38" file="../../../../../scene_lab/assets/processed/ycb/ycb_024_bowl/collision/textured_collision_038.obj" scale="1 1 1"/>
+    <mesh name="receiving_bowl_collision_mesh_39" file="../../../../../scene_lab/assets/processed/ycb/ycb_024_bowl/collision/textured_collision_039.obj" scale="1 1 1"/>
+    <mesh name="receiving_bowl_collision_mesh_40" file="../../../../../scene_lab/assets/processed/ycb/ycb_024_bowl/collision/textured_collision_040.obj" scale="1 1 1"/>
+    <mesh name="receiving_bowl_collision_mesh_41" file="../../../../../scene_lab/assets/processed/ycb/ycb_024_bowl/collision/textured_collision_041.obj" scale="1 1 1"/>
+    <mesh name="receiving_bowl_collision_mesh_42" file="../../../../../scene_lab/assets/processed/ycb/ycb_024_bowl/collision/textured_collision_042.obj" scale="1 1 1"/>
+    <mesh name="receiving_bowl_collision_mesh_43" file="../../../../../scene_lab/assets/processed/ycb/ycb_024_bowl/collision/textured_collision_043.obj" scale="1 1 1"/>
+    <mesh name="receiving_bowl_collision_mesh_44" file="../../../../../scene_lab/assets/processed/ycb/ycb_024_bowl/collision/textured_collision_044.obj" scale="1 1 1"/>
+    <mesh name="receiving_bowl_collision_mesh_45" file="../../../../../scene_lab/assets/processed/ycb/ycb_024_bowl/collision/textured_collision_045.obj" scale="1 1 1"/>
+    <mesh name="receiving_bowl_collision_mesh_46" file="../../../../../scene_lab/assets/processed/ycb/ycb_024_bowl/collision/textured_collision_046.obj" scale="1 1 1"/>
+    <mesh name="receiving_bowl_collision_mesh_47" file="../../../../../scene_lab/assets/processed/ycb/ycb_024_bowl/collision/textured_collision_047.obj" scale="1 1 1"/>
+    <mesh name="receiving_bowl_collision_mesh_48" file="../../../../../scene_lab/assets/processed/ycb/ycb_024_bowl/collision/textured_collision_048.obj" scale="1 1 1"/>
+    <mesh name="receiving_bowl_collision_mesh_49" file="../../../../../scene_lab/assets/processed/ycb/ycb_024_bowl/collision/textured_collision_049.obj" scale="1 1 1"/>
+    <material name="receiving_bowl_mat" rgba=".9 .9 .95 1" specular=".2" shininess=".25"/>
+  </asset>
+  <worldbody>
+    <geom name="floor" type="plane" size="3 3 .01" material="floor_mat"/>
+    <body name="table" pos="-0.15 0 0.89">
+      <geom name="table_collision" type="box" size="0.45 0.85 0.03" friction="1.2 0.01 0.0001" condim="3" group="3"/>
+      <geom name="table_visual" type="box" size="0.45 0.85 0.03" contype="0" conaffinity="0" group="1" material="table_mat"/>
+    </body>
+    <body name="pour_bottle" pos="-0.34 -0.16 1.048" quat="1.0 0.0 0.0 0.0">
+      <freejoint name="pour_bottle_root"/>
+      <geom name="pour_bottle_collision_0" type="mesh" mesh="pour_bottle_collision_mesh_0" mass="0.05" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="pour_bottle_collision_1" type="mesh" mesh="pour_bottle_collision_mesh_1" mass="0.05" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="pour_bottle_collision_2" type="mesh" mesh="pour_bottle_collision_mesh_2" mass="0.05" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="pour_bottle_visual" type="mesh" mesh="pour_bottle_visual_mesh" contype="0" conaffinity="0" group="1" material="pour_bottle_mat"/>
+    </body>
+    <body name="receiving_bowl" pos="0.16 0.12 0.948" quat="1.0 0.0 0.0 0.0">
+      <freejoint name="receiving_bowl_root"/>
+      <geom name="receiving_bowl_collision_0" type="mesh" mesh="receiving_bowl_collision_mesh_0" mass="0.006" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="receiving_bowl_collision_1" type="mesh" mesh="receiving_bowl_collision_mesh_1" mass="0.006" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="receiving_bowl_collision_2" type="mesh" mesh="receiving_bowl_collision_mesh_2" mass="0.006" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="receiving_bowl_collision_3" type="mesh" mesh="receiving_bowl_collision_mesh_3" mass="0.006" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="receiving_bowl_collision_4" type="mesh" mesh="receiving_bowl_collision_mesh_4" mass="0.006" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="receiving_bowl_collision_5" type="mesh" mesh="receiving_bowl_collision_mesh_5" mass="0.006" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="receiving_bowl_collision_6" type="mesh" mesh="receiving_bowl_collision_mesh_6" mass="0.006" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="receiving_bowl_collision_7" type="mesh" mesh="receiving_bowl_collision_mesh_7" mass="0.006" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="receiving_bowl_collision_8" type="mesh" mesh="receiving_bowl_collision_mesh_8" mass="0.006" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="receiving_bowl_collision_9" type="mesh" mesh="receiving_bowl_collision_mesh_9" mass="0.006" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="receiving_bowl_collision_10" type="mesh" mesh="receiving_bowl_collision_mesh_10" mass="0.006" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="receiving_bowl_collision_11" type="mesh" mesh="receiving_bowl_collision_mesh_11" mass="0.006" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="receiving_bowl_collision_12" type="mesh" mesh="receiving_bowl_collision_mesh_12" mass="0.006" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="receiving_bowl_collision_13" type="mesh" mesh="receiving_bowl_collision_mesh_13" mass="0.006" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="receiving_bowl_collision_14" type="mesh" mesh="receiving_bowl_collision_mesh_14" mass="0.006" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="receiving_bowl_collision_15" type="mesh" mesh="receiving_bowl_collision_mesh_15" mass="0.006" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="receiving_bowl_collision_16" type="mesh" mesh="receiving_bowl_collision_mesh_16" mass="0.006" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="receiving_bowl_collision_17" type="mesh" mesh="receiving_bowl_collision_mesh_17" mass="0.006" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="receiving_bowl_collision_18" type="mesh" mesh="receiving_bowl_collision_mesh_18" mass="0.006" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="receiving_bowl_collision_19" type="mesh" mesh="receiving_bowl_collision_mesh_19" mass="0.006" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="receiving_bowl_collision_20" type="mesh" mesh="receiving_bowl_collision_mesh_20" mass="0.006" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="receiving_bowl_collision_21" type="mesh" mesh="receiving_bowl_collision_mesh_21" mass="0.006" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="receiving_bowl_collision_22" type="mesh" mesh="receiving_bowl_collision_mesh_22" mass="0.006" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="receiving_bowl_collision_23" type="mesh" mesh="receiving_bowl_collision_mesh_23" mass="0.006" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="receiving_bowl_collision_24" type="mesh" mesh="receiving_bowl_collision_mesh_24" mass="0.006" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="receiving_bowl_collision_25" type="mesh" mesh="receiving_bowl_collision_mesh_25" mass="0.006" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="receiving_bowl_collision_26" type="mesh" mesh="receiving_bowl_collision_mesh_26" mass="0.006" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="receiving_bowl_collision_27" type="mesh" mesh="receiving_bowl_collision_mesh_27" mass="0.006" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="receiving_bowl_collision_28" type="mesh" mesh="receiving_bowl_collision_mesh_28" mass="0.006" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="receiving_bowl_collision_29" type="mesh" mesh="receiving_bowl_collision_mesh_29" mass="0.006" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="receiving_bowl_collision_30" type="mesh" mesh="receiving_bowl_collision_mesh_30" mass="0.006" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="receiving_bowl_collision_31" type="mesh" mesh="receiving_bowl_collision_mesh_31" mass="0.006" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="receiving_bowl_collision_32" type="mesh" mesh="receiving_bowl_collision_mesh_32" mass="0.006" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="receiving_bowl_collision_33" type="mesh" mesh="receiving_bowl_collision_mesh_33" mass="0.006" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="receiving_bowl_collision_34" type="mesh" mesh="receiving_bowl_collision_mesh_34" mass="0.006" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="receiving_bowl_collision_35" type="mesh" mesh="receiving_bowl_collision_mesh_35" mass="0.006" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="receiving_bowl_collision_36" type="mesh" mesh="receiving_bowl_collision_mesh_36" mass="0.006" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="receiving_bowl_collision_37" type="mesh" mesh="receiving_bowl_collision_mesh_37" mass="0.006" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="receiving_bowl_collision_38" type="mesh" mesh="receiving_bowl_collision_mesh_38" mass="0.006" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="receiving_bowl_collision_39" type="mesh" mesh="receiving_bowl_collision_mesh_39" mass="0.006" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="receiving_bowl_collision_40" type="mesh" mesh="receiving_bowl_collision_mesh_40" mass="0.006" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="receiving_bowl_collision_41" type="mesh" mesh="receiving_bowl_collision_mesh_41" mass="0.006" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="receiving_bowl_collision_42" type="mesh" mesh="receiving_bowl_collision_mesh_42" mass="0.006" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="receiving_bowl_collision_43" type="mesh" mesh="receiving_bowl_collision_mesh_43" mass="0.006" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="receiving_bowl_collision_44" type="mesh" mesh="receiving_bowl_collision_mesh_44" mass="0.006" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="receiving_bowl_collision_45" type="mesh" mesh="receiving_bowl_collision_mesh_45" mass="0.006" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="receiving_bowl_collision_46" type="mesh" mesh="receiving_bowl_collision_mesh_46" mass="0.006" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="receiving_bowl_collision_47" type="mesh" mesh="receiving_bowl_collision_mesh_47" mass="0.006" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="receiving_bowl_collision_48" type="mesh" mesh="receiving_bowl_collision_mesh_48" mass="0.006" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="receiving_bowl_collision_49" type="mesh" mesh="receiving_bowl_collision_mesh_49" mass="0.006" friction="1.0 0.03 0.0005" group="3" condim="4" contype="1" conaffinity="14" solref="0.002 1" solimp="0.9 0.95 0.001" rgba="0 0 0 0"/>
+      <geom name="receiving_bowl_visual" type="mesh" mesh="receiving_bowl_visual_mesh" contype="0" conaffinity="0" group="1" material="receiving_bowl_mat"/>
+    </body>
+    <body name="bowl_center_region" pos="0.16 0.12 0.932">
+      <geom name="bowl_center_region_visual" type="box" size="0.11 0.11 0.004" contype="0" conaffinity="0" group="1" rgba=".2 .65 .95 .25"/>
+      <site name="bowl_center" pos="0 0 .012" size=".012" rgba="1 1 1 1"/>
+    </body>
+
+    <camera name="front" pos="1.15 -.65 1.55" quat=".677 .430 .307 .512" fovy="48"/>
+    <camera name="side" pos=".15 -1.35 1.35" quat=".678 .678 .201 .201" fovy="48"/>
+    <light name="key_light" pos=".4 -.8 2.8" dir="-.2 .25 -1" diffuse=".9 .9 .85" specular=".2 .2 .2"/>
+    <body name="target" pos=".15 0 .55" quat="0 1 0 0" mocap="true">
+      <geom name="target" type="box" size=".03 .03 .03" contype="0" conaffinity="0" rgba=".6 .3 .3 0"/>
+    </body>
+  </worldbody>
+</mujoco>

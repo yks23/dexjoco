@@ -136,20 +136,49 @@ scene_lab/assets/processed/ycb/
 ```
 
 ```bash
-python scene_lab/tools/asset_review_gui.py --port 8768
+/opt/homebrew/Caskroom/miniconda/base/envs/dexjoco/bin/python \
+  scene_lab/tools/asset_review_gui.py --port 8770
 ```
 
 Open:
 
 ```text
-http://127.0.0.1:8768/?source=all
-http://127.0.0.1:8768/?source=robotwin
-http://127.0.0.1:8768/?source=ycb
+http://127.0.0.1:8770/?source=all
+http://127.0.0.1:8770/?source=robotwin
+http://127.0.0.1:8770/?source=ycb
 ```
 
 The GUI reads `scene_lab/assets/processed` directly. It does not run any
 conversion pipeline and it does not require the original RoboTwin or YCB raw
 downloads.
+
+### Asset 3D Showroom
+
+The same script also serves a Google `model-viewer` showroom. It converts
+asset OBJ files to GLB lazily and stores the generated files under ignored
+cache path `scene_lab/assets/viewer_cache/`.
+
+```text
+http://127.0.0.1:8770/showroom?source=all&limit=120
+http://127.0.0.1:8770/showroom?source=robotwin&limit=120
+http://127.0.0.1:8770/showroom?source=ycb&limit=120
+```
+
+Use `limit=all` only when you really want the full asset grid in one browser
+scene. The first load can be slow because it must build a large GLB file.
+
+Single-asset 3D viewer:
+
+```text
+http://127.0.0.1:8770/viewer?source=ycb&asset=ycb_014_lemon
+http://127.0.0.1:8770/viewer?source=robotwin&asset=robotwin_001_bottle_base0
+```
+
+Structured Rubik cube visualization:
+
+```text
+http://127.0.0.1:8770/rubiks
+```
 
 ## Use RoboTwin Tasks
 
@@ -177,6 +206,64 @@ from dexjoco.tasks import CONFIG_MAPPING
 print("robotwin_adjust_bottle_001_bottle" in CONFIG_MAPPING)
 PY
 ```
+
+## View Task Scenes
+
+There are two scene-viewing paths.
+
+### Browser scene preview
+
+The asset review server can render front/wrist PNG previews from the actual
+DexJoCo MuJoCo environment. This is useful for quick sharing and demos:
+
+```text
+http://127.0.0.1:8770/task_scene?task=hard_pack_items_into_box_and_close
+http://127.0.0.1:8770/task_scene?task=hard_sort_objects_by_category
+http://127.0.0.1:8770/task_scene?task=hard_stack_bowls_stably
+http://127.0.0.1:8770/task_scene?task=hard_pour_granules_proxy
+http://127.0.0.1:8770/task_scene?task=hard_present_object_to_camera
+```
+
+These are scene renders, not asset-only renders: the images include the robot,
+table, objects, and target regions.
+
+### Native MuJoCo viewer
+
+DexJoCo's original viewer path is still the normal task API with
+`render_mode="human"`:
+
+```bash
+PYTHONPATH=dexjoco /opt/homebrew/Caskroom/miniconda/base/envs/dexjoco/bin/python - <<'PY'
+import time
+from dexjoco.tasks import CONFIG_MAPPING
+
+task_id = "hard_pack_items_into_box_and_close"
+env = CONFIG_MAPPING[task_id]().get_environment(
+    policy_mode=False,
+    render_mode="human",
+)
+obs, info = env.reset()
+print(task_id, info)
+
+action = env.action_space.sample() * 0
+while True:
+    env.step(action)
+    time.sleep(0.01)
+PY
+```
+
+Swap `task_id` for any registered task, including:
+
+```text
+hard_sort_objects_by_category
+hard_pack_items_into_box_and_close
+hard_stack_bowls_stably
+hard_pour_granules_proxy
+hard_present_object_to_camera
+```
+
+The five hard tasks are documented in
+`dexjoco/dexjoco/tasks/hard_asset_tasks.md`.
 
 ## Notes
 

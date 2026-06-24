@@ -248,6 +248,12 @@ from .robotwin_stamp_seal_100_seal_base3.config import TaskConfig as RobotwinSta
 from .robotwin_stamp_seal_100_seal_base4.config import TaskConfig as RobotwinStampSeal100SealBase4Config
 from .robotwin_stamp_seal_100_seal_base6.config import TaskConfig as RobotwinStampSeal100SealBase6Config
 
+from .hard_sort_objects_by_category.config import TaskConfig as HardSortObjectsByCategoryConfig
+from .hard_pack_items_into_box_and_close.config import TaskConfig as HardPackItemsIntoBoxAndCloseConfig
+from .hard_stack_bowls_stably.config import TaskConfig as HardStackBowlsStablyConfig
+from .hard_pour_granules_proxy.config import TaskConfig as HardPourGranulesProxyConfig
+from .hard_present_object_to_camera.config import TaskConfig as HardPresentObjectToCameraConfig
+
 ROBOTWIN_CONFIG_MAPPING = {
     "robotwin_adjust_bottle_001_bottle": RobotwinAdjustBottle001BottleConfig,
     "robotwin_adjust_bottle_001_bottle_base0": RobotwinAdjustBottle001BottleBase0Config,
@@ -496,4 +502,9 @@ ROBOTWIN_CONFIG_MAPPING = {
     "robotwin_stamp_seal_100_seal_base3": RobotwinStampSeal100SealBase3Config,
     "robotwin_stamp_seal_100_seal_base4": RobotwinStampSeal100SealBase4Config,
     "robotwin_stamp_seal_100_seal_base6": RobotwinStampSeal100SealBase6Config,
+    "hard_sort_objects_by_category": HardSortObjectsByCategoryConfig,
+    "hard_pack_items_into_box_and_close": HardPackItemsIntoBoxAndCloseConfig,
+    "hard_stack_bowls_stably": HardStackBowlsStablyConfig,
+    "hard_pour_granules_proxy": HardPourGranulesProxyConfig,
+    "hard_present_object_to_camera": HardPresentObjectToCameraConfig,
 }

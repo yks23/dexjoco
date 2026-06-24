@@ -35,6 +35,7 @@ converted_datasets/
 # Scene Lab generated assets and local review outputs.
 scene_lab/assets/raw/
 scene_lab/assets/processed/
+scene_lab/assets/viewer_cache/
 scene_lab/registry/
 move_book_preview/
 output/
